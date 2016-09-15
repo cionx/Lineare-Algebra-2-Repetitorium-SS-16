@@ -1,5 +1,47 @@
-\usepackage{xltxtra}
+% Including packages
+
+\usepackage[ngerman]{babel}
+\usepackage{fontspec}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{enumitem}
+
+% setting font
 
 \setromanfont[Mapping=tex-text]{Linux Libertine O}
-% \setsansfont[Mapping=tex-text]{DejaVu Sans}
-% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+% counters and stuff
+
+\newcounter{everything}
+\renewcommand{\theeverything}{\arabic{section}.\arabic{everything}}
+
+% defining math enviroments
+
+\theoremstyle{definition}
+\newtheorem{corollary}[everything]{Korollar}
+\newtheorem{definition}[everything]{Definition}
+\newtheorem{lemma}[everything]{Lemma}
+\newtheorem{notation}[everything]{Notation}
+\newtheorem{proposition}[everything]{Proposition}
+\newtheorem{remark}[everything]{Bemerkung}
+\newtheorem{theorem}[everything]{Theorem}
+
+% defining makros
+
+\newcommand{\basis}[1]{\mathcal{#1}}
+
+\newcommand{\Naturals}{\mathbb{N}}
+\newcommand{\Integers}{\mathbb{Z}}
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{R}}
+
+\newcommand{\Mat}{\mathrm{M}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\Orthogonal}{\mathrm{O}}
+\newcommand{\Unitary}{\mathrm{U}}
+\newcommand{\SOrthogonal}{\mathrm{SO}}
+\newcommand{\SUnitary}{\mathrm{SU}}
+
+\newcommand{\id}{\operatorname{id}}
+
+\newcommand{\im}{\operatorname{im}}

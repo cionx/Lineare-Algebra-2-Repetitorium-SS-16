@@ -1,0 +1,285 @@
+\section{Jordannormalform}
+
+
+
+
+
+
+
+
+
+
+\subsection{Nilpotente Endomorphismus}
+
+
+\begin{definition}
+  Ein Endomorphismus $f \colon V \to V$ eines $K$-Vektorraums $V$ heißt \emph{nilpotent}, falls es ein $n \in \Naturals$ mit $f^n = 0$ gibt.
+  Eine Matrix $A \in \Mat_n(K)$ heißt nilpotent, falls es ein $n \in \Naturals$ mit $A^n = 0$ gibt.
+\end{definition}
+
+
+\begin{lemma}
+  Ist $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vek\-tor\-raums $V$, so ist $f$ genau dann nilpotent, wenn für jede geordnete Basis $\basis{B}$ von $V$ die Matrix $\Mat_\basis{B}(f)$ nilpotent ist.
+\end{lemma}
+
+
+\begin{notation}
+  Für alle $n \geq 1$ sei
+  \[
+    J_n
+    \coloneqq
+    \begin{pmatrix}
+      0 & 1       &         &   \\
+        & \ddots  & \ddots  &   \\
+        &         & \ddots  & 1 \\
+        &         &         & 0
+    \end{pmatrix}
+    \in \Mat_n(K).
+  \]
+\end{notation}
+
+
+\begin{theorem}
+  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum und $f \colon V \to V$ ein nilpotenter Endomorphismus.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Es gibt eine geordnete Basis $\basis{B}$ von $V$ und $n_1, \dotsc, n_s \geq 1$, so dass
+      \[
+        \Mat_\basis{B}(f)
+        =
+        \begin{pmatrix}
+          J_{n_1} &         &         \\
+                  & \ddots  &         \\
+                  &         & J_{n_s}
+        \end{pmatrix}.
+      \]
+    \item
+      Die Zahlen $n_1, \dotsc, n_s$ sind eindeutig bis auf Permutation.
+    \item
+      Ist $f^N = 0$ für ein $N \geq 1$, so ist $n_i \leq N$ für alle $i = 1, \dotsc, s$.
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{corollary}
+  Ist $A \in \Mat_n(K)$ nilpotent, so gibt es $S \in \GL_n(K)$ und $n_1, \dotsc, n_s \geq 1$ mit
+  \[
+    S A S^{-1}
+    =
+    \begin{pmatrix}
+      J_{n_1} &         &         \\
+              & \ddots  &         \\
+              &         & J_{n_s}
+    \end{pmatrix}.
+  \]
+  Dabei sind die Zahlen $n_1, \dotsc, n_s$ eindeutig bis auf Permutation, und ist $A^N = 0$ für ein $N \geq 1$, so ist $n_i \leq N$ für alle $i = 1, \dotsc, s$.
+\end{corollary}
+
+
+\begin{lemma}
+  Ist $V$ ein endlichdimensionaler $K$-Vektorraum, und sind $U, W, \subseteq V$ zwei Untervektorräume mit $U \cap W = 0$, so gibt es einen Untervektorraum $\overline{W} \subseteq V$ mit $W \subseteq \overline{W}$ und $V = U \oplus \overline{W}$.
+\end{lemma}
+
+
+
+
+
+
+
+
+
+
+\subsection{Allgemeine Jordannormalform}
+
+
+\begin{definition}
+  Für einen Endomorphismus $f \colon V \to V$ und einen Skalar $\lambda \in K$ ist
+  \[
+    V^\sim_\lambda(f)
+    \coloneqq
+    \{
+      v \in V
+      \mid
+      \text{es gibt $n \geq 1$ mit $(f - \lambda \id_V)^n(v) = 0$}
+    \}
+  \]
+  der \emph{Hauptraum} von $f$ zu $\lambda$.
+\end{definition}
+
+
+\begin{lemma}
+  Es sei $f \colon V \to V$ und $\lambda \in K$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Der Hauptraum $V^\sim_\lambda(f)$ ist ein Untervektorraum von $V$.
+    \item
+      Es gilt $V_\lambda(f) \subseteq V^\sim_\lambda(f)$.
+    \item
+      Es ist genau dann $V^\sim_\lambda(f) \neq 0$, wenn $\lambda$ ein Eigenwert von $f$ ist.
+    \item
+      Der Hauptraum $V^\sim_\lambda(f)$ ist $f$-invariant.
+    \item
+      Ist $V$ endlichdimensional, so gibt es $N \geq 1$ mit $(f - \lambda \id_V)^N(v) = 0$ für alle $v \in V$, und es gilt $V^\sim_\lambda(f) = \ker (f - \lambda \id_V)^N$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{lemma}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vek\-tor\-raums $V$.
+\end{lemma}
+
+
+\begin{notation}
+  Für alle $n \geq 1$ und $\lambda \in K$ ist
+  \[
+    J(n, \lambda)
+    \coloneqq
+    \begin{pmatrix}
+      \lambda & 1       &         &         \\
+              & \ddots  & \ddots  &         \\
+              &         & \ddots  & 1       \\
+              &         &         & \lambda
+    \end{pmatrix}
+    \in \Mat_n(K)
+  \]
+  der Jordanblock von Größe $n$ zu(m Eigenwert) $\lambda$.
+\end{notation}
+
+
+\begin{theorem}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$, so dass $V = V^\sim_{\lambda_1}(f) \oplus \dotsb \oplus V^\sim_{\lambda_t}(f)$ für die Eigenwerte $\lambda_1, \dotsc, \lambda_t \in K$ von $f$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Es gibt eine geordnete Basis $\basis{B}$ von $V$ und $n^{(1)}_1, \dotsc, n^{(1)}_{s_1}, \dotsc, n^{(t)}_1, \dotsc, n^{(t)}_{s_t} \geq 1$, so dass
+      \[
+        \Mat_\basis{B}(f)
+        =
+        \begin{pmatrix}
+          J(n^{(1)}_1, \lambda_1) &         &                             &         &                         &         &                             \\
+                                  & \ddots  &                             &         &                         &         &                             \\
+                                  &         & J(n^{(1)}_{s_1}, \lambda_1) &         &                         &         &                             \\
+                                  &         &                             & \ddots  &                         &         &                             \\
+                                  &         &                             &         & J(n^{(t)}_1, \lambda_1) &         &                             \\
+                                  &         &                             &         &                         & \ddots  &                             \\
+                                  &         &                             &         &                         &         & J(n^{(t)}_{s_t}, \lambda_1)
+        \end{pmatrix}
+      \]
+    \item
+      Die Zahlen $(n^{(1)}_1, \dotsc, n^{(1)}_{s_1}), \dotsc, (n^{(t)}_1, \dotsc, n^{(t)}_{s_t})$ sind jeweils eindeutig bis auf Permutation.
+    \item
+      Es gilt $n^{(i)}_1 + \dotsb + n^{(i)}_{s_i} = \dim V^\sim_\lambda(f)$ für alle $i = 1, \dotsc, t$.
+  \end{enumerate}
+\end{theorem}
+
+
+
+
+
+
+
+
+\subsection{Existenz der Hauptraumzerlegung}
+
+
+\begin{lemma}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vek\-tor\-raums $V$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Für alle $\lambda, \mu \in K$ mit $\lambda \neq \mu$ ist die Einschränkung $(f - \lambda \id_V)|_{V^\sim_\mu(f)}$  invertierbar.
+    \item
+      Für alle $\lambda_1, \dotsc, \lambda_t \in K$ ist die Summe $V^\sim_{\lambda_1}(f) + \dotsb + V^\sim_{\lambda_t}(f)$ direkt.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{lemma}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Vektorraums $V$ und $\lambda \in K$.
+  Ferner sei $U \subseteq V$ ein $f$-invarianter Untervektorraum mit $V = V^\sim_\lambda(f) \oplus U$.
+  Dann ist $\lambda$ kein Eigenwert von $f|_U$, und es gilt
+  \[
+    \chi_f(T) = (T-\lambda)^{\dim V^\sim_\lambda(f)} \cdot \chi_{f|_U}(T).
+  \]
+\end{lemma}
+
+
+
+\begin{lemma}[Fitting]
+  Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$.
+  Für alle $k \geq 0$ sei
+  \[
+    N_k \coloneqq \ker f^k
+    \quad\text{und}\quad
+    R_k \coloneqq \im f^k.
+  \]
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Es gilt
+      \begin{gather*}
+        0 = N_0 \subseteq N_1 \subseteq N_2 \subseteq N_3 \subseteq \dotsb
+      \shortintertext{und}
+        V = R_0 \supseteq R_1 \supseteq R_2 \supseteq R_3 \supseteq \dotsb
+      \end{gather*}
+    \item
+      Für $k \geq 0$ sind die folgenden Bedingungen äquivalent:
+      \begin{enumerate}[leftmargin=*, label=\alph*)]
+        \item
+          $N_{k+1} = N_k$,
+        \item
+          $N_l = N_k$ für alle $l \geq k$,
+        \item
+          $R_{k+1} = R_k$,
+        \item
+          $R_l = R_k$ für alle $l \geq k$.
+      \end{enumerate}
+      (Wenn also eine der beiden Ketten einmal stabiliert, so sind beide Ketten von dort an stabil.)
+    \item
+      Die beiden Teilmengen $N \coloneqq \bigcup_{k \geq 0} N_k$ und $R \coloneqq \bigcap_{k \geq 0} R_k$ sind $f$-invariante Untervektorräume von $V$, und es gilt $V = N \oplus R$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{theorem}[Existenz der Hauptraumzerlegung]
+  Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$.
+  Dann gibt es genau dann eine Hauptraumzerlegung von $V$ bezüglich $f$, wenn das charakteristische Polynom $\chi_f(T)$ in Linearfaktoren zerfällt.
+\end{theorem}
+
+
+\begin{corollary}
+  Ist $K$ ein algebraisch abgeschlossener Körper und $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$, so ist $V = \bigoplus_{\lambda \in K} V^\sim_\lambda(f)$.
+\end{corollary}
+
+
+\begin{corollary}
+  Ist $K$ ein algebraisch abgeschlossener Körper und $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$ (bzw.\ $A \in \Mat_n(K)$), so ist $\chi_f(f) = 0$ (bzw.\ $\chi_A(A) = 0$).
+\end{corollary}
+
+
+\begin{corollary}[Abstrakte Jordanzerlegung]
+  Ist $K$ ein algebraisch abgeschlossener Körper und $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$, so gibt es eindeutige Endomorphismen $d, n \colon V \to V$, so dass
+  \begin{enumerate}[leftmargin=*, label=\alph*)]
+    \item
+      $f = d + n$,
+    \item
+      $d$ ist diagonalisierbar und $n$ ist nilpotent,
+    \item
+      $d$ und $n$ kommutieren
+  \end{enumerate}
+\end{corollary}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
