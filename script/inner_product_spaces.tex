@@ -1,0 +1,260 @@
+\section{Skalarprodukträume}
+
+
+\begin{definition}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Eine Abbildung $b \colon V \times W \to Z$ mit $K$-Vektorräumen $V, W, Z$ heißt \emph{$K$-bilinear}, falls
+      \begin{gather*}
+        b(v_1 + v_2, w) = b(v_1, w) + b_(v_2, w), \\
+        b(v, w_1 + w_2) = b(v, w_1) + b(v, w_2),  \\
+        b(\lambda v, w) = \lambda b(v,w) = b(v, \lambda w)
+      \end{gather*}
+      für alle $v, v_1, v_2 \in V$, $w, w_1, w_2 \in W$ und $\lambda \in K$.
+      Ist zusätzlich $Z = K$, so ist $b$ eine \emph{Bilinearform}.
+      Gilt außerden noch $V = W$ und
+      \[
+        b(v_1, v_2) = b(v_2, v_1)
+        \quad
+        \text{für alle $v_1, v_2 \in V$},
+      \]
+      so ist $b$ eine \emph{symmetrische Bilinearform}.
+    \item
+      Eine Abbildung $s \colon V \times W \to Z$ mit $\Complex$-Vektorräumen $V, W, Z$ heißt \emph{sesquilinear}, falls
+      \begin{gather*}
+        b(v_1 + v_2, w) = b(v_1, w) + b_(v_2, w), \\
+        b(v, w_1 + w_2) = b(v, w_1) + b(v, w_2),  \\
+        b(\lambda v, w) = \lambda b(v,w)
+        \text{ und }
+        b(v, \lambda w) = \overline{\lambda}(w)
+      \end{gather*}
+      für alle $v, v_1, v_2 \in V$, $w, w_1, w_2 \in W$ und $\lambda \in \Complex$.
+      Ist zusätzlich $Z = \Complex$, so ist $s$ eine \emph{Sesquilinearform}.
+      Gilt außerdem noch $V = W$ und
+      \[
+        s(v_1, v_2) = \overline{s(v_2, v_1)}
+        \quad
+        \text{für alle $v_1, v_2 \in V$},
+      \]
+      so heißt $s$ heißt \emph{hermitsch}.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+  Ist $s \colon V \times V \to \Complex$ eine hermitsche Bilinearform, so ist $s(v,v) \in \Reals$ für alle $v \in V$.
+\end{lemma}
+
+
+\begin{notation}
+  Es ist $\Kfield \in \{\Reals, \Complex\}$.
+\end{notation}
+
+
+\begin{definition}
+  Eine Bilinearform (bzw.\ Sesquilinearform) $\bracket{\cdot, \cdot} \colon V \times V \to \Kfield$ heißt
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      \emph{positiv definit}, falls $\bracket{v,v} > 0$ für alle $v \in V$ mit $v \neq 0$,
+    \item
+      \emph{positiv semidefinit}, falls $\bracket{v,v} \geq 0$ für alle $v \in V$,
+    \item
+      \emph{negativ definit}, falls $\bracket{v,v} < 0$ für alle $v \in V$ mit $v \neq 0$,
+    \item
+      \emph{negativ semidefinit}, falls $\bracket{v,v} \leq 0$ für alle $v \in V$, und
+    \item
+      \emph{indefinit}, wenn sie keine der obigen Bedingungen erfüllt.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{definition}
+  Ein \emph{Skalarprodukt} auf einem $\Kfield$-Vektorraum $V$ ist eine positiv definite, symmetrische (bzw.\ hermitsche) Bilinearform (bzw.\ Sesquilinearform) $\bracket{\cdot, \cdot} \colon V \times V \to \Kfield$.
+  
+  Ein Skalarproduktraum ist ein Tupel $(V, \bracket{\cdot, \cdot})$ bestehend aus einem Vektorraum $V$ und einem Skalarprodukt $\bracket{\cdot, \cdot}$ auf $V$.
+\end{definition}
+
+
+\begin{remark}
+  Man spricht meist nur von einem Skalarproduktraum $V$, nennt das Skalarprodukt also nicht explizit mit.
+  Im Falle $\Kfield = \Reals$ spricht man auch von einem \emph{euklidischen Vektorraum}, und im Falle $\Kfield = \Complex$ von einem \emph{unitären Vektorraum}
+\end{remark}
+
+
+\begin{definition}
+  Für einen Skalarproduktraum $V$ und $v \in V$ ist $\|v\| \coloneqq \sqrt{\bracket{v,v}}$.
+  Der Vektor $v$ heißt \emph{normiert}, wenn $\|v\| = 1$.
+\end{definition}
+
+
+\begin{proposition}[Cauchy-Schwarz]
+  Ist $V$ ein Skalarproduktraum, so ist
+  \[
+    |\bracket{v,w}| \leq \|v\| \cdot \|w\|
+    \quad
+    \text{für alle $v, w \in V$},
+  \]
+  und Gleichheit gilt genau dann, wenn $v$ und $w$ linear abhängig sind.
+\end{proposition}
+
+
+\begin{corollary}
+  Ist $V$ ein Skalarproduktraum, so ist die Abbildung $\|\cdot\| \colon V \to \Reals$ eine Norm auf $V$.
+\end{corollary}
+
+
+\begin{remark}
+  Ist $v \in V$ mit $v \neq 0$, so ist der Vektor $v/\|v\|$ normiert.
+  Man sagt, dass man $v$ normiert.
+\end{remark}
+
+
+\begin{definition}
+  Es sei $V$ ein Skalarproduktraum.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Zwei Vektoren $u, w \in V$ heißen \emph{orthogonal (zueinander)}, geschrieben als $u \perp w$, wenn $\bracket{u, w} = 0$.
+    \item
+      Zwei Untervektorräume $U, W \subseteq V$ heißen \emph{orthogonal (zueinander)}, wenn $u \perp w$ für alle $u \in U$ und $w \in W$.
+    \item
+      Für jeden Untervektorraum $U \subseteq V$ ist
+      \[
+        U^\perp
+        \coloneqq
+        \{
+          v \in V
+          \mid
+          \text{$\bracket{u, v} = 0$ für alle $u \in U$}
+        \}
+      \]
+      das \emph{orthogonale Komplement} von $U$ (in $V$).
+  \end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+  Es sei $V$ ein Skalarproduktraum.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Ist ein Vektor $v \in V$ zu jedem Vektor $w \in V$ orthogonal, so gilt bereits $v = 0$.
+    \item
+      Für jeden Untervektorraum $U \subseteq V$ ist $U \cap U^\perp = 0$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{definition}
+  Es sei $V$ ein Skalarproduktraum.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Eine Familie $(v_i)_{i \in I}$ von Vektoren $v_i \in V$ heißt \emph{orthogonal}, wenn $v_i \perp v_j$ für all $i \neq j$.
+      Die Familie heißt \emph{nomiert}, falls $v_i$ für alle $i \in I$ normiert ist.
+      Ist die Familie orthogonal und normiert, so heißt sie \emph{orthonormal}.
+    \item
+      Eine Teilmenge $S \subseteq V$ heißt \emph{orthogonal}, wenn $v \perp w$ für alle $v, w \in S$ mit $v \neq w$.
+      Die Teilmenge heißt \emph{nomiert}, falls jeder Vektor $v \in S$ normiert ist.
+      Ist $S$ orthogonal und normiert, so heißt $S$ \emph{orthonormal}.
+  \end{enumerate}
+\end{definition}
+
+
+
+\begin{lemma}
+  Es sei $V$ ein Skalarproduktraum.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Eine Familie $(v_i)_{i \in I}$ von Vektoren $v_i \in V$ ist genau dann orthonormal, wenn $\bracket{v_i, v_j} = \delta_{ij}$ für alle $i,j \in I$.
+    \item
+      Eine Teilmenge $S \subseteq V$ ist genau dann orthonormal, wenn $\bracket{v, w} = \delta_{v,w}$ für alle $v, w \in S$.
+  \end{enumerate}  
+\end{lemma}
+
+
+\begin{lemma}
+  Es sei $V$ ein Skalarproduktraum und $(v_i)_{i \in I}$ eine orthogonale Familie von Vektoren $v_i \in V$ mit $v_i \neq 0$ für alle $i \in I$.
+  Dann ist $(v_i)_{i \in I}$ linear unabhängig.
+  Insbesondere ist jede orthonormale Familie linear unabhängig.
+\end{lemma}
+
+
+\begin{definition}
+  Eine orthonormale Basis eines Skalarproduktraums $V$ heißt \emph{Orthonormalbasis} von $V$.
+\end{definition}
+
+
+\begin{proposition}
+  Es sei $(v_i)_{i \in I}$ eine Orthonormalbasis eines Skalarproduktraums $V$.
+  \begin{enumerate}
+    \item
+      Für jedes $v \in V$ ist $\bracket{v, v_i} = 0$ für fast alle $i \in I$, und es gilt
+      \begin{gather*}
+        v = \sum_{i \in I} \bracket{v, v_i} v_i
+      \quad\text{sowie}\quad
+        \|v\|^2 = \sum_{i \in I} \bracket{v, v_i}^2.
+      \end{gather*}
+    \item
+      Für alle $v, w \in V$ gilt
+      \[
+        \bracket{v, w}
+        = \sum_{i \in I} \bracket{v, v_i} \bracket{w, v_i}.
+      \]
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{theorem}[Gram-Schmidt]
+  Es sei $V$ ein Skalarproduktraum und $(v_1, \dotsc, v_n)$ eine linear unabhängige Familie von Vektoren $v_1, \dotsc, v_n \in V$.
+  Iterativ seien die Familien $(\tilde{w}_1, \dotsc, \tilde{w}_n)$ und $(w_1, \dotsc, w_n)$ durch
+  $\tilde{w}_1 \coloneqq v_1$, $w_i \coloneqq \tilde{w}_i/\|\tilde{w}_i\|$ und
+  \[
+    \tilde{w}_i \coloneqq v_i - \bracket{v_i, w_1} w_1 - \dotsb - \bracket{v_i, w_{i-1}} w_{i-1}
+  \]
+  definiert.
+  Dann ist die Familie $(w_1, \dotsc, w_n)$ orthonormal, und es gilt
+  \[
+    \bracket{w_1, \dotsc, w_i} = \bracket{v_1, \dotsc, v_i}
+    \quad
+    \text{für alle $i = 1, \dotsc, n$}.
+  \]
+\end{theorem}
+
+
+\begin{corollary}
+  Es sei $V$ ein endlichdimensionaler Skalarproduktraum.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Ist $U \subseteq V$ ein Untervektorraum, und $\basis{B} = (v_1, \dotsc, v_m)$ eine Orthonormalbasis von $U$, so lässt sich $\basis{B}$ zu einer Orthonormalbasis $\basis{C} = (v_1, \dotsc, v_m, v_{m+1}, \dotsc, v_n)$ von $V$ ergänzen.
+    \item
+      Es gibt eine Orthonormalbasis von $V$.
+    \item
+      Für jeden Untervektorraum $U \subseteq V$ ist $V = U \oplus U^\perp$.
+  \end{enumerate}
+\end{corollary}
+
+
+\begin{proposition}
+  Ist $V$ ein Skalarproduktraum, so ist die Abbildung
+  \[
+    \Phi \colon V \to V^*,
+    \quad
+    v \mapsto \bracket{-, v}
+  \]
+  injektiv und $\Reals$-linear (bzw.\ $\Complex$-antilinear).
+  Ist $V$ endlichdimensional, so ist $\Phi$ ein Isomorphismus von $\Reals$-Vektorräumen (bzw.\ Antiisomorphismus von $\Complex$-Vektorräumen).
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,7 +11,7 @@
 
 % counters and stuff
 
-\newcounter{everything}
+\newcounter{everything}[section]
 \renewcommand{\theeverything}{\arabic{section}.\arabic{everything}}
 
 % defining math enviroments
@@ -19,6 +19,7 @@
 \theoremstyle{definition}
 \newtheorem{corollary}[everything]{Korollar}
 \newtheorem{definition}[everything]{Definition}
+\newtheorem{example}[everything]{Beispiel}
 \newtheorem{lemma}[everything]{Lemma}
 \newtheorem{notation}[everything]{Notation}
 \newtheorem{proposition}[everything]{Proposition}
@@ -32,7 +33,8 @@
 \newcommand{\Naturals}{\mathbb{N}}
 \newcommand{\Integers}{\mathbb{Z}}
 \newcommand{\Reals}{\mathbb{R}}
-\newcommand{\Complex}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Kfield}{\mathbb{K}}
 
 \newcommand{\Mat}{\mathrm{M}}
 \newcommand{\GL}{\mathrm{GL}}
@@ -45,3 +47,5 @@
 \newcommand{\id}{\operatorname{id}}
 
 \newcommand{\im}{\operatorname{im}}
+
+\newcommand{\bracket}[1]{\left\langle #1 \right\rangle}
