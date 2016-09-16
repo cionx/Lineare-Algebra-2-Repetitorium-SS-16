@@ -1,0 +1,349 @@
+\section{Symmetrische Bilinearformen und quadratische Formen}
+
+
+
+
+
+
+
+
+
+
+\subsection{Definition quadratischer Formen}
+
+
+\begin{definition}
+  Ist $V$ ein $K$-Vektorraum und $\bracket{\cdot, \cdot} \colon V \times V \to K$ eine symmetrische Bilinearform, so ist
+  \[
+    q \colon V \to K,
+    \quad
+    v \mapsto \bracket{v, v}
+  \]
+  die zu $\bracket{\cdot, \cdot}$ gehörige \emph{quadratische Form}.
+  
+  Eine Abbildung $q' \colon V \to K$ heißt \emph{quadratische Form}, wenn es eine symmetrische Bilinearform $\bracket{\cdot, \cdot}' \colon V \times V \to K$ gibt, so dass $q'$ die zu $\bracket{\cdot, \cdot}'$ gehörige quadratische Form ist.
+\end{definition}
+
+
+\begin{lemma}
+  Ist $V$ ein $K$-Vektorraum mit $\ringchar K \neq 2$, $\bracket{\cdot, \cdot} \colon V \times V \to K$ eine symmetrische Bilinearform und $q \colon V \to K$ die zugehörige quadratische Form, so ist
+  \[
+    \bracket{v, w} = \frac{q(v+w)-q(v)-q(w)}{2}
+    \quad
+    \text{für alle $v, w \in V$}.
+  \]
+\end{lemma}
+
+
+\begin{corollary}
+  Ist $V$ ein $K$-Vektorraum mit $\ringchar(K) \neq 2$, so ist die Abbildung
+  \begin{align*}
+    \{ \text{Bilinearformen $V \times V \to K$} \}
+    &\to
+    \{ \text{quadratische Formen $V \to K$} \},
+    \\
+    \bracket{\cdot, \cdot}
+    &\mapsto
+    (v \mapsto \bracket{v,v})
+  \end{align*}
+  eine Bijektion.
+\end{corollary}
+
+
+\begin{definition}
+  Es sei $\beta \colon V \times V \to K$ eine symmetrische Bilinearform.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Zwei Vektoren $u, w \in V$ sind \emph{orthogonal (zueinander) bezüglich $\beta$} falls $\beta(u,w) = 0$.
+    \item
+      Zwei Untervektorräume $U, W \subseteq V$ sind \emph{orthogonal (zueinander) bezüglich $\beta$} falls $\beta(u,w) = 0$ für alle $u \in U$ und $w \in W$.
+    \item
+      Ist $U \subseteq V$ ein Untervektorraum, so ist der Untervektorraum
+      \[
+        U^\perp
+        =
+        \{
+          v \in V
+          \mid
+          \text{$\beta(u,v) = 0$ für alle $u \in U$}
+        \}
+      \]
+      das \emph{orthogonale Komplement} von $U$ in $V$ bezüglich $\beta$.
+    \item
+      Der Untervektorraum
+      \[
+        \rad(\beta)
+        \coloneqq
+        \{v \in V \mid \text{$\beta(u,v) = 0$ für alle $u \in V$}\}
+      \]
+      ist das \emph{Radikal} von $\beta$.
+  \end{enumerate}
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Darstellende Matrizen für Bilinearformen}
+
+
+\begin{lemma}
+  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum, $\basis{C} = (v_1, \dotsc, v_n)$ eine geordnete Basis von $V$ und $\basis{C}^* = (v_1^*, \dotsc, v_n^*)$ die duale Basis von $V^*$.
+  Für eine Matrix $B \in \Mat_n(K)$ und Bilinearform $\beta \colon V \times V \to K$ sind die folgende Bedingungen äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Für alle $i,j = 1, \dotsc, n$ ist $B_{ij} = \beta(v_i, v_j)$.
+    \item
+      Für die lineare Abbildung
+      \[
+        \Phi \colon V \to V^*,
+        \quad
+        v \mapsto \beta(-,v)
+      \]
+      ist $B = \Mat_{\basis{C}, \basis{C}^*}(\Phi)$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{definition}
+  Ist $V$ ein endlichdimensionaler $K$-Vektorraum mit geordneter Basis $\basis{C} = (v_1, \dotsc, v_n)$, und $\beta \colon V \times V \to K$ eine Bilinearform, so heißt die Matrix $B \in \Mat_n(K)$ mit
+  \[
+    B_{ij} = \beta(v_i, v_j)
+    \quad
+    \text{für alle $i,j = 1, \dotsc, n$}
+  \]
+  die \emph{darstellende Matrix} von $\beta$ bezüglich der Basis $\basis{C}$, und wird mit $\Mat_\basis{C}(\beta)$ notiert.
+\end{definition}
+
+
+\begin{lemma}
+  Ist $V$ ein endlichdimensionaler $K$-Vektorraum und $\basis{C}$ eine geordnete Basis von $V$, so ist die Abbildung
+  \[
+    \Mat_\basis{C}
+    \colon
+    \{\text{Bilinearformen $V \times V \to K$}\}
+    \to
+    \Mat_n(K),
+    \quad
+    \beta
+    \mapsto
+    \Mat_\basis{C}(\beta)
+  \]
+  ein Isomorphismus von $K$-Vektorräumen.
+\end{lemma}
+
+
+\begin{lemma}
+  Es sei $\basis{C} = (v_1, \dotsc, v_n)$ eine geordnete Basis eines $K$-Vektorraums $V$ und
+  \[
+    \Phi \colon V \to K^n,
+    \quad
+    \sum_{i=1}^n \lambda_i v_i \mapsto \cvector{\lambda_1 \\ \vdots \\ \lambda_n}
+  \]
+  der induzierte Isomorphismus.
+  Ist $\beta \colon V \times V \to K$ eine Bilinearform, so ist
+  \[
+    \beta(v,w)
+    =
+    \Phi(v)^T \Mat_\basis{C}(\beta) \Phi(w)
+    \quad
+    \text{für alle $v, w \in V$}.
+  \]
+\end{lemma}
+
+
+\begin{corollary}
+  Ist $\beta \colon V \times V \to K$ eine Bilinearform auf einem endlichdimensionalen $K$-Vektorraum $V$, so ist $\beta$ genau dann symmetrisch, wenn für jede geordnete Basis $\basis{C}$ von $V$ die darstellende Matrix $\Mat_\basis{C}(\beta)$ symmetrisch ist.
+\end{corollary}
+
+
+% TODO: Obere Aussagen verbessern.
+
+
+
+
+
+
+
+
+
+
+\subsection{Nicht-entartete Bilinearformen}
+
+
+\begin{definition}
+  Eine symmetrische Bilinearform $\beta \colon V \times V \to K$ heißt \emph{nicht-entartet}, falls es für jedes $v \in V$ mit $v \neq 0$ ein $w \in V$ mit $\beta(w,v) \neq 0$ gibt.
+\end{definition}
+
+
+\begin{proposition}
+  Ist $V$ ein $K$-Vektorraum und $\beta \colon V \times V \to K$ eine symmetrische Bilinearform, so sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Die Bilinearform $\beta$ ist nicht-entartet.
+    \item
+      Es gilt $\rad \beta = 0$.
+    \item
+      Die lineare Abbildung $\Phi \colon V \to V^*$, $v \mapsto \beta(-,v)$ ist injektiv.
+  \end{enumerate}
+  Ist $V$ endlichdimensional, so kommen die folgenden Bedingungen hinzu:
+  \begin{enumerate}[leftmargin=*, label=\roman*), resume]
+    \item
+      $\Phi$ ist ein Isomorphismus.
+    \item
+      Für jede geordnete Basis $\basis{C}$ von $V$ ist die darstellende Matrix $\Mat_\basis{C}(\beta)$ invertierbar.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}
+  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum und $\beta \colon V \times V \to K$ eine nicht-entartete symmetrische Bilinearform.
+  Ist $U \subseteq V$ ein Untervektorraum, so sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Die Einschränkung $\beta|_{U \times U}$ ist nicht-entartet.
+    \item
+      Es ist $U \cap U^\perp = 0$.
+    \item
+      Es ist $V = U \oplus U^\perp$.
+  \end{enumerate}
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Normalenformen und Sylvesterscher Trägheitssatz}
+
+
+\begin{theorem}
+  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum mit $\ringchar(K) \neq 2$ und $\beta \colon V \times V \to K$ eine symmetrische Bilinearform.
+  Dann gibt es eine geordnete Basis $\basis{C}$ von $V$, so dass
+  \[
+    \Mat_\basis{C}(\beta)
+    =
+    \begin{pmatrix}
+      \lambda_1 &         &           &   &         &   \\
+                & \ddots  &           &   &         &   \\
+                &         & \lambda_n &   &         &   \\
+                &         &           & 0 &         &   \\
+                &         &           &   & \ddots  &   \\
+                &         &           &   &         & 0
+    \end{pmatrix}
+  \]
+  mit $\lambda_i \neq 0$ für alle $i = 1, \dotsc, n$.
+  Die Anzahl der Nullen auf der Diagonalen ist eindeutig bestimmt und entspricht $\dim \rad(\beta)$.
+\end{theorem}
+
+
+\begin{lemma}
+  Ist $\beta \colon V \times V \to K$ eine nicht-entartete Bilinearform mit $V \neq 0$ und $\ringchar(K) \neq 2$, und $q \colon V \to K$ die zugehörige quadratische Form, dann gibt es $v \in V$ mit $q(v) \neq 0$.
+\end{lemma}
+
+
+\begin{corollary}
+  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum, wobei $\ringchar(K) \neq 2$ und $K$ quadratisch abgeschlossen ist.
+  Ist $\beta \colon V \times V \to K$ eine symmetrische Bilinearform, so gibt es eine geordnete Basis $\basis{C}$ von $V$, so dass
+  \[
+    \Mat_\basis{C}(\beta)
+    =
+    \begin{pmatrix}
+      1 &         &   &   &         &   \\
+        & \ddots  &   &   &         &   \\
+        &         & 1 &   &         &   \\
+        &         &   & 0 &         &   \\
+        &         &   &   & \ddots  &   \\
+        &         &   &   &         & 0.
+    \end{pmatrix}
+  \]
+  Die Anzahl der Nullen auf der Diagonalen ist eindeutig bestimmt und entspricht $\dim \rad(\beta)$.
+\end{corollary}
+
+
+\begin{corollary}[Sylvesterscher Trägheitssatz]
+  Es sei $V$ ein endlichdimensionaler $\Reals$-Vektorraum und $\beta \colon V \times V \to K$ eine symmetrische Bilinearform.
+  Dann gibt es eine geordnete Basis $\basis{C}$ von $V$, so dass
+  \[
+    \Mat_\basis{C}(\beta)
+    =
+    \begin{pmatrix}
+      1 &         &   &     &         &     &   &         &   \\                                                        
+        & \ddots  &   &     &         &     &   &         &   \\
+        &         & 1 &     &         &     &   &         &   \\
+        &         &   & -1  &         &     &   &         &   \\
+        &         &   &     & \ddots  &     &   &         &   \\
+        &         &   &     &         & -1  &   &         &   \\
+        &         &   &     &         &     & 0 &         &   \\
+        &         &   &     &         &     &   & \ddots  &   \\
+        &         &   &     &         &     &   &         & 0
+    \end{pmatrix}.
+  \]
+\end{corollary}
+
+
+% TODO: Sylvester ergänzen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
