@@ -1,0 +1,357 @@
+\section{Normale Endomorphismen}
+Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders angegeben.
+
+
+
+
+
+
+
+
+
+
+\subsection{Grundlegende Definitionen und Eigenschaften}
+
+
+\begin{proposition}\label{prop: existence and uniqueness of adjoints}
+  Für zwei Skalarprodukträume $V$ und $W$ gibt es für jede $\Korper$-lineare Abbildung $f \colon V \to W$ eine eindeutige $\Korper$-lineare Abbildung $g \colon W \to V$ mit
+  \[
+    \bracket{f(v), w} = \bracket{v, g(w)}
+    \quad
+    \text{für alle $v \in V$ und $w \in W$}.
+  \]
+\end{proposition}
+
+
+\begin{definition}
+  In der Situation von Proposition~\ref{prop: existence and uniqueness of adjoints} ist die Abbildung $g$ die zu $f$ \emph{adjungierte} Abbildung, und wird mit $f^*$ notiert.
+\end{definition}
+
+
+\begin{proposition}
+  Es seien $U, V, W$ drei Skalarprodukträume.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Es gilt $\id_V^* = \id_V$, und für alle linearen Abbildungen $f \colon V \to W$ und $g \colon U \to V$ gilt
+      \[
+        (f g)^* = g^* f^*.
+      \]
+    \item
+      Ist $f \colon V \to W$ ein Isomorphismus, so ist auch $f^*$ ein Isomorphismus.
+    \item
+      Für alle $\Korper$-linearen Abbildungen $f, g \colon V \to W$ und $\lambda \in \Korper$ gilt
+      \begin{enumerate}[leftmargin=*, label=\alph*)]
+        \item
+          $(f^*)^* = f$,
+        \item
+          $(f + g)^* = f^* + g^*$ und
+        \item
+          $(\lambda f)^* = \overline{\lambda} f^*$.
+      \end{enumerate}
+      Insbesondere ist die Abbildung $\Hom_\Korper(V,W) \to \Hom_\Korper(W,V)$, $f \mapsto f^*$ ein Isomorphismus (bzw.\ Antiisomorphismus) von $\Reals$-Vektorräumen (bzw.\ $\Complex$-Vektorräumen).
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{definition}
+  Für $A \in \Mat(m \times n, \Korper)$ ist $A^* \coloneqq \overline{A^t} = (\overline{A})^t \in \Mat(n \times m, \Korper)$.
+\end{definition}
+
+
+\begin{proposition}
+  Es sei $V$ ein Skalarproduktraum mit geordneter Orthonormalbasis $\basis{B}$ und $W$ ein Skalarproduktraum mit geordneter Orthonormalbasis $\basis{C}$.
+  Für jede $\Korper$-lineare Abbildung $f \colon V \to W$ gilt dann
+  \[
+    \Mat_{\basis{C}, \basis{B}}(f^*) = \Mat_{\basis{B}, \basis{C}}(f)^*.
+  \]
+\end{proposition}
+
+
+\begin{definition}
+  Ein Endomorphismus $f \colon V \to V$ eines Skalarproduktraums $V$ heißt
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      \emph{normal}, falls $f$ und $f^*$ kommutieren (also $f f^* = f^* f$),
+    \item
+      \emph{selbstadjungiert}, falls $f = f^*$,
+    \item
+      \emph{antiselbstadjungiert}, falls $f^* = -f$,
+    \item
+      \emph{orthogonal} (für $\Korper = \Reals$), bzw.\ \emph{unitär} (für $\Korper = \Complex$) falls $f$ ein Isomorphismus mit $f^* = f^{-1}$ ist.
+  \end{enumerate}
+  Eine Matrix $A \in \Mat_n(\Korper)$ heißt
+  \begin{enumerate}[leftmargin=*, label=\Roman*)]
+    \item
+      \emph{normal}, falls $A$ und $A^*$ kommutieren (also $A A^* = A^* A$),
+    \item
+      \emph{selbstadjungiert}, falls $A = A^*$,
+    \item
+      \emph{antiselbstadjungiert}, falls $A^* = -A$,
+    \item
+      \emph{orthogonal} (für $\Korper = \Reals$), bzw.\ \emph{unitär} (für $\Korper = \Complex$) falls $A$ invertierbar ist und $A^* = A^{-1}$.
+  \end{enumerate}
+  Für alle $n \geq 1$ seien
+  \[
+    \Orthogonal(n)
+    \coloneqq
+    \{
+      O \in \Mat_n(\Reals)
+      \mid
+      \text{$O$ ist orthogonal}
+    \}
+    \quad\text{und}\quad
+    \Unitary(n)
+    \coloneqq
+    \{
+      U \in \Mat_n(\Complex)
+      \mid
+      \text{$U$ ist unitär}
+    \}.
+  \]
+\end{definition}
+
+
+\begin{proposition}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines Skalarproduktraums $V$, und $\basis{B}$ eine geordnete Basis von $V$.
+  Dann ist $f$ genau dann normal, selbstadjungiert, antiselbstadjungiert, orthogonal, bzw.\ unitär, wenn $\Mat_\basis{B}(f)$ normal, selbstadjungiert, antiselbstadjungiert, orthogonal, bzw.\ unitär ist.
+\end{proposition}
+
+
+\begin{proposition}
+  Es sei $f \colon V \to V$ ein normaler Endomorphismus eines Skalarproduktraums $V$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Für alle $v \in V$ ist $\|f(v)\| = \|f^*(v)\|$.
+    \item
+      Es ist $V_\lambda(f^*) = V_{\overline{\lambda}}(f)$ für alle $\lambda \in \Korper$.
+    \item
+      Für alle $\lambda, \mu \in \Korper$ mit $\lambda \neq 0$ ist $V_\lambda(f) \perp V_\mu(f)$.
+    \item
+      Für alle $\lambda \in V$ ist $V^\sim_\lambda(f) = V_\lambda(f)$.
+    \item
+      Es ist $\im f^* = (\ker f)^\perp$ und $\ker f^* = (\im f)^\perp$.
+    \item
+      Ein Untervektorraum $U \subseteq V$ ist genau dann $f$-invariant, wenn $U^\perp$ invariant unter $f^*$ ist.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}
+  Für einen Endomorphismus $f \colon V \to V$ eines Skalarproduktraums $V$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      $f$ ist orthogonal (für $\Korper = \Reals$), bzw.\ unitär (für $\Korper = \Complex$), d.h.\ $f$ ist ein Isomorphismus mit $f^* = f^{-1}$.
+    \item
+      Es ist $f f^* = \id_V$.
+    \item
+      Es ist $f^* f = \id_V$.
+    \item
+      Für alle $v \in V$ ist $\|f(v)\| = \|v\|$.
+    \item
+      Für alle $v, w \in V$ ist $\bracket{f(v), f(w)} = \bracket{v,w}$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{corollary}
+  Für jede Matrix $A \in \Mat_n(\Korper)$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      $A$ ist orthogonal (für $\Korper = \Reals$), bzw.\ unitär (für $\Korper = \Complex$), d.h.\ $A$ ist invertierbar mit $A^* = A^{-1}$.
+    \item
+      Es ist $A A^* = I$.
+    \item
+      Es ist $A^* A = I$.
+    \item
+      Für alle $x \in \Korper^n$ ist $\|Ax\| = \|x\|$.
+    \item
+      Für alle $x, y \in \Korper^n$ ist $\bracket{Ax, Ay} = \bracket{x, y}$.
+    \item
+      Die Spalten von $A$ sind eine Orthonormalbasis von $\Korper^n$.
+    \item
+      Die Zeilen von $A$ sind eine Orthonormalbasis von $\Korper^n$.
+  \end{enumerate}
+\end{corollary}
+
+
+
+
+
+
+
+
+
+
+\subsection{Normalenformen für \texorpdfstring{$\Korper = \Complex$}{K = C}}
+
+
+
+\begin{theorem}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines unitären Vektorraums $V$.
+  Die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      $f$ ist normal.
+    \item
+      $V$ hat eine Orthonormalbasis aus Eigenvektoren von $f$.
+    \item
+      Für jeden $f$-invarianten Untervektorraum $U \subseteq V$ ist auch $U^\perp$ invariant unter $f$.
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{corollary}
+  Für $A \in \Mat_n(\Complex)$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      $A$ ist normal.
+    \item
+      Es gibt eine unitäre Matrix $U \in \Unitary(n)$, so dass $U\!A U^{-1}$ in Diagonalgestalt ist.
+  \end{enumerate}
+\end{corollary}
+
+
+\begin{proposition}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines unitären Vektorraums $V$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      $f$ ist genau dann selbstadjungiert, wenn $f$ normal mit reellen Eigenwerten ist.
+    \item
+      $f$ ist genau dann antiselbstadjungiert, wenn $f$ normal mit rein imaginären Eigenwerten ist.
+    \item
+      $f$ ist genau dann unitär, wenn $f$ normal ist und alle Eigenwerte Betrag $1$ haben.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{corollary}
+  Es sei $A \in \Mat_n(\Complex)$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      $A$ ist genau dann selbstadjungiert, wenn es $U \in \Unitary(n)$ gibt, so dass $U\!A U^{-1}$ eine Diagonalmatrix mit reellen Diagonaleinträgen ist.
+    \item
+      $A$ ist genau dann antiselbstadjungiert, wenn es $U \in \Unitary(n)$ gibt, so dass $U\!A U^{-1}$ eine Diagonalmatrix mit rein imaginären Diagonaleinträgen ist.
+    \item
+      $A$ ist genau dann unitär, wenn es $U \in \Unitary(n)$ gibt, so dass $U\!A U^{-1}$ eine Diagonalmatrix ist, deren Diagonaleinträge alle Betrag $1$ haben.
+  \end{enumerate}
+\end{corollary}
+
+
+
+
+
+
+
+
+
+
+\subsection{Normalenformen für \texorpdfstring{$\Korper = \Reals$}{K = R}}
+
+
+\subsubsection{Normale Endomorphismen}
+
+
+\begin{notation}
+  Für alle $\varphi \in \Reals$ sei
+  \[
+    D(\varphi)
+    \coloneqq
+    \begin{pmatrix}
+      \cos(\varphi) &          - \sin(\varphi)  \\
+      \sin(\varphi) & \phantom{-}\cos(\varphi)
+    \end{pmatrix}
+    \in
+    \Mat_2(\Reals).
+  \]
+\end{notation}
+
+
+\begin{theorem}
+  Für einen Endomorphismus $f \colon V \to V$ eines euklidischen Vektorraum $V$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      $f$ ist normal.
+    \item
+      Es gibt eine geordnete Orthonormalbasis $\basis{B}$ von $V$, so dass
+      \[
+        \Mat_\basis{B}(f)
+        =
+        \begin{pmatrix}
+          \lambda_1 &         &           &                   &         &                   \\
+                    & \ddots  &           &                   &         &                   \\
+                    &         & \lambda_s &                   &         &                   \\
+                    &         &           & r_1 D(\varphi_1)  &         &                   \\
+                    &         &           &                   & \ddots  &                   \\
+                    &         &           &                   &         & r_t D(\varphi_t)
+        \end{pmatrix}
+      \]
+      mit $\lambda_1, \dotsc, \lambda_s \in \Reals$, $r_1, \dotsc, r_t > 0$ und $\varphi_1, \dotsc, \varphi_t \in (0, \pi)$.
+  \end{enumerate}
+  Dabei sind $\lambda_1, \dotsc, \lambda_s$ die Eigenwerte von $f$, und die Paare $(r_1, \varphi_1), \dotsc, (r_t, \varphi_t)$ sind eindeutig bis auf Permutation.
+\end{theorem}
+
+
+\begin{corollary}
+  Für einen Matrix $A \in \Mat_n(\Reals)$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      $A$ ist normal.
+    \item
+      Es gibt eine Matrix $O \in \Orthogonal(n)$, so dass 
+      \[
+        O A O^{-1}
+        =
+        \begin{pmatrix}
+          \lambda_1 &         &           &                   &         &                   \\
+                    & \ddots  &           &                   &         &                   \\
+                    &         & \lambda_s &                   &         &                   \\
+                    &         &           & r_1 D(\varphi_1)  &         &                   \\
+                    &         &           &                   & \ddots  &                   \\
+                    &         &           &                   &         & r_t D(\varphi_t)
+        \end{pmatrix}
+      \]
+      mit $\lambda_1, \dotsc, \lambda_s \in \Reals$, $r_1, \dotsc, r_t > 0$ und $\varphi_1, \dotsc, \varphi_t \in (0, \pi)$.
+  \end{enumerate}
+  Dabei sind $\lambda_1, \dotsc, \lambda_s$ die Eigenwerte von $A$, und die Paare $(r_1, \varphi_1), \dotsc, (r_t, \varphi_t)$ sind eindeutig bis auf Permutation.
+\end{corollary}
+
+
+\subsubsection{Selbstadjungierte Endomorphismen}
+
+
+\begin{proposition}
+  Ein Endomorphismus $f \colon V \to V$ eines euklidischen Vektorraums ist genau dann selbstadjungiert, wenn es eine $V$ eine Orthonormalbasis aus Eigenvektoren von $f$ besitzt.
+\end{proposition}
+
+
+\begin{corollary}
+  Eine Matrix $A \in \Mat_n(\Reals)$ ist genau dann selbstadjungiert, wenn es eine orthogonale Matrix $O \in \Orthogonal(n)$ gibt, so dass $O A O^{-1}$ eine Diagonalmatrix ist.
+\end{corollary}
+
+
+\subsection{Antiselbstadjungiete Endomorphismen}
+
+% TODO: Add Rest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
