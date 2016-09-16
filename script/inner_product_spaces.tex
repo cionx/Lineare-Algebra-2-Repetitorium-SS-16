@@ -109,6 +109,21 @@
 \end{remark}
 
 
+\begin{lemma}[Polarisationsformel]
+  Ist $V$ ein euklidischer Vektorraum, so ist
+  \[
+    \bracket{v,w} = \frac{\|v+w\|^2 - \|v\|^2 - \|w\|^2}{2}
+    \quad\text{für alle $v, w \in V$}.
+  \]
+  Ist $V$ ein unitärer Vektorraum, so ist
+  \[
+    \bracket{v,w} = \frac{\|v+w\|^2-\|v\|^2-\|w\|^2}{2} + i \frac{\|v+iw\|-\|v\|^2-\|w\|^2}{2}
+    \quad\text{für alle $v, w \in V$}.
+  \]
+\end{lemma}
+
+
+
 \begin{definition}
   Es sei $V$ ein Skalarproduktraum.
   \begin{enumerate}[leftmargin=*, label=\roman*)]
@@ -117,7 +132,7 @@
     \item
       Zwei Untervektorräume $U, W \subseteq V$ heißen \emph{orthogonal (zueinander)}, wenn $u \perp w$ für alle $u \in U$ und $w \in W$.
     \item
-      Für jeden Untervektorraum $U \subseteq V$ ist
+      Ist $U \subseteq V$ ein Untervektorraum, so ist
       \[
         U^\perp
         \coloneqq
