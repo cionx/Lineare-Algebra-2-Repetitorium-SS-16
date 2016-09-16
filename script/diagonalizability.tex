@@ -1,0 +1,54 @@
+\section{Diagonalisierbarkeit}
+
+
+\begin{lemma}\label{lem: directness of sum of eigenspaces}
+  Ist $f \in V \to V$ ein Endomorphismus eines $K$-Vektorraums $V$, so ist die Summe $\sum_{\lambda \in K} V_\lambda(f)$ direkt.
+\end{lemma}
+
+
+\begin{definition}
+  Ein Endomorphismus $f \colon V \to V$ eines $K$-Vektorraums $V$ heißt \emph{diagonalisierbar}, falls $V = \bigoplus_{\lambda \in K} V_\lambda$.
+\end{definition}
+
+
+\begin{remark}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines $K$-Vektorraums $V$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Nach Lemma~\ref{lem: directness of sum of eigenspaces} ist $f$ genau dann diagonalisierbar, wenn $V = \sum_{\lambda \in K} V_\lambda(f)$.
+    \item
+      Ist $V$ endlichdimensional, so ist $f$ genau dann diagonalisierbar, wenn $V$ eine Basis aus Eigenvektoren von $f$ besitzt.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{proposition}
+  Ist $f \colon V \to V$ ein diagonalisierbarer Endomorphismus eines $K$-Vek\-tor\-raums $V$, so ist für jeden $f$-invarianten Untervektorraum $U \subseteq V$ auch die Einschränkung $f|_U \colon U \to U$ diagonalisierbar, und es gilt
+  \[
+    U = \bigoplus_{\lambda \in K} [ U \cap V_\lambda(f) ].
+  \]
+\end{proposition}
+
+
+\begin{definition}
+  Zwei Endomorphismen $f, g \colon V \to V$ eines $K$-Vektorraums $V$ heißen \emph{simultan diagonalisierbar}, falls
+  \[
+    V = \bigoplus_{\lambda, \mu \in K} [V_\lambda(f) \cap V_\mu(g)].
+  \]
+\end{definition}
+
+
+\begin{remark}
+  Sind $f, g \colon V \to V$ zwei Endomorphismen eines endlichdimensionalen $K$-Vektorraums $V$, so sind $f$ und $g$ genau dann simultan diagonalisierbar, wenn $V$ eine Basis aus gemeinsamen Eigenvektoren von $f$ und $g$ besitzt.
+\end{remark}
+
+
+\begin{proposition}
+  Zwei Endomorphismen $f, g \colon V \to V$ eines $K$-Vektorraums $V$ sind genau dann simultan diagonalisierbar, wenn sie beide diagonalisierbar sind und kommutieren.
+\end{proposition}
+
+
+
+
+
+
