@@ -1,0 +1,335 @@
+\section{Topologische Eigenschaften ausgewählter Matrixgruppen}
+
+
+
+
+
+
+
+
+
+
+\subsection{Definition der Gruppen}
+
+
+\begin{definition}
+  Für alle $n \geq 1$ seien
+  \begin{align*}
+    \SL_n(K)
+    &\coloneqq
+    \{ S \in \GL_n(K) \mid \det S = 1 \},
+    \\
+    \SUnitary(n)
+    &\coloneqq
+    \{ S \in \Unitary(n) \mid \det S = 1 \}
+    = \Unitary(n) \cap \SL_n(\Complex),
+    \\
+    \SOrthogonal(n)
+    &\coloneqq
+    \{ S \in \Orthogonal(n) \mid \det S = 1 \}
+    = \Orthogonal(n) \cap \SL_n(\Reals).
+  \end{align*}
+\end{definition}
+
+
+\begin{proposition}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Für jeden Körper $K$ ist $\SL_n(K) \subseteq \GL_n(K)$ eine Untergruppe.
+    \item
+      Die Teilmengen $\SOrthogonal(n) \subseteq \Orthogonal(n) \subseteq \GL_n(\Reals)$ sind Untergruppen.
+    \item
+      Die Teilmengen $\SUnitary(n) \subseteq \Unitary(n) \subseteq \GL_n(\Complex)$ sind Untergruppen.
+    \item
+      Es gelten die folgenden Untergruppenrelationen:
+      \begin{equation}\label{eqn: commuting cube}
+        \begin{tikzcd}[row sep = large, column sep = large]
+            {}
+          & \Orthogonal(n)
+            \arrow[rr, hookrightarrow]
+            \arrow[ld, hookrightarrow]
+            \arrow[from=dd, hookrightarrow]
+          & 
+          & \GL_n(\Reals)
+            \arrow[ld, hookrightarrow]
+          \\
+            \Unitary(n)
+            \arrow[rr, hookrightarrow, crossing over]
+          & 
+          & \GL_n(\Complex)
+          & 
+          \\
+            {}
+          & \SOrthogonal(n)
+            \arrow[ld, hookrightarrow]
+            \arrow[rr, hookrightarrow]
+          & 
+          & \SL_n(\Reals)
+            \arrow[ld, hookrightarrow]
+            \arrow[uu, hookrightarrow]
+          \\
+            \SUnitary(n)
+            \arrow[rr, hookrightarrow]
+            \arrow[uu, hookrightarrow]
+          & 
+          & \SL_n(\Complex)
+            \arrow[uu, hookrightarrow, crossing over]
+          & 
+        \end{tikzcd}
+      \end{equation}
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{remark}
+  Man beachte die verschiedenen gegenüberliegenden Seiten des Würfels:
+  Der Boden des Würfels entsteht aus dem Deckel durch die zusätzliche Bedingung $\det S = 1$.
+  Der Rücken des Würfels ist die reelle Version, die Vorderseite die komplexe Version.
+  Die linkse Seite des Würfels entsteht aus der rechten, indem man Kompatiblität mit dem Skalarprodukt fordert.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+\subsection{Gruppentheoretische Begriffe}
+
+
+\begin{proposition}\label{prop: definitions of normal subgroup}
+  Es sei $G$ eine Gruppe und $N \subseteq G$ eine Untergruppe.
+  Durch
+  \[
+    g_1 \sim g_2
+    \iff
+    g_1^{-1} g_2 \in N
+    \quad
+    \text{für alle $g_1, g_2 \in N$}
+  \]
+  wird eine Äquivalenzrelation auf $G$ definiert, und für $G/N \coloneqq G/{\sim}$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Für alle $g \in G$ ist $g N = N g$.
+    \item
+      Für alle $g \in G$ ist $g N g^{-1} = N$.
+    \item
+      Für alle $g \in G$ ist $g N g^{-1} \subseteq N$.
+    \item
+      Die Multiplikation $\cdot \colon (G/N) \times (G/N) \to G/N$ mit
+      \[
+        \overline{g_1} \cdot \overline{g_2} \coloneqq \overline{g_1 \cdot g_2}
+        \quad
+        \text{für alle $g_1, g_2 \in G$}
+      \]
+      ist wohldefiniert.
+      ($G/N$ ist mit dieser Multiplikation automatisch eine Gruppe.
+      Dies ist dann die eindeutige Gruppenstruktur auf $G/N$, so dass die kanonische Projektion $G \to G/N$, $g \mapsto \overline{g}$ ein Gruppenhomomorphismus ist.)
+    \item
+      Es gibt eine Gruppe $H$ und einen Gruppenhomomorphismus $\phi \colon G \to H$ mit $N = \ker \phi$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{definition}
+  Es sei $G$ eine Gruppe und $N \subseteq G$ eine Untergruppe.
+  Der \emph{Index} von $N$ in $G$ ist $[G : N] \coloneqq |G/N|$.
+  Ist eine der Bedingungen von Proposition~\ref{prop: definitions of normal subgroup} erfüllt (und damit alle Bedingungen), so ist die Untergruppe $N$ ein \emph{Normalteiler} in $G$.
+\end{definition}
+
+
+\begin{remark}
+  Untergruppen vom Index $2$ sind immer normal.
+\end{remark}
+
+
+\begin{remark}
+  Ist $N \subseteq G$ eine Untegruppe, so ist die Äquivalenzklasse von $g \in G$ bezüglich der in Proposition~\ref{prop: definitions of normal subgroup} definierten Äquivalenzrelation genau die sogenannte \emph{Linksnebenklasse} $gN = \{gn \mid n \in N\}$. 
+  Die Äquivalenzklasse von $g$ ist also eine (um $g$ verschobene) Kopie von $N$.
+  Inbesondere ist $|gN| = |N|$, und somit
+  \[
+    |G| = [G : N] \cdot |N|.
+  \]
+\end{remark}
+
+
+Zur Berechnung des Index einer Untergruppe wollen wir den folgenden Satz zitieren:
+
+
+\begin{theorem}[1.\ Isomorphiesatz]
+  Ist $\phi \colon G \to H$ ein Gruppenhomomorphismus, so induziert $\phi$ einen Gruppenisomorphismus $\psi \colon G/\ker(\phi) \to \im(H)$ mit $\psi(\overline{g}) = \phi(g)$ für alle $g \in G$.
+\end{theorem}
+
+
+\begin{corollary}
+  Ist $\phi \colon G \to H$ ein Gruppenhomomorphismus, so ist $[G : \ker \phi] = |\im \phi|$.
+\end{corollary}
+
+
+\begin{proposition}
+  Es sei $n \geq 1$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Für jeden Körper $K$ ist $\SL_n(K) \subseteq \GL_n(K)$ eine normale Untergruppe.
+    \item
+      $\GL_n(\Reals)^+ \coloneqq \{S \in \GL_n(\Reals) \mid \det S > 0\}$ ist eine normale Untergruppe von $\GL_n(\Reals)$ mit $[\GL_n(\Reals) : \GL_n(\Reals)^+] = 2$.
+    \item
+      $\SUnitary(n) \subseteq \Unitary(n)$ ist eine normale Untergruppe mit $[\Unitary(n) : \SUnitary(n)] = \infty$.
+    \item
+      $\SOrthogonal(n) \subseteq \Orthogonal(n)$ ist eine normale Untergruppe mit $[\Orthogonal(n) : \SOrthogonal(n)] = 2$.
+  \end{enumerate}
+  Inbesondere ist im Würfel \eqref{eqn: commuting cube} der Boden normal im Deckel.
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Topologische Begriffe}
+
+
+\begin{definition}
+  Es sei $X$ ein metrischer Raum.
+  Eine stetige Abbildung $\gamma \colon [0,1] \to X$ ist ein \emph{Weg} in $X$.
+  Für $x \coloneqq \gamma(0)$ und $y \coloneqq \gamma(1)$ ist $\gamma$ ein \emph{Weg von $x$ nach $y$} in $X$.
+\end{definition}
+
+
+\begin{lemma}\label{lem: path connectedness as equivalence relation}
+  Ist $X$ ein metrischer Raum, so wird durch
+  \[
+    x \sim y
+    \iff
+    \text{es gibt einen Weg von $x$ nach $y$}.
+  \]
+  eine Äquivalenzrelation auf $X$ definiert.
+\end{lemma}
+
+
+\begin{definition}
+  Es sei $X$ ein metrischer Raum.
+  Die Äquivalenzklassen der Äquivalenzrelation aus Lemma~\ref{lem: path connectedness as equivalence relation} heißen \emph{Wegzusammenhangskomponenten} von $X$.
+  $X$ heißt \emph{wegzusammenhängend}, wenn es nur eine Wegzusammenhangskomponente gibt, d.h.\ wenn es für alle $x, y \in M$ einen Weg von $x$ nach $y$ gibt.
+  
+  Eine Teilmenge $Y \subseteq X$ heißt wegzusammenhängend, falls der metrische Raum $(Y, d|_{Y \times Y})$ wegzusammenhängend ist.
+\end{definition}
+
+
+\begin{definition}
+  Ein metrischer Raum $X$ heißt \emph{unzusammenhängend}, wenn es disjunkte, offene, echte Teilmengen $U_1, U_2 \subseteq X$ gibt, so dass $X = U_1 \cup U_2$.
+  Ist $X$ heißt \emph{zusammenhängend}, wenn $X$ nicht unzusammenhängend ist.
+  
+  Eine Teilmenge $Y \subseteq X$ heißt (un)zusammenhängend, wenn der metrische Raum $(Y, d|_{Y \times Y})$ (un)zusammenhängend ist.
+\end{definition}
+
+
+\begin{proposition}\label{prop: equivalence relation for connectedness}
+  Es seien $X$ und $Y$ zwei metrische Räume.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Ist $X$ wegzusammenhängend, so ist $X$ auch zusammenhängend.
+    \item
+      Ist $f \colon X \to Y$ eine stetige Abbildung und $Z \subseteq X$ eine (weg)zusammenhängende Teilmenge, so ist auch $f(Z) \subseteq Y$ (weg)zusammenhängend.
+    \item
+      Sind $Z_1, Z_2 \subseteq X$ zwei (weg)zusammenhängende Teilmengen mit $Z_1 \cap Z_2 \neq \emptyset$, so ist auch $Z_1 \cup Z_2$ (weg)zusammenhängend.
+    \item
+      Durch
+      \[
+        x \sim y
+        \iff
+        \text{es gibt eine zusammenhängende Teilmenge $Z \subseteq X$ mit $x, y \in Z$}
+      \]
+      wird eine Äquivalenzrelation auf $X$ definiert.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{definition}
+  Ist $X$ ein metrischer Raum, so sind die Äquivalenzklassen bezüglich $\sim$ wie in Proposition~\ref{prop: equivalence relation for connectedness} die \emph{Zusammenhangskomponenten} von $X$.
+\end{definition}
+
+
+\begin{remark}
+  Jede zusammenhängende Teilmenge $Z \subseteq X$ ist in einer der Zusammenhangskomponenten von $X$ enthalten.
+  Insbesondere ist jede Wegzusammenhangskomponente in einer Zusammenhangskomponente enthalten.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+\subsection{Topologie auf Matrixgruppen}
+
+
+Im Folgenden fixieren wir eine Norm $\|\cdot\|$ auf dem $\Complex$-Vektorraum $\Mat_n(\Complex)$.
+Die Norm induziert eine Metrik $d$ auf $\Mat_n(\Complex)$ durch $d(A,B) \coloneqq \|A-B\|$.
+Jede Teilmenge $X \subseteq \Mat_n(\Complex)$ erbt durch die Einschränkung $d|_{X \times X}$ die Struktur eines metrischen Raums.
+
+
+\begin{remark}
+  Da $\Mat_n(\Complex)$ als $\Complex$-Vektorraum endlichdimensional ist, sind alle Normen auf $\Mat_n(\Complex)$ äquivalent:
+  Ist $\|\cdot\|'$ eine weitere Norm auf $\Mat_n(\Complex)$, so gibt es eine Konstante $C > 0$ mit $\|\cdot\| \leq C \|\cdot\|'$ und $\|\cdot\|' \leq C \|\cdot\|$.
+\end{remark}
+
+
+\begin{lemma}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      
+    \item
+      Ist $X$ ein metrischer Raum, so ist eine Abbildung $f = (f_{ij})_{i,j = 1, \dotsc, n} \colon X \to \Mat_n(\Complex)$ genau dann stetig, wenn sie in jeder Komponente stetig ist.
+    \item
+      Die Projektionen $p_{ij} \colon \Mat_n(\Complex) \to \Complex$ mit $i,j = 1, \dotsc, n$ und
+      \[
+        p_{ij}(A) \coloneqq A_{ij}
+        \quad
+        \text{für alle $A \in \Mat_n(\Complex)$}.
+      \]
+      sind stetig.
+ \end{enumerate}
+\end{lemma}
+
+
+% TODO: BESSER AUSARBEITEN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
