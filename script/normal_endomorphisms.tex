@@ -436,7 +436,7 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 
 
 
-\subsection{Cartan-Zerlegung}
+\subsection{Polarzerlegung}
 
 
 \begin{definition}
@@ -448,6 +448,26 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
   \end{enumerate}
 \end{definition}
 
+
+\begin{proposition}
+  \begin{enumerate}
+    \item
+      Ist $f \colon V \to V$ ein positiver selbstadjungierter Endomorphismus, so gibt es einen eindeutigen positiven selbstadjungierten Endomorphismus $g \colon V \to V$ mit $f = g^2$.
+    \item
+      Ist $A \in \Mat_n(\Korper)$ positiv selbstadjungiert, so gibt es eine eindeutige positive selbstadjungierte Matrix $B \in \Mat_n(\Korper)$ mit $A = B^2$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{theorem}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Ist $f \in \GL(V)$ für einen Skalarproduktraum, so gibt es eindeutige positive selbstadjungierte Endomorphismen $g_1, g_2 \colon V \to V$ und eindeutige $s_1, s_2 \in \Unitary(V)$ (für $\Korper = \Complex$), bzw.\ $s_1, s_2 \in \Orthogonal(V)$ (für $\Korper = \Reals$) mit
+      \[
+        f = s_1 g_1 = g_2 s_2.
+      \]
+  \end{enumerate}
+\end{theorem}
 
 
 
