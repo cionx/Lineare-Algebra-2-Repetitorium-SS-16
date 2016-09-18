@@ -1,5 +1,6 @@
 *.aux
 *.backup
 *.log
+*.out
 *.synctex.gz
 *.toc
