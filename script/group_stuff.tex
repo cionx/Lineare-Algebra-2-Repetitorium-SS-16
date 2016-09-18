@@ -160,7 +160,19 @@ Zur Berechnung des Index einer Untergruppe wollen wir den folgenden Satz zitiere
 
 
 \begin{theorem}[1.\ Isomorphiesatz]
-  Ist $\phi \colon G \to H$ ein Gruppenhomomorphismus, so induziert $\phi$ einen Gruppenisomorphismus $\psi \colon G/\ker(\phi) \to \im(H)$ mit $\psi(\overline{g}) = \phi(g)$ für alle $g \in G$.
+  Ist $\phi \colon G \to H$ ein Gruppenhomomorphismus, so induziert $\phi$ einen Gruppenisomorphismus $\psi \colon G/\ker(\phi) \to \im(\phi)$ mit $\psi(\overline{g}) = \phi(g)$ für alle $g \in G$.
+  \[
+    \begin{tikzcd}[row sep = large, column sep = large]
+        G
+        \arrow[r, "\phi"]
+        \arrow[d, "g \mapsto \overline{g}"']
+      & H
+      \\
+        G/\ker(\phi)
+        \arrow[ru, "\psi"']
+      & {}
+    \end{tikzcd}
+  \]
 \end{theorem}
 
 
@@ -223,7 +235,7 @@ Zur Berechnung des Index einer Untergruppe wollen wir den folgenden Satz zitiere
   Die Äquivalenzklassen der Äquivalenzrelation aus Lemma~\ref{lem: path connectedness as equivalence relation} heißen \emph{Wegzusammenhangskomponenten} von $X$.
   $X$ heißt \emph{wegzusammenhängend}, wenn es nur eine Wegzusammenhangskomponente gibt, d.h.\ wenn es für alle $x, y \in M$ einen Weg von $x$ nach $y$ gibt.
   
-  Eine Teilmenge $Y \subseteq X$ heißt wegzusammenhängend, falls der metrische Raum $(Y, d|_{Y \times Y})$ wegzusammenhängend ist.
+  Eine Teilmenge $Y \subseteq X$ heißt wegzusammenhängend, wenn $Y$ bezüglich der Metrik $d|_{Y \times Y}$ wegzusammenhängend ist.
 \end{definition}
 
 
@@ -231,7 +243,7 @@ Zur Berechnung des Index einer Untergruppe wollen wir den folgenden Satz zitiere
   Ein metrischer Raum $X$ heißt \emph{unzusammenhängend}, wenn es disjunkte, offene, echte Teilmengen $U_1, U_2 \subseteq X$ gibt, so dass $X = U_1 \cup U_2$.
   Ist $X$ heißt \emph{zusammenhängend}, wenn $X$ nicht unzusammenhängend ist.
   
-  Eine Teilmenge $Y \subseteq X$ heißt (un)zusammenhängend, wenn der metrische Raum $(Y, d|_{Y \times Y})$ (un)zusammenhängend ist.
+  Eine Teilmenge $Y \subseteq X$ heißt (un)zusammenhängend, wenn $Y$ bezüglich $d|_{Y \times Y}$ (un)zu\-sammenhängend ist.
 \end{definition}
 
 
@@ -283,18 +295,8 @@ Die Norm induziert eine Metrik $d$ auf $\Mat_n(\Complex)$ durch $d(A,B) \coloneq
 Jede Teilmenge $X \subseteq \Mat_n(\Complex)$ erbt durch die Einschränkung $d|_{X \times X}$ die Struktur eines metrischen Raums.
 
 
-\begin{remark}
-  Da $\Mat_n(\Complex)$ als $\Complex$-Vektorraum endlichdimensional ist, sind alle Normen auf $\Mat_n(\Complex)$ äquivalent:
-  Ist $\|\cdot\|'$ eine weitere Norm auf $\Mat_n(\Complex)$, so gibt es eine Konstante $C > 0$ mit $\|\cdot\| \leq C \|\cdot\|'$ und $\|\cdot\|' \leq C \|\cdot\|$.
-\end{remark}
-
-
 \begin{lemma}
   \begin{enumerate}[leftmargin=*, label=\roman*)]
-    \item
-      
-    \item
-      Ist $X$ ein metrischer Raum, so ist eine Abbildung $f = (f_{ij})_{i,j = 1, \dotsc, n} \colon X \to \Mat_n(\Complex)$ genau dann stetig, wenn sie in jeder Komponente stetig ist.
     \item
       Die Projektionen $p_{ij} \colon \Mat_n(\Complex) \to \Complex$ mit $i,j = 1, \dotsc, n$ und
       \[
@@ -303,12 +305,66 @@ Jede Teilmenge $X \subseteq \Mat_n(\Complex)$ erbt durch die Einschränkung $d|_
         \text{für alle $A \in \Mat_n(\Complex)$}.
       \]
       sind stetig.
+    \item
+      Ist $X$ ein metrischer Raum, so ist eine Abbildung $f = (f_{ij})_{i,j = 1, \dotsc, n} \colon X \to \Mat_n(\Complex)$ genau dann stetig, wenn sie in jeder Komponente stetig ist.
  \end{enumerate}
 \end{lemma}
 
 
-% TODO: BESSER AUSARBEITEN
+\begin{theorem}\label{prop: closedness of subgroups}
+  Es sei $n \geq 1$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Die Teilmengen $\SL_n(\Complex), \Unitary(n), \SUnitary(n), \SL_n(\Reals), \Orthogonal(n), \SOrthogonal(n) \subseteq \Mat_n(\Complex)$ sind abgeschlossen.
+    \item
+      Die Teilmengen $\GL_n(\Complex) \subseteq \Mat_n(\Complex)$ und $\GL_n(\Reals) \subseteq \Mat_n(\Reals)$ sind offen.
+    \item
+      Als Teilmenge von $\Orthogonal(n)$ ist $\SOrthogonal(n)$ auch offen.
+    \item
+      Die Gruppen $\Unitary(n)$, $\Orthogonal(n)$, $\SUnitary(n)$ und $\SOrthogonal(n)$ sind kompakt.
+  \end{enumerate}
+\end{theorem}
 
+
+\begin{remark}
+  Ist $Y \subseteq X$ und $A \subseteq Y$, so dass $A$ abgeschlossen in $X$ ist, so ist $A$ auch abgeschlossen in $Y$.
+  Dementsprechende ergeben sich aus \ref{prop: closedness of subgroups} noch weitere Aussagen.
+  So ist etwa $\SL_n(\Complex)$ abgeschlossen in $\GL_n(\Complex)$ und $\SOrthogonal(n)$ abgeschlossen in $\Orthogonal(n)$.
+\end{remark}
+
+
+
+\begin{theorem}
+  Es sei $n \geq 1$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Die Gruppe $\GL_n(\Complex)$ ist wegzusammenhängend.
+    \item
+      Die Gruppe $\SL_n(\Complex)$ ist wegzusammenhängend.
+    \item
+      Die Gruppe $\Unitary(n)$ ist wegzusammenhängend.
+    \item
+      Die Gruppe $\SUnitary(n)$ ist wegzusammenhängend.
+    \item
+      Die Gruppe $\GL_n(\Reals)$ besteht aus den beiden (Weg)zusammenhangskomponenten
+      \begin{gather*}
+        \GL_n(\Reals)^+ \coloneqq \{S \in \GL_n(\Reals) \mid \det S > 0\}
+      \shortintertext{und}
+        \GL_n(\Reals)^- \coloneqq \{S \in \GL_n(\Reals) \mid \det S < 0\}.
+      \end{gather*}
+    \item
+      Die Gruppe $\SL_n(\Reals)$ ist wegzusammenhängend.
+    \item
+      Die Gruppe $\Orthogonal(n)$ besteht aus den beiden (Weg)zusammenhangskomponenten
+      \[
+        \SOrthogonal(n) = \{S \in \Orthogonal(n) \mid \det S = 1\}
+        \quad\text{und}\quad
+        \SOrthogonal(n)^- \coloneqq \{S \in \Orthogonal(n) \mid \det S = -1\}.
+      \]
+    \item
+      Die Gruppe $\SOrthogonal(n)$ ist wegzusammehängend.
+  \end{enumerate}
+\end{theorem}
 
 
 
