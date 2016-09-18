@@ -54,9 +54,9 @@
   Es sei $\beta \colon V \times V \to K$ eine symmetrische Bilinearform.
   \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
-      Zwei Vektoren $u, w \in V$ sind \emph{orthogonal (zueinander) bezüglich $\beta$} falls $\beta(u,w) = 0$.
+      Zwei Vektoren $u, w \in V$ sind \emph{orthogonal (zueinander)} bezüglich $\beta$ falls $\beta(u,w) = 0$.
     \item
-      Zwei Untervektorräume $U, W \subseteq V$ sind \emph{orthogonal (zueinander) bezüglich $\beta$} falls $\beta(u,w) = 0$ für alle $u \in U$ und $w \in W$.
+      Zwei Untervektorräume $U, W \subseteq V$ heißen \emph{orthogonal (zueinander)} bezüglich $\beta$ falls $\beta(u,w) = 0$ für alle $u \in U$ und $w \in W$.
     \item
       Ist $U \subseteq V$ ein Untervektorraum, so ist der Untervektorraum
       \[
@@ -189,7 +189,7 @@
     \item
       Die Bilinearform $\beta$ ist nicht-entartet.
     \item
-      Es gilt $\rad \beta = 0$.
+      Es gilt $\rad(\beta) = 0$.
     \item
       Die lineare Abbildung $\Phi \colon V \to V^*$, $v \mapsto \beta(-,v)$ ist injektiv.
   \end{enumerate}
@@ -274,27 +274,98 @@
 
 
 \begin{corollary}[Sylvesterscher Trägheitssatz]
-  Es sei $V$ ein endlichdimensionaler $\Reals$-Vektorraum und $\beta \colon V \times V \to K$ eine symmetrische Bilinearform.
-  Dann gibt es eine geordnete Basis $\basis{C}$ von $V$, so dass
-  \[
-    \Mat_\basis{C}(\beta)
-    =
-    \begin{pmatrix}
-      1 &         &   &     &         &     &   &         &   \\                                                        
-        & \ddots  &   &     &         &     &   &         &   \\
-        &         & 1 &     &         &     &   &         &   \\
-        &         &   & -1  &         &     &   &         &   \\
-        &         &   &     & \ddots  &     &   &         &   \\
-        &         &   &     &         & -1  &   &         &   \\
-        &         &   &     &         &     & 0 &         &   \\
-        &         &   &     &         &     &   & \ddots  &   \\
-        &         &   &     &         &     &   &         & 0
-    \end{pmatrix}.
-  \]
+  Es sei $V$ ein endlichdimensionaler $\Reals$-Vek\-tor\-raum und $\beta \colon V \times V \to K$ eine symmetrische Bilinearform.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Es eine geordnete Basis $\basis{C}$ von $V$, so dass
+      \[
+        \Mat_\basis{C}(\beta)
+        =
+        \begin{pmatrix}
+          1 &         &   &     &         &     &   &         &   \\                                                        
+            & \ddots  &   &     &         &     &   &         &   \\
+            &         & 1 &     &         &     &   &         &   \\
+            &         &   & -1  &         &     &   &         &   \\
+            &         &   &     & \ddots  &     &   &         &   \\
+            &         &   &     &         & -1  &   &         &   \\
+            &         &   &     &         &     & 0 &         &   \\
+            &         &   &     &         &     &   & \ddots  &   \\
+            &         &   &     &         &     &   &         & 0
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          I_r &       &     \\
+              & -I_s  &     \\
+              &       & 0_t
+        \end{pmatrix}
+      \]
+      mit $I_n \in \Mat_n(\Reals)$ und $0_m \in \Mat_m(\Reals)$.
+    \item
+      Ist $\basis{B} = (u_1, \dotsc, u_r, v_1, \dotsc, v_s, w_1, \dotsc, w_t)$ und
+      \begin{align*}
+        D_+ &\coloneqq \bracket{u_1, \dotsc, u_r},                    \\
+        D_- &\coloneqq \bracket{v_1, \dotsc, v_s},                    \\
+        S_+ &\coloneqq \bracket{u_1, \dotsc, u_r, w_1, \dotsc, w_t},  \\
+        S_- &\coloneqq \bracket{v_1, \dotsc, v_s, w_1, \dotsc, w_t},
+      \end{align*}
+      so ist $\beta|_{D_+ \times D_+}$ positiv definit, $\beta|_{D_- \times D_-}$ ist negativ definit, $\beta|_{S_+ \times S_+}$ ist positiv semidefinit und $\beta|_{S_- \times S_-}$ ist negativ semidefinit.
+      Außerdem ist $\rad(\beta) = \bracket{w_1, \dotsc, w_t}$.
+    \item
+      Es gilt
+      \begin{align*}
+        r
+        &=
+        \max\,
+        \{
+          \dim W
+          \mid
+          \text{$W \subseteq V$ ist ein UVR und $\beta|_{W \times W}$ ist positiv definit}.
+        \}
+        \\
+        s
+        &=
+        \max\,
+        \{
+          \dim W
+          \mid
+          \text{$W \subseteq V$ ist ein UVR und $\beta|_{W \times W}$ ist negativ definit}.
+        \}
+        \\
+        r+t
+        &=
+        \max\,
+        \{
+          \dim W
+          \mid
+          \text{$W \subseteq V$ ist ein UVR und $\beta|_{W \times W}$ ist positiv semidefinit}.
+        \}
+        \\
+        s+t
+        &=
+        \max\,
+        \{
+          \dim W
+          \mid
+          \text{$W \subseteq V$ ist ein UVR und $\beta|_{W \times W}$ ist negativ semidefinit}.
+        \}
+      \end{align*}
+      Insbesondere ist das Tupel $(r,s,t)$ durch $\beta$ eindeutig bestimmt.
+    \item
+      $\beta$ ist genau dann
+      \begin{enumerate}[leftmargin=*, label=\alph*)]
+        \item
+          positiv definit, wenn $r = \dim V$,
+        \item
+          negativ definit, wenn $s = \dim V$,
+        \item
+          positiv semidefinit, wenn $r + t = \dim V$,
+        \item
+          negativ semidefinit, wenn $s + t = \dim V$,
+        \item
+          nicht-entwartet, wenn $t = 0$.
+      \end{enumerate}
+  \end{enumerate}
 \end{corollary}
-
-
-% TODO: Sylvester ergänzen
 
 
 
