@@ -79,6 +79,26 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
     \item
       \emph{orthogonal} (für $\Korper = \Reals$), bzw.\ \emph{unitär} (für $\Korper = \Complex$) falls $f$ ein Isomorphismus mit $f^* = f^{-1}$ ist.
   \end{enumerate}
+  Für den Fall $\Korper = \Complex$ sei
+  \[
+    \Unitary(V)
+    \coloneqq
+    \{
+      f \colon V \to V
+      \mid
+      \text{$f$ ist unitär}
+    \}
+  \]
+  und für den Fall $\Korper = \Reals$ sei
+  \[
+    \Orthogonal(V)
+    \coloneqq
+    \{
+      f \colon V \to V
+      \mid
+      \text{$f$ ist orthogonal}.
+    \}
+  \]
   Eine Matrix $A \in \Mat_n(\Korper)$ heißt
   \begin{enumerate}[leftmargin=*, label=\Roman*)]
     \item
@@ -237,6 +257,11 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 \end{corollary}
 
 
+\begin{corollary}
+  Für alle $n \geq 1$ ist $\det(\Unitary(n)) = S^1$, wobei $S^1 \coloneqq \{z \in \Complex \mid |z| = 1\}$.
+\end{corollary}
+
+
 
 
 
@@ -337,6 +362,12 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
       $A$ ist genau dann orthogonal, wenn $A$ normal ist und in der Normalenform von Korollar~\ref{cor: normal form for real normal matrices} $\lambda_i = \pm 1$ für alle $i = 1, \dotsc, s$ und $r_1 = \dotsb = r_t = 1$ gilt.
   \end{enumerate}
 \end{corollary}
+
+
+\begin{corollary}
+  Für alle $n \geq 1$ ist $\det(\Orthogonal(n)) = \{1,-1\}$.
+\end{corollary}
+
 
 
 
