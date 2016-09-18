@@ -1,4 +1,6 @@
 \section{Normale Endomorphismen}
+
+
 Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders angegeben.
 
 
@@ -146,6 +148,8 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
       Es ist $V_\lambda(f^*) = V_{\overline{\lambda}}(f)$ für alle $\lambda \in \Korper$.
     \item
       Für alle $\lambda, \mu \in \Korper$ mit $\lambda \neq 0$ ist $V_\lambda(f) \perp V_\mu(f)$.
+    \item
+      Für $v \in V$ und $n \geq 1$ mit $f^n(v) = 0$ ist bereits $f(v) = 0$.
     \item
       Für alle $\lambda \in V$ ist $V^\sim_\lambda(f) = V_\lambda(f)$.
     \item
@@ -367,6 +371,86 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 \begin{corollary}
   Für alle $n \geq 1$ ist $\det(\Orthogonal(n)) = \{1,-1\}$.
 \end{corollary}
+
+
+
+
+
+
+
+
+
+
+\subsection{Orthogonale Projektionen}
+
+
+\begin{lemma}\label{lem: existence and uniqueness of projections}
+  Sind $U, W \subseteq V$ Untervektorräume eines $K$-Vektorraums $V$ mit $V = U \oplus W$, so gibt es genau eine lineare Abbildung $P \colon V \to V$ mit
+  \[
+    P(u + w) = u
+    \quad
+    \text{für alle $u \in U$, $w \in W$}.
+  \]
+\end{lemma}
+
+
+\begin{definition}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      In der Situation von Lemma~\ref{lem: existence and uniqueness of projections} heißt $P$ die \emph{Projektion} auf $U$ entlang $W$.
+    \item
+      Ist $U \subseteq V$ ein Untervektorraum eines Skalarproduktraums $V$, so heißt die Projektion auf $U$ entlang $U^\perp$ die \emph{orthogonale Projektion} auf $U$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{proposition}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Für einen Endomorphismus $P \colon V \to V$ eines $K$-Vektorraums $V$ sind die folgenden Bedingungen äquivalent:
+      \begin{enumerate}[leftmargin=*, label=\alph*)]
+        \item
+          Es gilt $P^2 = P$.
+        \item
+          $P$ ist die Projektion auf $\im(P)$ entlang $\ker(P)$.
+      \end{enumerate}
+    \item
+      Für einen Endomorphismus $P \colon V \to V$ eines Skalarproduktraums $V$ sind die folgenden Bedingungen äquivalent:
+      \begin{enumerate}[leftmargin=*, label=\alph*)]
+        \item
+          Es gilt $P^2 = P$ und $P$ ist normal.
+        \item
+          $P$ ist die orthogonale Projektion auf $\im(P)$.
+      \end{enumerate}
+  \end{enumerate}
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Cartan-Zerlegung}
+
+
+\begin{definition}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Ein selbstadjungierter Endomorphismus $f \colon V \to V$ eines Skalarproduktraums $V$ heißt \emph{positiv}, wenn alle Eigenwerte von $f$ positiv sind.
+    \item
+      Eine selbtadjungierte Matrix $A \in \Mat_n(\Korper)$ heißt positiv, wenn alle Eigenwerte von $A$ positiv sind.
+  \end{enumerate}
+\end{definition}
+
+
+
+
 
 
 
