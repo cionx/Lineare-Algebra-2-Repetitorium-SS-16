@@ -1,11 +1,29 @@
 \section{Orientierung}
 
 
-\begin{lemma}
-  Es seien $\basis{B}$ und $\basis{C}$ zwei geordnete Basen eines $n$-dimensionaler $\Reals$-Vektorraums $V$.
+\begin{lemma}\label{lem: possible definition of same orientation}
+  Es seien $\basis{B} = (v_1, \dotsc, v_n)$ und $\basis{C} = (w_1, \dotsc, w_n)$ zwei Basen eines $n$-di\-men\-si\-o\-nal\-er $\Reals$-Vektorraums $V$.
   Dann sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
-      
+      Für den eindeutigen Automorphismus $\Phi \colon V \to V$ mit $\Phi(v_i) = w_i$ für alle $i = 1, \dotsc, n$ gilt $\det(\Phi) > 0$.
+    \item
+      Für alle alternierende $n$-Linearformen $\omega \colon V^k \to \Reals$ gilt
+      \[
+        \omega(v_1, \dotsc, v_n) > 0
+        \iff
+        \omega(w_1, \dotsc, w_n) > 0.
+      \]
   \end{enumerate}
 \end{lemma}
+
+
+\begin{definition}
+  Zwei geordnete Basen eines $\Reals$-Vektorraums $V$ heißen \emph{gleichorientiert}, wenn sie die Bedingungen aus Lemma~\ref{lem: possible definition of same orientation} erfüllen.
+\end{definition}
+
+
+\begin{lemma}
+  Ist $V$ ein endlichdimensionaler $\Reals$-Vektorraum, so ist Gleichorientiertheit eine Äquivalenzrelation auf der Menge der geordneten Basen von $V$.
+\end{lemma}
+
