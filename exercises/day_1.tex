@@ -1,5 +1,6 @@
 \documentclass[a4paper, 10pt]{scrartcl}
 
+\usepackage{microtype}
 \usepackage{../generalstyle}
 \usepackage{exercisestyle}
 
@@ -18,13 +19,13 @@
   \begin{enumerate}[leftmargin=*]
     \item
       Es sei $n \colon V \to V$ ein nilpotenter Endomorphismus.
-      Zeigen Sie, dass $\id + n$ invertierbar ist.
+      Zeigen Sie, dass $\id - n$ invertierbar ist.
       (\emph{Hinweis}: Betrachten Sie Endomorphismen der Form $\id + n + n^2 + \dotsb + n^k$.)
     \item
-      Zeigen Sie ferner, dass $\lambda \id + n$ für alle $\lambda \neq 0$ invertierbar ist.
+      Zeigen Sie ferner, dass $\lambda \id - n$ für alle $\lambda \neq 0$ invertierbar ist.
     \item
       Es sei nun $f \colon V \to V$ ein beliebiger Endomorphismus und $V$ endlichdimensional.
-      Zeigen Sie für $\lambda, \mu \in K$ mit $\lambda \neq \mu$, dass die Einschränkung $(f - \lambda_n \id)|_{V^\sim_\mu(f)}$ invertierbar ist.
+      Zeigen Sie für $\lambda, \mu \in K$ mit $\lambda \neq \mu$, dass die Einschränkung $(f - \lambda \id)|_{V^\sim_\mu(f)}$ invertierbar ist.
   \end{enumerate}
 \end{question}
 
@@ -70,11 +71,11 @@
       $
       D
       \coloneqq
-      \begin{pmatrix}
+      \begin{pmatrix*}[r]
         -6 & 12 & 4 \\
         -2 &  2 & 1 \\
         -8 & 20 & 6
-      \end{pmatrix}
+      \end{pmatrix*}
       $
       für $K = \Reals$.
     \item
@@ -215,14 +216,28 @@
 
 
 \begin{question}
+  Es sei $e \colon V \to V$ ein Endomorphismus eines $K$-Vektorraums $V$ mit $e^2 = e$.
+  Zeigen Sie, dass $V = \im(e) \oplus \ker(e)$.
+\end{question}
+
+
+\begin{question}
   Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$.
   Für alle $k \geq 0$ sei $N_k \coloneqq \ker(f^k)$ und $R_k \coloneqq \im(f^k)$.
   \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass $N_k \subseteq N_{k+1}$ und $R_k \supseteq R_{k+1}$ für alle $k \geq 0$, dass also
+      \begin{gather*}
+        0 = N_0 \subseteq N_1 \subseteq N_2 \subseteq \dotso
+      \quad\text{und}\quad
+        V = R_0 \supseteq R_1 \supseteq R_2 \supseteq \dotso
+      \end{gather*}
     \item
       Zeigen Sie, dass genau dann $N_{k+1} = N_k$, wenn $R_{k+1} = R_k$.
     \item
       Es sei $k \geq 1$ mit $R_{k+1} = R_k$.
       Zeigen Sie, dass $R_{k+i} = R_k$ für alle $i \geq 0$.
+      Folgern Sie, dass auch $N_{k+i} = N_k$ für alle $i \geq 0$.
     \item
       Es seien $N \coloneqq \bigcup_{k \geq 0} N_k$ und $R \coloneqq \bigcap_{k \geq 0} R_k$.
       \begin{enumerate}
@@ -231,6 +246,7 @@
         \item
           Zeigen Sie, dass $V = N \oplus R$.
       \end{enumerate}
+      (\emph{Hinweis}: Zeigen Sie zunächst, dass es ein $k_0 \geq 0$ gibt, so dass $R = R_{k_0}$ und $N = N_{k_0}$).
   \end{enumerate}
 \end{question}
 
