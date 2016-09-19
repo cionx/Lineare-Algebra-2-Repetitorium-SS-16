@@ -15,11 +15,14 @@
 % counters and printers
 
 \newcounter{everything}[section]
+\newcounter{localclaims}[everything]
 \renewcommand{\theeverything}{\arabic{section}.\arabic{everything}}
+\renewcommand{\thelocalclaims}{\Alph{localclaims}}
 
 % defining math enviroments
 
 \theoremstyle{definition}
+\newtheorem{claim}[localclaims]{Behauptung}
 \newtheorem{corollary}[everything]{Korollar}
 \newtheorem{definition}[everything]{Definition}
 \newtheorem{example}[everything]{Beispiel}
@@ -46,6 +49,7 @@
 \newcommand{\SOrthogonal}{\mathrm{SO}}
 \newcommand{\SUnitary}{\mathrm{SU}}
 
+\newcommand{\vectorangle}{\sphericalangle}
 \newcommand{\id}{\operatorname{id}}
 \newcommand{\ringchar}{\operatorname{char}}
 
