@@ -1,0 +1,395 @@
+\documentclass[a4paper, 10pt]{scrartcl}
+
+\usepackage{../generalstyle}
+\usepackage{exercisestyle}
+
+
+\title{Lineare Algebra II Repetitorium \\ Übungen, Tag 1}
+\author{Jendrik Stelzner}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{question}
+  Es sei $V$ ein $K$-Vektorraum und $\id \coloneqq \id_V$.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Es sei $n \colon V \to V$ ein nilpotenter Endomorphismus.
+      Zeigen Sie, dass $\id + n$ invertierbar ist.
+      (\emph{Hinweis}: Betrachten Sie Endomorphismen der Form $\id + n + n^2 + \dotsb + n^k$.)
+    \item
+      Zeigen Sie ferner, dass $\lambda \id + n$ für alle $\lambda \neq 0$ invertierbar ist.
+    \item
+      Es sei nun $f \colon V \to V$ ein beliebiger Endomorphismus und $V$ endlichdimensional.
+      Zeigen Sie für $\lambda, \mu \in K$ mit $\lambda \neq \mu$, dass die Einschränkung $(f - \lambda_n \id)|_{V^\sim_\mu(f)}$ invertierbar ist.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Bestimmen Sie für die folgenden Matrizen jeweils eine Jordannormalform über dem angegebenen Körper, inklusive einer entsprechenden Jordanbasis.
+  \begin{enumerate}
+    \item
+      $
+      A
+      \coloneqq
+      \begin{pmatrix*}[r]
+        0 & 0 &  1  \\
+        1 & 0 & -3  \\
+        0 & 1 &  3
+      \end{pmatrix*}
+      $
+      für $K = \Reals$.
+    \item
+      $
+      B
+      \coloneqq
+      \begin{pmatrix}
+        0 & 0 & 1 \\
+        1 & 1 & 1 \\
+        1 & 0 & 0
+      \end{pmatrix}
+      $
+      und $K = \Integers/2$.
+    \item
+      $
+      C
+      \coloneqq
+      \begin{pmatrix*}[r]
+        1 & 0 & 1 & -1  \\
+        0 & 1 & 1 &  0  \\
+        0 & 0 & 1 &  1  \\
+        0 & 0 & 0 &  1
+      \end{pmatrix*}
+      $
+      für $K = \Reals$.
+    \item
+      $
+      D
+      \coloneqq
+      \begin{pmatrix}
+        -6 & 12 & 4 \\
+        -2 &  2 & 1 \\
+        -8 & 20 & 6
+      \end{pmatrix}
+      $
+      für $K = \Reals$.
+    \item
+      $
+      E
+      \coloneqq
+      \begin{pmatrix}
+        0 & 0 & 1 & 2 \\
+        0 & 1 & 2 & 1 \\
+        2 & 1 & 0 & 0 \\
+        0 & 2 & 2 & 0
+      \end{pmatrix}
+      $
+      für $K = \Integers/3$.
+  \end{enumerate}
+\end{question}
+
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Das charakteristische Polynom:
+      \[
+        T^3 - 3 T^2 + 3T - 1 = (T - 1)^3
+      \]
+      Eine mögliche Jordanbasis:
+      \[
+        \left( \cvector{1 \\ -2 \\ 1}, \cvector{-1 \\ 1 \\ 0}, \cvector{1 \\ 0 \\ 0} \right)
+      \]
+      Entsprechend Jordannormalform:
+      \[
+        \begin{pmatrix}
+          1 & 1 &   \\
+            & 1 & 1 \\
+            &   & 1
+        \end{pmatrix}
+      \]
+    \item
+      Das charakteristische Polynom:
+      \[
+        T^3 + T^2 + T + 1 = (T - 1)^3
+      \]
+      Eine mögliche Jordanbasis:
+      \[
+        \left( \cvector{1 \\ 1  \\ 1}, \cvector{1 \\ 0 \\ 0}, \cvector{1 \\ 0 \\ 1} \right)
+      \]
+      Entsprechend Jordannormalform:
+      \[
+        \begin{pmatrix}
+          1 & 1 &   \\
+            & 1 &   \\
+            &   & 1
+        \end{pmatrix}
+      \]
+    \item
+      Das charakteristische Polynom:
+      \[
+        (T - 1)^4
+      \]
+      Eine mögliche Jordanbasis:
+      \[
+        \left( \cvector{1 \\ 0 \\ 0 \\ 0}, \cvector{1 \\ 1 \\ 0 \\ 0}, \cvector{-1 \\ 0 \\ 1 \\ 0}, \cvector{0 \\ 0 \\ 0 \\ 1} \right)
+      \]
+      Entsprechend Jordannormalform:
+      \[
+        \begin{pmatrix}
+          1 &   &   &   \\
+            & 1 & 1 &   \\
+            &   & 1 & 1 \\
+            &   &   & 1
+        \end{pmatrix}
+      \]
+    \item
+      Das charakteristische Polynom:
+      \[
+        T^3 - 2 T^2 = T^2 (T - 2)
+      \]
+      Eine mögliche Jordanbasis:
+      \[
+        \left( \cvector{12 \\ -6 \\ 36}, \cvector{8 \\ 5 \\ 0}, \cvector{1 \\ 0 \\ 2} \right)
+      \]
+      Entsprechend Jordannormalform:
+      \[
+        \begin{pmatrix}
+          0 & 1 &   \\
+            & 0 &   \\
+            &   & 2
+        \end{pmatrix}
+      \]
+    \item
+      Das charakteristische Polynom:
+      \[
+        T^4 + 2 T^3 + T + 2 = (T - 2)^3 (T - 1)
+      \]
+      Eine mögliche Jordanbasis:
+      \[
+        \left(
+          \cvector{0 \\ 1 \\ 1 \\ 1},
+          \cvector{2 \\ 2 \\ 0 \\ 2},
+          \cvector{0 \\ 2 \\ 1 \\ 2},
+          \cvector{0 \\ 1 \\ 0 \\ 0}
+        \right)
+      \]
+      Die entsprechende Jordannormalform:
+      \[
+        \begin{pmatrix}
+          1 &   &   &   \\
+            & 2 & 1 &   \\
+            &   & 2 & 1 \\
+            &   &   & 2
+        \end{pmatrix}
+      \]
+  \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Es seien $f, g \colon V \to V$ zwei Endomorphismen.
+      Zeigen Sie, dass
+      \[
+        \dim \ker(f \circ g) \leq \dim \ker(f) + \dim \ker(g).
+      \]
+      (\emph{Hinweis}: Zeigen Sie zunächst, dass $g(\ker(f \circ g)) \subseteq \ker(f)$.)
+    \item
+      Folgern Sie, dass für jeden Endomorphismus $f \colon V \to V$ die folgende Ungleichung gilt:
+      \[
+        \dim \ker(f^n) \leq n \cdot \dim \ker(f).
+      \]
+    \item
+      Entscheiden Sie, ob die folgende Aussage wahr oder falsch ist:
+      
+      Wenn $f^{10} = 0$ und $\dim \ker(f) < 10$, dann ist $\dim V \leq 2016$.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$.
+  Für alle $k \geq 0$ sei $N_k \coloneqq \ker(f^k)$ und $R_k \coloneqq \im(f^k)$.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass genau dann $N_{k+1} = N_k$, wenn $R_{k+1} = R_k$.
+    \item
+      Es sei $k \geq 1$ mit $R_{k+1} = R_k$.
+      Zeigen Sie, dass $R_{k+i} = R_k$ für alle $i \geq 0$.
+    \item
+      Es seien $N \coloneqq \bigcup_{k \geq 0} N_k$ und $R \coloneqq \bigcap_{k \geq 0} R_k$.
+      \begin{enumerate}
+        \item
+          Zeigen Sie, dass $N$ und $R$ invariant unter $f$ sind.
+        \item
+          Zeigen Sie, dass $V = N \oplus R$.
+      \end{enumerate}
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Bestimmen Sie die Lösungsräume der folgenden homogenen linearen Differentialgleichungen.
+  Dabei seien $f, g, h \in C^\infty(\Reals)$.
+  \[
+    \left\{
+      \begin{array}{ccrr}
+        f'  & = & -f  & - 6g, \\
+        g'  & = & 2f  & + 6g;
+      \end{array}
+    \right.
+    \quad
+    \left\{
+      \begin{array}{ccrr}
+        f'  & = & -f  & - g,  \\
+        g'  & = & 2f  & + g;
+      \end{array}
+    \right.
+    \quad
+    \left\{
+      \begin{array}{ccrrr}
+        f'  & = & 2f  & + 2g  & + 3h, \\
+        g'  & = &  f  & + 3g  & + 3h, \\
+        h'  & = & -f  & - 2f  & - 2h.
+      \end{array}
+    \right.
+  \]
+\end{question}
+
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Charakteristisches Polynom:
+      \[
+        T^2 - 5T + 6 = (T-2)(T-3)
+      \]
+      Jordanbasis:
+      \[
+        \left( \cvector{-2 \\ 1}, \cvector{-3 \\ 2} \right).
+      \]
+      Entsprechende Jordannormalform:
+      \[
+        \begin{pmatrix}
+          2 &   \\
+            & 3
+        \end{pmatrix}
+      \]
+      Die Basiswechselmatrix ist selbstinvers.
+      Matrixexponential:
+      \[
+        \begin{pmatrix}
+           4 e^{2t} - 3 e^{3t}  &  6 e^{2t} - 6 e^{3t}  \\
+          -2 e^{2t} + 2 e^{3t}  & -3 e^{2t} + 4 e^{3t}
+        \end{pmatrix}
+      \]
+    \item
+      Charakteristisches Polynom:
+      \[
+        T^2 + 1 = (T-i)(T+i)
+      \]
+      Jordanbasis:
+      \[
+        \left( \cvector{-1+i \\ 2}, \cvector{-1-i \\ 2} \right).
+      \]
+      Entsprechende Jordannormalform:
+      \[
+        \begin{pmatrix}
+          -i  &   \\
+              & i 
+        \end{pmatrix}
+      \]
+      Inverse der Basiswechselmatrix:
+      \[
+        \frac{1}{4}
+        \begin{pmatrix*}[r]
+          -2i & 1-i \\
+           2i & 1+i
+        \end{pmatrix*}
+      \]
+
+      Matrixexponential:
+      \[
+        \begin{pmatrix}
+          \cos(t) - \sin(t) & -\sin(t)            \\
+          2 \sin(t)         &  \cos(t) + \sin(t)
+        \end{pmatrix}
+      \]
+    \item
+      Charakteristisches Polynom:
+      \[
+        T^3 - 3 T^2 + 3 T - 1 = (T - 1)^3
+      \]
+      Jordanbasis:
+      \[
+        \left( \cvector{0 \\ 1 \\ -\frac{2}{3}}, \cvector{3 \\ 3 \\ 3}, \cvector{0 \\ 0 \\ 1} \right)
+      \]
+      Entsprechende Jordannormalform:
+      \[
+        \begin{pmatrix}
+          1 &   &   \\
+            & 1 & 0 \\
+            &   & 1
+        \end{pmatrix}
+      \]
+      Inverse der Basiswechselmatrix:
+      \[
+        \frac{1}{3}
+        \begin{pmatrix}
+          -3  & 3 & 0 \\
+           1  & 0 & 0 \\
+           1  & 2 & 3
+        \end{pmatrix}
+      \]
+      Matrixexponential:
+      \[
+        e^t
+        \begin{pmatrix}
+          1 + t &     2t  &     3t  \\
+              t & 1 + 2t  &     3t  \\
+             -t &    -2t  & 1 - 3t
+        \end{pmatrix}
+      \]
+  \end{enumerate}
+\end{solution}
+
+
+% \begin{question}
+%   \begin{enumerate}[leftmargin=*]
+%     \item
+%       Geben Sie ein Beispiel für einen $\Reals$-Vektorraum $V$, einen Endomorphismus $f \colon V \to V$ und ein $\lambda \in \Reals$, so dass die Einschränkung $(f - \lambda \id)|_{V^\sim_\lambda(f)}$ nicht nilpotent ist.
+%     \item
+%       Geben Sie ein Beispiel für einen $\Reals$-Vektorraum $V$, einen Endomorphismus $f \colon V \to V$ und einen $f$-invarianten Untervektorräum $U \subseteq V$, so dass es keinen $f$-invarianten Untervektorraum $W \subseteq V$ mit $V = U \oplus W$ gibt.
+%   \end{enumerate}
+% \end{question}
+
+
+% \begin{question}
+%   Entscheiden Sie, ob die folgenden Aussagen wahr oder falsch sind:
+%   \begin{enumerate}[leftmargin=*]
+%     \item
+%       Ist $f \colon V \to V$ ein nilpotenter Endomorphismus eines Vektorraums $V$, so hat ist $0$ der eindeutige Eigenwert von $f$.
+%     \item
+%       Ist $f \colon V \to V$ ein nilpotenter Endomorphismus eines Vektorraums $V$
+%       Wenn $\im(f)$ endlichdimensional ist, so ist $V$ endlichdimensional.
+%     \item
+%       
+%   \end{enumerate}
+% \end{question}
+
+
+\newpage
+
+
+\printsolutions
+
+
+
+\end{document}
