@@ -39,7 +39,7 @@
 \end{notation}
 
 
-\begin{theorem}
+\begin{theorem}\label{thrm: Jordan normal form for nilpotent}
   Es sei $V$ ein endlichdimensionaler $K$-Vektorraum und $f \colon V \to V$ ein nilpotenter Endomorphismus.
   \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
@@ -76,9 +76,116 @@
 \end{corollary}
 
 
-\begin{lemma}
+\begin{lemma}\label{lem: extensions to directs summands}
   Ist $V$ ein endlichdimensionaler $K$-Vektorraum, und sind $U, W, \subseteq V$ zwei Untervektorräume mit $U \cap W = 0$, so gibt es einen Untervektorraum $\overline{W} \subseteq V$ mit $W \subseteq \overline{W}$ und $V = U \oplus \overline{W}$.
 \end{lemma}
+\begin{proof}
+  Es sei $\basis{B}_1 = (u_1, \dotsc, u_r)$ eine Basis von $U$ und $\basis{B}_2 = (w_1, \dotsc, w_s)$ eine Basis von $W$.
+  Dann ist $\basis{B} \coloneqq (u_1, \dotsc, u_r, w_1, \dotsc, w_s)$ eine Basis von $U + W = U \oplus W$.
+  Ergänze $\basis{B}$ zu einer Basis $\basis{C} = (u_1, \dotsc, u_r, w_1, \dotsc, w_s, w_{s+1}, \dotsc, w_t)$ von $V$ und setze $\overline{W} \coloneqq \bracket{w_1, \dotsc, w_t}$.
+\end{proof}
+
+
+\begin{proof}[Beweis der Existenz in Theorem~\ref{thrm: Jordan normal form for nilpotent}]
+  Für alle $k \geq 0$ sei $N_k \coloneqq \ker(f^k)$.
+  Es sei $p \coloneqq \min \{n \geq 0 \mid f^n\} = 0$ der Nilpotenzindex von $f$
+  
+  \begin{claim}
+    Für alle $k \geq 0$ ist $N_{k+1} = f^{-1}(N_k)$, und somit insbesondere $f(N_{k+1}) \subseteq N_k$.
+  \end{claim}
+  \begin{proof}
+    Es gilt
+    \[
+      v \in f^{-1}(N_k)
+      \iff
+      f(v) \in N_k
+      \iff
+      f^k(f(v)) = 0
+      \iff
+      f^{k+1}(v) = 0
+      \iff
+      v \in N_{k+1}.
+    \]
+  \end{proof}
+  
+  \begin{claim}
+    Es Untervektorräume $W_1, \dotsc, W_p \subseteq V$ so dass
+    \begin{enumerate}[leftmargin=*, label=\roman*)]
+      \item
+        $N_k = N_{k-1} \oplus W_k$ für alle $k = 1, \dotsc, p$,
+      \item
+        $f(W_k) \subseteq W_{k-1}$ für alle $k = 2, \dotsc, p$, und
+      \item
+        die Einschränkung $f|_{W_k}$ ist injektiv für alle $k = 2, \dotsc, p$.
+    \end{enumerate}
+  \end{claim}
+  \begin{proof}
+    Beginne mit $W_p \subseteq V$, so dass $V = N_p = N_{p-1} \oplus W_p$.
+    Ist $W_{k+1}$ für ein $1 \leq k \leq p-1$ definiert, so ist
+    \[
+      f(W_{k+1}) \subseteq f(N_{k+1}) \subseteq N_k,
+    \]
+    und da
+    \[
+      f^{-1}(N_{k-1}) \cap W_{k+1}
+      = N_k \cap W_{k+1}
+      = 0,
+    \]
+    ist $f(W_{k+1}) \cap N_{k-1} = 0$.
+    Nach Lemma~\ref{lem: extensions to directs summands} gibt es einen Untervektorraum $W_k \subseteq N_k$ mit $f(W_{k+1}) \subseteq W_k$ und $N_k = N_{k-1} \oplus W_k$.
+    Die Injektivität von $f|_{W_k}$ für $k = 2, \dotsc, p$ folgt aus
+    \[
+        \ker(f|_{W_k})
+      = \ker(f) \cap W_k
+      = N_1 \cap W_k
+      \subseteq N_{k-1} \cap W_k
+      = 0.
+      \qedhere
+    \]
+  \end{proof}
+  
+  Wähle eine Basis $\basis{B}_p = (v^p_1, \dotsc, v^p_{n_p})$ von $W_p$.
+  Wegen der Injektivität von $f_{W_p}$ ist die Familie $f(\basis{B}_p) \coloneqq (f(v^p_1), \dotsc, f(v^p_{n_p}))$ linear unabhängig, und damit zu einer Basis
+  \[
+    \basis{B}_p = \left( f(v^p_1), \dotsc, f(v^p_{n_p}), v^{p-1}_1, \dotsc, v^{p-1}_{n_{p-1}} \right)
+  \]
+  von $W_{p-1}$ ergänzbar.
+  Iteratives Fortführen liefert für $W_{p-i}$ eine Basis $\basis{B}_{p-i}$ de Form
+  \[
+    \renewcommand{\arraystretch}{1.5}
+    \begin{matrix}
+      f^i(v^p_1),     & \dotsc,  & f^i(v^p_{n_p})      \\
+      f^{i-1}(v^p_1), & \dotsc,  & f^{i-1}(v^p_{n_p})  \\
+      \vdots          &          & \vdots              \\
+      v^{p-i}_1,      & \dotsc,  & v^{p-i}_{n_{p-i}}.
+    \end{matrix}
+  \]
+  Da
+  \begin{align*}
+       V
+     = N_p
+     = N_{p-1} \oplus W_p
+     = N_{p-2} \oplus W_{p-1} \oplus W_p
+     = \dotsb
+    &= N_0 \oplus W_1 \oplus \dotsb \oplus W_p \\
+    &= W_1 \oplus \dotsb \oplus W_p
+  \end{align*}
+  ergibt sich durch Zusammenfügen der einzelnen Basen $\basis{B}_p, \dotsc, \basis{B}_1$ eine Basis $\tilde{\basis{B}}$ von $V$ von der Form
+  \[
+    \renewcommand{\arraystretch}{1.5}
+    \setlength\arraycolsep{4pt}
+    \begin{array}{cccccccccc}
+      v^p_1,          & \dotsc, & v^p_{n_p},          &                     &         &                             &         &         &         &             \\
+      f(v^p_1),       & \dotsc, & f(v^p_{n_p}),       & v^{p-1}_1,          & \dotsc, & v^{p-1}_{n_{p-1}},          &         &         &         &             \\
+      \vdots          &         & \vdots              & \vdots              &         & \vdots                      &         &         &         &             \\
+      f^{p-1}(v^p_1), & \dotsc, & f^{p-1}(v^p_{n_p}), & f^{p-2}(v^{p-1}_1), & \dotsc, & f^{p-2}(v^{p-1}_{n_{p-1}}), & \dotsc, & v^1_1,  & \dotsc, & v^1_{n_1}.
+    \end{array}
+  \]
+  Trägt man nun dieses zweidimensionale Schema von oben nach unten, von links nach rechts in eine Familie $\basis{B}$ ein, so ist dies die gewünschte Matrix.
+\end{proof}
+
+
+[Hier das konkrete Vorgehen angeben.]
 
 
 
@@ -146,7 +253,7 @@
 \end{notation}
 
 
-\begin{theorem}
+\begin{theorem}\label{thrm: general Jordan normal form}
   Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$, so dass $V = V^\sim_{\lambda_1}(f) \oplus \dotsb \oplus V^\sim_{\lambda_t}(f)$ für die Eigenwerte $\lambda_1, \dotsc, \lambda_t \in K$ von $f$.
   \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
@@ -168,11 +275,15 @@
       Die Zahlen $(n^{(1)}_1, \dotsc, n^{(1)}_{s_1}), \dotsc, (n^{(t)}_1, \dotsc, n^{(t)}_{s_t})$ sind jeweils eindeutig bis auf Permutation.
     \item
       Es gilt $n^{(i)}_1 + \dotsb + n^{(i)}_{s_i} = \dim V^\sim_\lambda(f)$ für alle $i = 1, \dotsc, t$.
+    \item
+      Für alle $i = 1, \dotsc, t$ gilt $\max_{j=1,\dotsc,s_i} n^{(i)}_j = \min \{p \geq 0 \mid (f - \lambda_i \id_V)^p|_{V^\sim_{\lambda_i}(f)} = 0\}$.
   \end{enumerate}
 \end{theorem}
 
 
-% TODO: Besser Abschätzung für die Größe der Blöcke hinzufügen.
+[Hier das konkrete Vorgehen angeben]
+
+
 
 
 
@@ -196,6 +307,14 @@
 
 
 \begin{lemma}
+  Ist $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vek\-tor\-raums $V$ und sind $U, W \subseteq V$ zwei $f$-invariante Untervektorräume mit $V = U \oplus W$, so gilt
+  \[
+    \chi_f(T) = \chi_{f|_U}(T) \cdot \chi_{f|_W}(T).
+  \]
+\end{lemma}
+
+
+\begin{lemma}\label{lem: finding direct summands to generalized eigenspaces}
   Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Vektorraums $V$ und $\lambda \in K$.
   Ferner sei $U \subseteq V$ ein $f$-invarianter Untervektorraum mit $V = V^\sim_\lambda(f) \oplus U$.
   Dann ist $\lambda$ kein Eigenwert von $f|_U$, und es gilt
@@ -247,12 +366,38 @@
 \end{theorem}
 
 
+\begin{proof}
+  Wenn es eine Hauptraumzerlegung gibt, dann ist $f$ nach Theorem~\ref{thrm: general Jordan normal form} trigonalisierbar.
+  Somit zerfällt das charakteristische Polynom dann in Linearfaktoren.
+  
+  Die umgekehrte Aussage verläuft per Induktion über die Dimension von $V$.
+  Für $\dim V = 0$ ist die Aussage klar.
+  Für $\dim V > 0$ sei $\chi_f(T) = (T - \lambda_1)^{n_1} \dotsm (T - \lambda_s)^{n_s}$.
+  Durch Anwenden von Fittings Lemma auf $f - \lambda_1 \id_V$ erhalten wir, dass
+  \[
+    V = V^\sim_{\lambda_1} \oplus R,
+  \]
+  wobei $R \subseteq V$ ein $f$-invarianter Untervektorraum ist.
+  Nach Lemma~\ref{lem: finding direct summands to generalized eigenspaces} ist $\chi_{f|_R}(T) = (T - \lambda_2)^{n_2} \dotsm (T - \lambda_s)^{n_s}$, und nach Induktionsvoraussetzung ist
+  \[
+    R = R^\sim_{\lambda_2}(f|_R) \oplus \dotsb \oplus R^\sim_{\lambda_s}(f|_R),
+  \]
+  und somit insgesamt
+  \[
+              V
+    =         V^\sim_{\lambda_1} \oplus R^\sim_{\lambda_2}(f|_R) \oplus \dotsb \oplus R^\sim_{\lambda_s}(f|_R)
+    \subseteq V^\sim_{\lambda_1} \oplus V^\sim_{\lambda_2}(f|_R) \oplus \dotsb \oplus V^\sim_{\lambda_s}(f|_R)
+    \subseteq V.
+  \]
+\end{proof}
+
+
 \begin{corollary}
   Ist $K$ ein algebraisch abgeschlossener Körper und $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$, so ist $V = \bigoplus_{\lambda \in K} V^\sim_\lambda(f)$.
 \end{corollary}
 
 
-\begin{corollary}
+\begin{corollary}[Cayley-Hamilton für algebraisch abgeschlossene Körper]
   Ist $K$ ein algebraisch abgeschlossener Körper und $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$ (bzw.\ $A \in \Mat_n(K)$), so ist $\chi_f(f) = 0$ (bzw.\ $\chi_A(A) = 0$).
 \end{corollary}
 
@@ -270,12 +415,35 @@
 \end{corollary}
 
 
+[Falls noch Zeit: Idee genauer erläutern, und allgemeines Lemma nennen.]
 
 
 
 
 
 
+
+
+
+
+\subsection{Homogene, lineare, gewöhnliche Differentialgleichungen}
+
+
+Ist $A \in \Mat_n(\Complex)$, so lassen sich die komplexen Lösungen der Differentialgleichung
+\[
+  A y = y'
+\]
+für $y \colon \Reals \to \Complex^n$ wie folgt finden:
+
+Der Lösungsraum wird von den Spalten der Matrix $\exp(At)$ aufgefasst (wenn man diese als Funktionen von $t$ betrachtet).
+Ist $S A S^{-1} = J = D + N$ die Jordanzerlegung von $A$, so ist
+\[
+    \exp(At)
+  = \exp(S^{-1} Jt S)
+  = S^{-1} \exp(Jt) S
+  = S^{-1} \exp(Dt) \exp(Nt) S,
+\]
+wobei im letzen Schritt genutzt wird, dass $D$ und $N$ kommutieren.
 
 
 
