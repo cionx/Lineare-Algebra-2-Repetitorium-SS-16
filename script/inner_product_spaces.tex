@@ -98,6 +98,15 @@
 \end{proposition}
 
 
+\begin{definition}
+  Ist $V$ ein Skalarproduktraum, so ist der \emph{(unorientierte) Winkel} zwischen zwei Vektoren $v, w \in V$ dder eindeutige Winkel $\theta \in [0,\pi]$ mit
+  \[
+    \cos(\theta) = \frac{\bracket{v,w}}{\|v\| \|w\|},
+  \]
+  und er wird mit $\vectorangle(v,w)$ bezeichnet.
+\end{definition}
+
+
 \begin{corollary}
   Ist $V$ ein Skalarproduktraum, so ist die Abbildung $\|\cdot\| \colon V \to \Reals$ eine Norm auf $V$.
 \end{corollary}
@@ -199,7 +208,7 @@
 
 \begin{proposition}
   Es sei $(v_i)_{i \in I}$ eine Orthonormalbasis eines Skalarproduktraums $V$.
-  \begin{enumerate}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
       Für jedes $v \in V$ ist $\bracket{v, v_i} = 0$ für fast alle $i \in I$, und es gilt
       \begin{gather*}
