@@ -226,7 +226,7 @@
     \item
       Der Hauptraum $V^\sim_\lambda(f)$ ist $f$-invariant.
     \item
-      Ist $V$ endlichdimensional, so gibt es $N \geq 1$ mit $(f - \lambda \id_V)^N(v) = 0$ für alle $v \in V$, und es gilt $V^\sim_\lambda(f) = \ker (f - \lambda \id_V)^N$.
+      Ist $V$ endlichdimensional, so gibt es $N \geq 1$ mit $(f - \lambda \id_V)^N(v) = 0$ für alle $v \in V^\sim_\lambda(f)$, und es gilt $V^\sim_\lambda(f) = \ker (f - \lambda \id_V)^N$.
   \end{enumerate}
 \end{lemma}
 
@@ -402,6 +402,13 @@
 \end{corollary}
 
 
+\begin{remark}
+  Für jeden Körper $K$ gibt es einen algebraisch abgeschlossenen Körper $\overline{K}$, so dass $K$ ein Unterkörper von $\overline{K}$ ist.
+  Der Satz von Cayley-Hamilton gilt daher für beliebige Körper.
+  Er kann auch ohne die Jordan-Normalform bewiesen werden (siehe etwa Fischer).
+\end{remark}
+
+
 \begin{corollary}[Abstrakte Jordanzerlegung]
   Ist $K$ ein algebraisch abgeschlossener Körper und $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$, so gibt es eindeutige Endomorphismen $d, n \colon V \to V$, so dass
   \begin{enumerate}[leftmargin=*, label=\alph*)]
@@ -415,7 +422,7 @@
 \end{corollary}
 
 
-[Falls noch Zeit: Idee genauer erläutern, und allgemeines Lemma nennen.]
+[Falls noch Zeit: Idee der Hauptraumzerlegung genauer erläutern, und allgemeines Lemma nennen.]
 
 
 
