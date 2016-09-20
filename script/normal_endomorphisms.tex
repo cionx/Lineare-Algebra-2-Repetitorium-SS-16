@@ -31,17 +31,12 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 
 
 \begin{proposition}
-  Es seien $U, V, W$ drei Skalarprodukträume.
+  Es seien $U, V, W$ drei Skalarprodukträume und $f \colon V \to W$, $g \colon U \to V$ zwei $\Korper$-lineare Abbildungen und $\lambda \in K$
   \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
-      Es gilt $\id_V^* = \id_V$, und für alle linearen Abbildungen $f \colon V \to W$ und $g \colon U \to V$ gilt
-      \[
-        (f g)^* = g^* f^*.
-      \]
+      Es gilt $\id_V^* = \id_V$ und $(fg)^* = g^* f^*$.
     \item
-      Ist $f \colon V \to W$ ein Isomorphismus, so ist auch $f^*$ ein Isomorphismus.
-    \item
-      Für alle $\Korper$-linearen Abbildungen $f, g \colon V \to W$ und $\lambda \in \Korper$ gilt
+      Es gilt
       \begin{enumerate}[leftmargin=*, label=\alph*)]
         \item
           $(f^*)^* = f$,
@@ -51,6 +46,8 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
           $(\lambda f)^* = \overline{\lambda} f^*$.
       \end{enumerate}
       Insbesondere ist die Abbildung $\Hom_\Korper(V,W) \to \Hom_\Korper(W,V)$, $f \mapsto f^*$ ein Isomorphismus (bzw.\ Antiisomorphismus) von $\Reals$-Vektorräumen (bzw.\ $\Complex$-Vektorräumen).
+    \item
+      Die Abbildung $f$ ist genau dann ein Isomorphismus, wenn $f^*$ ein Isomorphismus ist.
   \end{enumerate}
 \end{proposition}
 

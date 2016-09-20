@@ -1,9 +1,42 @@
 \section{Simultane Diagonalisierbarkeit}
 
 
-\begin{lemma}\label{lem: directness of sum of eigenspaces}
-  Ist $f \in V \to V$ ein Endomorphismus eines $K$-Vektorraums $V$, so ist die Summe $\sum_{\lambda \in K} V_\lambda(f)$ direkt.
+\begin{lemma}\label{lem: eigensummands are in the subspace}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines $K$-Vektorraums $V$ und \mbox{$U \subseteq V$} ein $f$-invarianter Untervektorraum.
+  Ist $u \in U$ mit $u = v_1 + \dotsb + v_n$, wobei $v_i \in V_{\lambda_i}(f)$ für alle $i = 1, \dotsc, n$ und $\lambda_1, \dotsc, \lambda_n \in K$ paarweise verschieden sind, so ist bereits $v_1, \dotsc, v_n \in V$.
 \end{lemma}
+
+
+\begin{proof}
+  Wir zeigen die Aussage per Induktion über $n$.
+  Für $n = 1$ gilt $v_1 = u \in U$.
+  Ist $n \geq 2$, so gilt
+  \[
+      f(u)
+    = f(v_1) + \dotsb + f(v_n)
+    =  \lambda_1 v_1 + \dotsb + \lambda_n v_n
+  \]
+  und somit
+  \begin{align*}
+    U \ni \lambda_1 u - f(u)
+      &=  \lambda_1 (v_1 + \dotsb + v_n) - (\lambda_1 v_1 + \dotsb + \lambda_n v_n) \\
+      &=  (\lambda_1 - \lambda_2) v_2 + \dotsb + (\lambda_1 - \lambda_n) v_n.
+  \end{align*}
+  Da $(\lambda_1 - \lambda_i) v_i \in V_{\lambda_i}(f)$ für alle $i = 1, \dotsc, n$ ergibt sich per Induktionsvoraussetzung, dass $(\lambda_1 - \lambda_i) v_i \in U$ für alle $i = 2, \dotsc, n$.
+  Da $\lambda_1 - \lambda_i \neq 0$ für alle $i = 2, \dotsc, n$ (denn die $\lambda_j$ sind paarweise verschieden) gilt $v_2, \dotsc, v_n \in U$.
+  Somit gilt auch \mbox{$v_1 = u - v_2 - \dotsb - v_n \in U$}.
+\end{proof}
+
+
+\begin{lemma}\label{lem: directness of sum of eigenspaces}
+  Ist $f \colon V \to V$ ein Endomorphismus eines $K$-Vektorraums $V$, so ist die Summe $\sum_{\lambda \in K} V_\lambda(f)$ direkt.
+\end{lemma}
+
+
+\begin{proof}
+  Es seien $\lambda_1, \dotsc, \lambda_n \in K$ paarweise verschieden und $v_i \in V_{\lambda_i}(f)$ für $i = 1, \dotsc, n$, so dass $0 = v_1 + \dotsb + v_n$.
+  Anwenden von Lemma~\ref{lem: eigensummands are in the subspace} auf den Untervektorraum $U = 0$ ergibt, dass $v_1, \dotsc, v_n \in 0$ und somit $v_1, \dotsc, v_n = 0$.
+\end{proof}
 
 
 \begin{definition}
@@ -16,8 +49,14 @@
   \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
       Nach Lemma~\ref{lem: directness of sum of eigenspaces} ist $f$ genau dann diagonalisierbar, wenn $V = \sum_{\lambda \in K} V_\lambda(f)$.
+      Es genügt also, jeden Vektor als Summe, bzw.\ Linearkombination von Eigenvektoren zu schreiben.
     \item
       Ist $V$ endlichdimensional, so ist $f$ genau dann diagonalisierbar, wenn $V$ eine Basis aus Eigenvektoren von $f$ besitzt.
+      
+      Ist nämlich $V = \bigoplus_{\lambda \in K} V_\lambda(f)$ und sind $\lambda_1, \dotsc, \lambda_n \in K$ die Eigenwerte von $f$, so ist $V_\mu(f) = 0$ für alle $\mu \in K \smallsetminus \{\lambda_1, \dotsc, \lambda_n\}$ und somit $V = V_{\lambda_1}(f) \oplus \dotsb \oplus V_{\lambda_n}(f)$.
+      Wählt man nun von jeder dieser endlich vielen Eigenräume eine Basis, so ergibt sich durch Zusammenfügen dieser Basen eine Basis von $V$, die aus Eigenvektoren besteht.
+      
+      Hat andererseits $V$ eine Basis aus Eigenvektoren, so ist jeder Vektor $v \in V$ eine Linearkombination von Eigenvektoren und somit $V = \sum_{\lambda \in K} V_\lambda(f)$.
   \end{enumerate}
 \end{remark}
 
@@ -30,22 +69,104 @@
 \end{proposition}
 
 
+\begin{proof}
+  Es sei $u \in U$.
+  Da $f$ diagonalisierbar ist, gibt es paarweise verschiedene Eigenwerte $\lambda_1, \dotsc, \lambda_n \in K$ und $v_i \in V_{\lambda_i}(f)$ mit $u = v_1 + \dotsb + v_n$.
+  Nach Lemma~\ref{lem: eigensummands are in the subspace} gilt bereits $v_1, \dotsc, v_n \in U$.
+  Da damit $v_i \in U \cap V_{\lambda_i}(f) = U_{\lambda_i}(f|_U)$ für alle $i = 1, \dotsc, n$ gilt, ergibt sich $u \in \sum_{i=1}^n U_{\lambda_i}(f|_U) = \sum_{\lambda \in K} U_{\lambda}(f|_U)$.
+  Damit ist $U = \sum_{\lambda} U_\lambda(f)$, und somit \mbox{$U = \bigoplus_{\lambda} U_\lambda(f|_U)$}.
+  Die letzte Gleichung ergibt sich mit $U_\lambda(f|_U) = U \cap V_\lambda(f)$.
+\end{proof}
+
+
 \begin{definition}
-  Zwei Endomorphismen $f, g \colon V \to V$ eines $K$-Vektorraums $V$ heißen \emph{simultan diagonalisierbar}, falls
+  Eine Kollektion von Endomorphismen $f_1, \dotsc, f_n \colon V \to V$ eines $K$-Vek\-tor\-raums $V$ heißt \emph{simultan diagonalisierbar}, falls
   \[
-    V = \bigoplus_{\lambda, \mu \in K} [V_\lambda(f) \cap V_\mu(g)].
+    V
+    = \bigoplus_{\lambda_1, \dotsc, \lambda_n \in K}
+      \bigg(
+        \underbrace{ V_{\lambda_1}(f_1) \cap \dotsb \cap V_{\lambda_n}(f_n) }_{\text{gemeinsame Eigenvektoren}}
+      \bigg).
   \]
 \end{definition}
 
 
 \begin{remark}
-  Sind $f, g \colon V \to V$ zwei Endomorphismen eines endlichdimensionalen $K$-Vektorraums $V$, so sind $f$ und $g$ genau dann simultan diagonalisierbar, wenn $V$ eine Basis aus gemeinsamen Eigenvektoren von $f$ und $g$ besitzt.
+  Ist $V$ endlichdimensional, so sind $f_1, \dotsc, f_n \colon V \to V$ genau dann simultan diagonalisierbar, wenn $V$ eine Basis aus gemeinsamen Eigenvektoren von $f_1, \dotsc, f_n$ besitzt.
 \end{remark}
 
 
-\begin{proposition}
-  Zwei Endomorphismen $f, g \colon V \to V$ eines $K$-Vektorraums $V$ sind genau dann simultan diagonalisierbar, wenn sie beide diagonalisierbar sind und kommutieren.
-\end{proposition}
+\begin{theorem}\label{thrm: simultaneous diagonalizability}
+  Eine Kollektion von Endomorphismes $f_1, \dotsc, f_n \colon V \to V$ eines $K$-Vek\-tor\-raums $V$ ist genau dann simultan diagonalisierbar, wenn die Endomorphismen kommutieren und jeweils einzeln diagonalisierbar sind.
+\end{theorem}
+
+
+\begin{lemma}
+  Sind $f, g \colon V \to V$ zwei kommutierende Endomorphismen eines $K$-Vek\-tor\-raums $V$, so ist $V_\lambda(f)$ für alle $\lambda \in K$ invariant unter $g$.
+\end{lemma}
+
+
+\begin{proof}[Beweis von Theorem~\ref{thrm: simultaneous diagonalizability}]
+  Ist $v \in V$ ein gemeinsamer Eigenvektor von $f_1, \dotsc, f_n$, so gilt $f_i(f_j(v)) = f_j(f_i(v))$ für alle $i, j = 1, \dotsc, n$, denn ist $f_i(v) = \lambda_i v$, so gilt
+  \[
+    f_i(f_j(v))
+    = f_i(\lambda_j v)
+    = \lambda_j f_i(v)
+    = \lambda_j \lambda_i v
+    = \lambda_i \lambda_j v
+    = \lambda_i f_j(v)
+    = f_j(\lambda_i v)
+    = f_j(f_i(v)).
+  \]
+  Sind $f_1, \dotsc, f_n$ simultan diagonalisierbar, so ist jeder Vektor $v \in V$ die Summe von gemeinsamen Eigenvektoren $v_1, \dotsc, v_n \in V$, also $v = v_1 + \dotsb + v_n$, weshalb
+  \[
+    f_i(f_j(v))
+    = f_i(f_j(v_1)) + \dotsb + f_i(f_j(v_n))
+    = f_j(f_i(v_1)) + \dotsb + f_j(f_i(v_n))
+    = f_j(f_i(v)).
+  \]
+  Also gilt dann $f_i f_j = f_j f_i$ für alle $i, j = 1, \dotsc, n$.
+
+  Umgekehrt seien nun $f_1, \dotsc, f_n$ kommutierend und einzeln diagonalisierbar.
+  Wir zeigen per Induktion über $n$, dass $f_1, \dotsc, f_n$ simultan diagonalisierbar sind.
+  Für $n = 1$ ist nichts zu zeigen.
+  
+  Es sei nun $n \geq 2$.
+  Da $f_1$ diagonalisierbar ist, gilt $V = \bigoplus_{\lambda \in K} V_\lambda(f_1)$.
+  Da $f_1, \dotsc, f_n$ kommutieren ist $V_\lambda(f_1)$ für alle $\lambda \in K$ invariant unter $f_2, \dotsc, f_n$.
+  Da $f_2, \dotsc, f_n$ diagonalisierbar sind, sind es auch die Einschränkungen $f_i|_{V_\lambda(f_1)}$ für alle $i = 2, \dotsc, n$ und $\lambda \in K$.
+  Da $f_2, \dotsc, f_n$ kommutieren, kommutieren auch diese Einschränkungen.
+  Per Induktionsvorraussetzung gilt daher
+  \begin{align*}
+        V_\lambda(f_1)
+    &=  \bigoplus_{\lambda_2, \dotsc, \lambda_n}
+        \bigg(
+          ( V_\lambda(f_1) )_{\lambda_2}(f_2|_{V_\lambda(f_1)})
+          \cap \dotsb \cap
+          ( V_\lambda(f_1) )_{\lambda_n}(f_n|_{V_\lambda(f_1)})
+        \bigg)
+    \\
+    &=  \bigoplus_{\lambda_2, \dotsc, \lambda_n}
+        \bigg(
+          V_\lambda(f_1) \cap V_{\lambda_2}(f_2) \cap V_{\lambda_n}(f_n)
+        \bigg).
+  \end{align*}
+  Somit gilt
+  \begin{align*}
+      V
+    =   \bigoplus_{\lambda_1 \in K} V_{\lambda_1}(f_1)
+    &=  \bigoplus_{\lambda_1 \in K} \bigoplus_{\lambda_2, \dotsc, \lambda_n \in K}
+        \bigg(
+          V_{\lambda_1}(f_1) \cap V_{\lambda_2}(f_2) \cap V_{\lambda_n}(f_n)
+        \bigg)
+    \\
+    &=  \bigoplus_{\lambda_1, \dotsc, \lambda_n \in K}
+        \bigg(
+          V_{\lambda_1}(f_1) \cap \dotsb \cap V_{\lambda_n}(f_n)
+        \bigg).
+  \end{align*}
+\end{proof}
+
 
 
 

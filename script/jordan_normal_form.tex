@@ -410,14 +410,14 @@
 
 
 \begin{corollary}[Abstrakte Jordanzerlegung]
-  Ist $K$ ein algebraisch abgeschlossener Körper und $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$, so gibt es eindeutige Endomorphismen $d, n \colon V \to V$, so dass
+  Ist $K$ ein algebraisch abgeschlossener Körper und $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vektorraums $V$ (bzw.\ $A \in \Mat_n(K)$), so gibt es eindeutige Endomorphismen $d, n \colon V \to V$ (bzw.\ $D, N \in \Mat_n(K)$), so dass
   \begin{enumerate}[leftmargin=*, label=\alph*)]
     \item
-      $f = d + n$,
+      $f = d + n$ (bzw.\ $A = D + N$),
     \item
-      $d$ ist diagonalisierbar und $n$ ist nilpotent,
+      $d$ (bzw.\ $D$) ist diagonalisierbar und $n$ (bzw.\ $N$) ist nilpotent,
     \item
-      $d$ und $n$ kommutieren
+      $d$ und $n$ (bzw.\ $D$ und $N$) kommutieren.
   \end{enumerate}
 \end{corollary}
 
@@ -443,12 +443,12 @@ Ist $A \in \Mat_n(\Complex)$, so lassen sich die komplexen Lösungen der Differe
 für $y \colon \Reals \to \Complex^n$ wie folgt finden:
 
 Der Lösungsraum wird von den Spalten der Matrix $\exp(At)$ aufgefasst (wenn man diese als Funktionen von $t$ betrachtet).
-Ist $S A S^{-1} = J = D + N$ die Jordanzerlegung von $A$, so ist
+Ist $S^{-1} A S = J$ eine Jordannormalform von $A$ und $J = D + N$ die entsprechende Jordanzerlegung, so ist
 \[
     \exp(At)
-  = \exp(S^{-1} Jt S)
-  = S^{-1} \exp(Jt) S
-  = S^{-1} \exp(Dt) \exp(Nt) S,
+  = \exp(S Jt S^{-1})
+  = S \exp(Jt) S^{-1}
+  = S \exp(Dt) \exp(Nt) S^{-1},
 \]
 wobei im letzen Schritt genutzt wird, dass $D$ und $N$ kommutieren.
 

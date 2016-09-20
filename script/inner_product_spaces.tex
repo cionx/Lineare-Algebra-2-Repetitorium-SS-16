@@ -2,17 +2,30 @@
 
 
 \begin{definition}
+  Eine Abbildung $f \colon V \to W$ zwischen $\Complex$-Vektorräumen $V$ und $W$ heißt \emph{$(\Complex\text{-})$antilinear}
+  \[
+    f(v_1 + v_2) = f(v_1) + f(v_2)
+    \quad\text{und}\quad
+    f(\lambda v_1) = \overline{\lambda} f(v_1)
+  \]
+  für alle $v_1, v_2 \in V$ und $\lambda \in \Complex$.
+\end{definition}
+
+
+
+\begin{definition}
+  Es sei $K$ ein Körper.
   \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
       Eine Abbildung $b \colon V \times W \to Z$ mit $K$-Vektorräumen $V, W, Z$ heißt \emph{$K$-bilinear}, falls
       \begin{gather*}
-        b(v_1 + v_2, w) = b(v_1, w) + b_(v_2, w), \\
+        b(v_1 + v_2, w) = b(v_1, w) + b(v_2, w), \\
         b(v, w_1 + w_2) = b(v, w_1) + b(v, w_2),  \\
         b(\lambda v, w) = \lambda b(v,w) = b(v, \lambda w)
       \end{gather*}
       für alle $v, v_1, v_2 \in V$, $w, w_1, w_2 \in W$ und $\lambda \in K$.
       Ist zusätzlich $Z = K$, so ist $b$ eine \emph{Bilinearform}.
-      Gilt außerden noch $V = W$ und
+      Gilt außerdem noch $V = W$ und
       \[
         b(v_1, v_2) = b(v_2, v_1)
         \quad
@@ -22,7 +35,7 @@
     \item
       Eine Abbildung $s \colon V \times W \to Z$ mit $\Complex$-Vektorräumen $V, W, Z$ heißt \emph{sesquilinear}, falls
       \begin{gather*}
-        b(v_1 + v_2, w) = b(v_1, w) + b_(v_2, w), \\
+        b(v_1 + v_2, w) = b(v_1, w) + b(v_2, w), \\
         b(v, w_1 + w_2) = b(v, w_1) + b(v, w_2),  \\
         b(\lambda v, w) = \lambda b(v,w)
         \text{ und }
@@ -81,6 +94,25 @@
 \end{remark}
 
 
+\begin{example}
+  Das \emph{Standardskalarprodukt} auf $\Reals^n$ ist durch
+  \[
+              \bracket{x, y}
+    \coloneqq \sum_{i=1}^n x_i y_i = x^T y
+    \quad
+    \text{für alle $x, y \in \Reals^n$}
+  \]
+  definiert. Das \emph{Standardskalarprodukt} auf $\Complex^n$ ist durch
+  \[
+              \bracket{x, y}
+    \coloneqq \sum_{i=1}^n x_i \overline{y_i} = x^T \overline{y}
+    \quad
+    \text{für alle $x, y \in \Complex^n$}
+  \]
+  definiert
+\end{example}
+
+
 \begin{definition}
   Für einen Skalarproduktraum $V$ und $v \in V$ ist $\|v\| \coloneqq \sqrt{\bracket{v,v}}$.
   Der Vektor $v$ heißt \emph{normiert}, wenn $\|v\| = 1$.
@@ -90,7 +122,7 @@
 \begin{proposition}[Cauchy-Schwarz]
   Ist $V$ ein Skalarproduktraum, so ist
   \[
-    |\bracket{v,w}| \leq \|v\| \cdot \|w\|
+    |\bracketnoscale{v,w}| \leq \|v\| \|w\|
     \quad
     \text{für alle $v, w \in V$},
   \]
@@ -99,7 +131,7 @@
 
 
 \begin{definition}
-  Ist $V$ ein Skalarproduktraum, so ist der \emph{(unorientierte) Winkel} zwischen zwei Vektoren $v, w \in V$ dder eindeutige Winkel $\theta \in [0,\pi]$ mit
+  Ist $V$ ein Skalarproduktraum, so ist der \emph{(unorientierte) Winkel} zwischen zwei Vektoren $v, w \in V$ der eindeutige Winkel $\theta \in [0,\pi]$ mit
   \[
     \cos(\theta) = \frac{\bracket{v,w}}{\|v\| \|w\|},
   \]
@@ -112,25 +144,43 @@
 \end{corollary}
 
 
-\begin{remark}
-  Ist $v \in V$ mit $v \neq 0$, so ist der Vektor $v/\|v\|$ normiert.
-  Man sagt, dass man $v$ normiert.
-\end{remark}
+\begin{proof}
+  Die Dreiecksungleichung ergibt sich durch
+  \begin{align*}
+          \|x + y\|^2
+    &\leq \bracket{x + y, x + y}
+     =    \|x\|^2 + 2 \Re( \bracket{x, y} ) + \|y\|^2
+    \\
+    &\leq \|x\|^2 + 2 |\bracketnoscale{x, y}| + \|y\|^2
+     \leq \|x\|^2 + 2 \|x\| \|y\| + \|y\|^2
+     =    (\|x\| + \|y\|)^2.
+    \qedhere
+  \end{align*}
+\end{proof}
 
 
 \begin{lemma}[Polarisationsformel]
   Ist $V$ ein euklidischer Vektorraum, so ist
   \[
-    \bracket{v,w} = \frac{\|v+w\|^2 - \|v\|^2 - \|w\|^2}{2}
+      \bracket{v,w}
+    = \frac{\|v+w\|^2 - \|v\|^2 - \|w\|^2}{2}
     \quad\text{für alle $v, w \in V$}.
   \]
   Ist $V$ ein unitärer Vektorraum, so ist
   \[
-    \bracket{v,w} = \frac{\|v+w\|^2-\|v\|^2-\|w\|^2}{2} + i \frac{\|v+iw\|-\|v\|^2-\|w\|^2}{2}
+      \bracket{v,w}
+    = \frac{\|v+w\|^2-\|v\|^2-\|w\|^2}{2}
+      + i \frac{\|v+iw\|^2-\|v\|^2-\overbrace{\|iw\|^2}^{= \|w\|^2}}{2}
     \quad\text{für alle $v, w \in V$}.
   \]
+  Das Skalarprodukt ist durch die Norm also eindeutig bestimmt.
 \end{lemma}
 
+
+\begin{remark}
+  Ist $v \in V$ mit $v \neq 0$, so ist der Vektor $v/\|v\|$ normiert.
+  Man sagt, dass man $v$ normiert.
+\end{remark}
 
 
 \begin{definition}
@@ -154,6 +204,11 @@
       das \emph{orthogonale Komplement} von $U$ (in $V$).
   \end{enumerate}
 \end{definition}
+
+
+\begin{remark}
+  Zwei Vektoren $v, w \in V$ eines Skalarproduktraums $V$ sind genau dann orthogonal zueinander, wenn $\vectorangle(v,w) = \pi/2 ( = {90}^\circ )$.
+\end{remark}
 
 
 \begin{lemma}
@@ -187,7 +242,7 @@
   Es sei $V$ ein Skalarproduktraum.
   \begin{enumerate}[leftmargin=*]
     \item
-      Eine Familie $(v_i)_{i \in I}$ von Vektoren $v_i \in V$ ist genau dann orthonormal, wenn $\bracket{v_i, v_j} = \delta_{ij}$ für alle $i,j \in I$.
+      Eine Familie $(v_i)_{i \in I}$ von Vektoren $v_i \in V$ ist genau dann orthonormal wenn \mbox{$\bracket{v_i, v_j} = \delta_{ij}$} für alle $i,j \in I$.
     \item
       Eine Teilmenge $S \subseteq V$ ist genau dann orthonormal, wenn $\bracket{v, w} = \delta_{v,w}$ für alle $v, w \in S$.
   \end{enumerate}  
@@ -208,31 +263,32 @@
 
 \begin{proposition}
   Es sei $(v_i)_{i \in I}$ eine Orthonormalbasis eines Skalarproduktraums $V$.
-  \begin{enumerate}[leftmargin=*, label=\roman*)]
-    \item
-      Für jedes $v \in V$ ist $\bracket{v, v_i} = 0$ für fast alle $i \in I$, und es gilt
-      \begin{gather*}
-        v = \sum_{i \in I} \bracket{v, v_i} v_i
-      \quad\text{sowie}\quad
-        \|v\|^2 = \sum_{i \in I} \bracket{v, v_i}^2.
-      \end{gather*}
-    \item
-      Für alle $v, w \in V$ gilt
-      \[
-        \bracket{v, w}
-        = \sum_{i \in I} \bracket{v, v_i} \bracket{w, v_i}.
-      \]
-  \end{enumerate}
+  Für jedes $w \in V$ ist $\bracket{w, v_i} = 0$ für fast alle $i \in I$, und es gilt
+  \begin{gather*}
+    w = \sum_{i \in I} \bracket{w, v_i} v_i
+  \quad\text{sowie}\quad
+    \|w\|^2 = \sum_{i \in I} \bracket{w, v_i}^2.
+  \end{gather*}
+  für alle $w \in V$.
+  Für alle $w_1, w_2 \in V$ gilt
+  \[
+    \bracket{w_1, w_2}
+    = \sum_{i \in I} \bracket{w_1, v_i} \bracket{v_i, w_2}.
+  \]
 \end{proposition}
 
 
 \begin{theorem}[Gram-Schmidt]
   Es sei $V$ ein Skalarproduktraum und $(v_1, \dotsc, v_n)$ eine linear unabhängige Familie von Vektoren $v_1, \dotsc, v_n \in V$.
   Iterativ seien die Familien $(\tilde{w}_1, \dotsc, \tilde{w}_n)$ und $(w_1, \dotsc, w_n)$ durch
-  $\tilde{w}_1 \coloneqq v_1$, $w_i \coloneqq \tilde{w}_i/\|\tilde{w}_i\|$ und
-  \[
-    \tilde{w}_i \coloneqq v_i - \bracket{v_i, w_1} w_1 - \dotsb - \bracket{v_i, w_{i-1}} w_{i-1}
-  \]
+  \begin{itemize}
+    \item
+      $\tilde{w}_1 \coloneqq v_1$,
+    \item
+      $w_i \coloneqq \tilde{w}_i/\|\tilde{w}_i\|$ für alle $i = 1, \dotsc, n$, und
+    \item
+      $\tilde{w}_i \coloneqq v_i - \bracket{v_i, w_1} w_1 - \dotsb - \bracket{v_i, w_{i-1}} w_{i-1}$ für alle $i = 2, \dotsc, n$
+  \end{itemize}
   definiert.
   Dann ist die Familie $(w_1, \dotsc, w_n)$ orthonormal, und es gilt
   \[
@@ -241,6 +297,11 @@
     \text{für alle $i = 1, \dotsc, n$}.
   \]
 \end{theorem}
+
+
+\begin{remark}
+  Das obige Gram-Schmidt-Verfahren lässt sich auch auf unendliche abzählbare Familien $(v_1, v_2, v_3, \dotsc)$ anwenden.
+\end{remark}
 
 
 \begin{corollary}
@@ -254,6 +315,23 @@
       Für jeden Untervektorraum $U \subseteq V$ ist $V = U \oplus U^\perp$.
   \end{enumerate}
 \end{corollary}
+
+
+\begin{corollary}
+  Ist $U \subseteq V$ ein Untervektorraum eines endlichdimensionalen Skalarproduktraums $V$, so gilt $\dim U^\perp = \dim V - \dim U$ und $(U^\perp)^\perp = U$.
+\end{corollary}
+
+
+\begin{proof}
+  Dass $\dim U^\perp = \dim V - \dim U$ ergibt sich aus $V = U \oplus U^\perp$.
+  Es ergibt sich direkt, dass $U \subseteq (U^\perp)^\perp$, und da
+  \[
+      \dim (U^\perp)^\perp
+    = \dim V - \dim U^\perp
+    = \dim U
+  \]
+  gilt bereits Gleichheit.
+\end{proof}
 
 
 \begin{proposition}
