@@ -14,7 +14,7 @@
 
 
 \begin{question}
-  Es seien $f, g \colon V \to V$ zwei kommutierende Endomorphismen eines $K$-Vektorraums $V$
+  Es seien $f, g \colon V \to V$ zwei kommutierende Endomorphismen eines $K$-Vektorraums $V$.
   \begin{enumerate}[leftmargin=*]
     \item
       Zeigen Sie, dass $V_\lambda(f)$ für alle $\lambda \in K$ invariant unter $g$ ist.
@@ -82,10 +82,9 @@
   Es sei $V$ eine endlichdimensionaler Skalarproduktraum.
   \begin{enumerate}[leftmargin=*]
     \item
-      Zeigen Sie, dass sich eine Famlie $(v_1, \dotsc, v_m)$ genau dann orthonormal ist, wenn sie sich durch das Anwenden des Gram-Schmidt-Verfahrens nicht ändert.
+      Zeigen Sie, dass eine Famlie $(v_1, \dotsc, v_m)$ genau dann orthonormal ist, wenn sie sich durch das Anwenden des Gram-Schmidt-Verfahrens nicht ändert.
     \item
-      Zeigen Sie, dass sich jede orthonormale Familie $(v_1, \dotsc, v_m)$ von Vektoren $v_i \in V$ zu einer Orthonormalbasis $(v_1, \dotsc, v_m, v_{m+1}, \dotsc, v_{m})$ von $V$ ergänzen lässt.
-      (\emph{Hinweis}: Nutzen Sie Gram-Schmidt.)
+      Zeigen Sie, dass sich jede orthonormale Familie $(v_1, \dotsc, v_m)$ von Vektoren $v_i \in V$ zu einer Orthonormalbasis $(v_1, \dotsc, v_m, v_{m+1}, \dotsc, v_n)$ von $V$ ergänzen lässt.
     \item
       Folgern Sie, dass $V$ eine Orthonormalbasis besitzt.
     \item
@@ -113,7 +112,7 @@
     \item
       Folgern Sie, dass $\Phi$ ein Isomorphismus ist.
     \item
-      Zeigen Sie, dass $\Phi(\basis{B}) \coloneqq (\Phi(v_1), \dotsc, \Phi(v_n))$ mit derzu $\basis{B}$ dualen Basis $\basis{B}^* = (v_1^*, \dotsc, v_n^*)$ von $V^*$ übereinstimmt.
+      Zeigen Sie, dass $\Phi(\basis{B}) \coloneqq (\Phi(v_1), \dotsc, \Phi(v_n))$ mit der zu $\basis{B}$ dualen Basis $\basis{B}^* = (v_1^*, \dotsc, v_n^*)$ von $V^*$ übereinstimmt.
   \end{enumerate}
 \end{question}
 
@@ -134,9 +133,9 @@
 \begin{question}
   Es seien $V$ und $W$ zwei endichdimensionale Skalarprodukträume und $\Phi_V \colon V \to V^*$ und $\Phi_W \colon W \to W^*$ die zugehörigen Isomorphismen mit $\Phi_V(v) = \bracket{-,v}$ und $\Phi_W(w) = \bracket{-,w}$ für alle $v \in V$ und $w \in W$.
   
-  Es sei $f \colon V \to W$ eine lineare Abbildung, und $f^T \colon W^* \to V^*$ die duale Abbildung, d.h.\ es ist $f^T(\psi) \coloneqq \psi \circ f$ für alle $\psi \in W^*$.
+  Es sei $f \colon V \to W$ eine lineare Abbildung, und $f^T \colon W^* \to V^*$ die zugehörige duale Abbildung, d.h.\ es ist $f^T(\psi) \coloneqq \psi \circ f$ für alle $\psi \in W^*$.
   
-  Zeigen Sie, dass die adjungierte Abbildung $f^* \colon W \to V$ die eindeutig Abbildung ist, die das folgende Diagram zum kommutieren bringt:
+  Zeigen Sie, dass die adjungierte Abbildung $f^* \colon W \to V$ die eindeutig Abbildung ist, die das folgende Diagramm zum kommutieren bringt:
   \[
     \begin{tikzcd}[row sep = large, column sep = large, ampersand replacement=\&]
           W
@@ -151,6 +150,14 @@
     \end{tikzcd}
   \]
 \end{question}
+
+
+\begin{question}
+  Es seien $V$ und $W$ zwei endlichdimensionale Skalarprodukträume.
+  Es sei $\basis{B}$ eine geordnete Orthonormalbasis von $V$ und $\basis{C}$ eine geordnete Orthonormalbasis von $W$.
+  Zeigen Sie, dass für jede $\Korper$-lineare Abbildung $f \colon V \to W$ die Gleichheit $\Mat_{\basis{C}, \basis{B}}(f^*) = \Mat_{\basis{B}, \basis{C}}(f)^*$ gilt.
+\end{question}
+
 
 
 \newpage
