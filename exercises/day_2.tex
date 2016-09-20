@@ -1,0 +1,163 @@
+\documentclass[a4paper, 10pt]{scrartcl}
+
+\usepackage{../generalstyle}
+\usepackage{exercisestyle}
+
+
+\title{Lineare Algebra II Repetitorium \\ Übungen, Tag 2}
+\author{Jendrik Stelzner}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{question}
+  Es seien $f, g \colon V \to V$ zwei kommutierende Endomorphismen eines $K$-Vektorraums $V$
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass $V_\lambda(f)$ für alle $\lambda \in K$ invariant unter $g$ ist.
+    \item
+      Entscheiden Sie, ob auch $V^\sim_\lambda(f)$ für alle $\lambda \in K$ invariant unter $g$ ist.
+  \end{enumerate}
+  Es seien nun $H, E \colon V \to V$ zwei Endomorphismen mit $HE - EH = 2E$.
+  \begin{enumerate}[leftmargin=*, resume]
+    \item
+      Zeigen Sie, dass $E(V_\lambda(H)) \subseteq V_{\lambda + 2}(H)$ für alle $\lambda \in K$.
+  \end{enumerate}
+\end{question}
+
+
+% \begin{question}
+%   Es seien $f_1, \dotsc, f_n \colon V \to V$ Endomorphismen eines endlichdimensionalen $K$-Vektorraums $V$.
+%   \begin{enumerate}[leftmargin=*]
+%     \item
+%       Es sei
+%       $
+%         V = \bigoplus_{\lambda_1, \dotsc, \lambda_n \in K}
+%             (V_{\lambda_1}(f) \cap \dotsb \cap V_{\lambda_n}(f))
+%       $.
+%       Zeigen Sie, dass $V$ eine Basis aus gemeinsamen Eigenvektoren von $f_1, \dotsc, f_n$ besitzt.
+%     \item
+%       Umgekehrt besitze nun $V$ eine Basis aus gemeinsamen Eigenvektoren von $f_1, \dotsc, f_n$.
+%       Zeigen Sie, dass
+%       $
+%         V = \bigoplus_{\lambda_1, \dotsc, \lambda_n \in K}
+%             (V_{\lambda_1}(f) \cap \dotsb \cap V_{\lambda_n}(f)).
+%       $
+%   \end{enumerate}
+% \end{question}
+
+
+\begin{question}
+  Beweisen Sie die Chauchy-Schwarz-Ungleichung.
+\end{question}
+
+
+\begin{solution}
+  Es seien $v, w \in V$.
+  Die Fälle $v = 0$ und $w = 0$ sind klar, es genügt daher den Fall $v, w \neq 0$ zu betrachten.
+  Es ist
+  \[
+          0
+    \leq  \bracket{ v - \frac{\bracket{v,w}}{\|w\|^2} w, v - \frac{\bracket{v,w}}{\|w\|^2} w}
+    =     \|v\|^2 - \frac{|\bracketnoscale{v,w}|^2}{\|w\|^2}
+  \]
+  und somit $|\bracketnoscale{v,w}| \leq \|v\| \|w\|$.
+  
+  Sind $v$ und $w$ linear abhängig, so gilt $w = \lambda v$ für ein $\lambda \in \Korper$, und durch Einsetzen ergibt sich $|\bracketnoscale{v,w}| = \|v\| \|w\|$.
+  Gilt andererseits die Gleichheit $\bracket{v,w} = \|v\| \|w\|$, so gilt in der obigen Zeile $0 = v - \bracketnoscale{v,w}/\|w\|^2$, weshalb $v$ und $w$ linear abhängig sind.
+\end{solution}
+
+
+\begin{question}
+  Es sei $V$ ein Skalarproduktraum und $(v_i)_{i \in I}$ eine Familie von Vektoren mit $v_i \neq 0$ für alle $i \in I$.
+  Zeigen Sie, dass die Familie $(v_i)_{i \in I}$ linear unabhängig ist, wenn sie orthogonal ist.
+  Entscheiden Sie, ob auch die Umkehrung gilt.
+\end{question}
+
+
+\begin{question}
+  Es sei $V$ eine endlichdimensionaler Skalarproduktraum.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass sich eine Famlie $(v_1, \dotsc, v_m)$ genau dann orthonormal ist, wenn sie sich durch das Anwenden des Gram-Schmidt-Verfahrens nicht ändert.
+    \item
+      Zeigen Sie, dass sich jede orthonormale Familie $(v_1, \dotsc, v_m)$ von Vektoren $v_i \in V$ zu einer Orthonormalbasis $(v_1, \dotsc, v_m, v_{m+1}, \dotsc, v_{m})$ von $V$ ergänzen lässt.
+      (\emph{Hinweis}: Nutzen Sie Gram-Schmidt.)
+    \item
+      Folgern Sie, dass $V$ eine Orthonormalbasis besitzt.
+    \item
+      Zeigen Sie, dass für jeden Untervektorraum $U \subseteq V$ die Gleichheit $V = U \oplus U^\perp$ gilt.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Es sei $V$ ein Skalarproduktraum.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass die Abbildung
+      \[
+        \Phi \colon V \to V^*,
+        \quad
+        v \mapsto \bracket{-, v}
+      \]
+      wohldefiniert und $\Reals$-linear, bzw.\ $\Complex$-antilinear ist.
+    \item
+      Zeigen Sie, dass $\Phi$ injektiv ist.
+  \end{enumerate}
+  Von nun an sei $V$ zusätzlich endlichdimensional, und $\basis{B} = (v_1, \dotsc, v_n)$ sei eine Orthonormalbasis von $V$.
+  \begin{enumerate}[leftmargin=*, resume]
+    \item
+      Folgern Sie, dass $\Phi$ ein Isomorphismus ist.
+    \item
+      Zeigen Sie, dass $\Phi(\basis{B}) \coloneqq (\Phi(v_1), \dotsc, \Phi(v_n))$ mit derzu $\basis{B}$ dualen Basis $\basis{B}^* = (v_1^*, \dotsc, v_n^*)$ von $V^*$ übereinstimmt.
+  \end{enumerate}
+\end{question}
+
+
+% \begin{question}
+%   Es sei $V$ ein endlichdimensionaler Skalarproduktraum und $(v_1, \dotsc, v_n)$ eine Orthonormalbasis von $V$.
+%   \begin{enumerate}[leftmargin = *]
+%     \item
+%       Zeigen Sie, dass $w = \sum_{i=1}^n \bracket{w, v_i} v_i$ für alle $w \in W$.
+%     \item
+%       Zeigen Sie, dass $\bracket{w_1, w_2} = \sum_{i=1}^n \bracket{w_1, v_i} \bracket{v_i, w_2}$ für alle $w_1, w_2 \in V$.
+%     \item
+%       Zeigen Sie, dass $\|w\|^2 = \sum_{i=1}^n |\bracketnoscale{w,v_i}|^2$ für alle $w \in W$.
+%   \end{enumerate}
+% \end{question}
+
+
+\begin{question}
+  Es seien $V$ und $W$ zwei endichdimensionale Skalarprodukträume und $\Phi_V \colon V \to V^*$ und $\Phi_W \colon W \to W^*$ die zugehörigen Isomorphismen mit $\Phi_V(v) = \bracket{-,v}$ und $\Phi_W(w) = \bracket{-,w}$ für alle $v \in V$ und $w \in W$.
+  
+  Es sei $f \colon V \to W$ eine lineare Abbildung, und $f^T \colon W^* \to V^*$ die duale Abbildung, d.h.\ es ist $f^T(\psi) \coloneqq \psi \circ f$ für alle $\psi \in W^*$.
+  
+  Zeigen Sie, dass die adjungierte Abbildung $f^* \colon W \to V$ die eindeutig Abbildung ist, die das folgende Diagram zum kommutieren bringt:
+  \[
+    \begin{tikzcd}[row sep = large, column sep = large, ampersand replacement=\&]
+          W
+          \arrow{r}{f^*}
+          \arrow{d}[left]{\Phi_W}
+      \&  V
+          \arrow{d}{\Phi_V}
+      \\
+          W^*
+          \arrow{r}{f^T}
+      \&  V^*
+    \end{tikzcd}
+  \]
+\end{question}
+
+
+\newpage
+
+
+\printsolutions
+
+
+
+\end{document}
