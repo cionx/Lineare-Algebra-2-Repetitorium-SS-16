@@ -1,0 +1,156 @@
+\documentclass[a4paper, 10pt]{scrartcl}
+
+\usepackage{../generalstyle}
+\usepackage{exercisestyle}
+
+
+\title{Lineare Algebra II Repetitorium \\ Übungen, Tag 3}
+\author{Jendrik Stelzner}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+
+Im Folgenden werden alle auftretenden Skalarprodukträume als endlichdimensional vorausgesetzt.
+
+
+\begin{question}
+  Es sei $f \colon V \to V$ ein normaler Endomorphismus eines Skalarproduktraums $V$.
+  Zeigen Sie:
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Für alle $v \in V$ ist $\|f(v)\| = \|f^*(v)\|$.
+    \item
+      Es ist $V_\lambda(f^*) = V_{\overline{\lambda}}(f)$ für alle $\lambda \in \Korper$.
+    \item
+      Für alle $\lambda, \mu \in \Korper$ mit $\lambda \neq \mu$ ist $V_\lambda(f) \perp V_\mu(f)$.
+    \item
+      Für $v \in V$ und $n \geq 1$ mit $f^n(v) = 0$ ist bereits $f(v) = 0$.
+      (\emph{Hinweis}: Betrachen Sie zunächst den Fall $n = 2$.)
+    \item
+      Folgern Sie, dass $V^\sim_\lambda(f) = V_\lambda(f)$ für alle $\lambda \in K$.
+  \end{enumerate}
+  Zeigen Sie außerdem:
+  \begin{enumerate}[leftmargin=*, resume]
+    \item
+      Ein Untervektorraum $U \subseteq V$ ist genau dann $f$-invariant, wenn $U^\perp$ invariant unter $f^*$ ist.
+    \item
+      Es ist $\im f^* = (\ker f)^\perp$ und $\ker f^* = (\im f)^\perp$.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Zeigen Sie, dass für einen Endomorphismus $f \colon V \to V$ eines Skalarproduktraums $V$ die folgenden Bedingungen äquivalent sind:
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Es gilt $f f^* = \id_V$.
+    \item
+      Es gilt $f^* f = \id_V$.
+    \item
+      $f$ ist ein Isomorphismus mit $f^* = f^{-1}$.
+    \item
+      Für alle $v_1, v_2 \in V$ ist $\bracket{f(v_1), f(v_2)} = \bracket{v_1, v_2}$.
+    \item
+      Für alle $v \in V$ ist $\|f(v)\| = \|v\|$.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Es sei $A \in \Mat_n(\Korper)$ .
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass genau dann $A^* A = I$, wenn die Spalten von $A$ eine Orthonormalbasis von $\Korper^n$ bilden.
+    \item
+      Zeigen Sie, dass genau dann $A A^* = I$, wenn die Zeilen von $A$ eine Orthonormalbasis von $\Korper^n$ bilden.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines Skalarproduktraums $V$.
+  Zeigen Sie die folgende Aussagen ohne Verwendung entsprechender Normalenformen:
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Ist $f$ selbstadjungiert, so sind alle Eigenwerte von $f$ reell.
+    \item
+      Ist $f$ antiselbstadjungiert, so sind alle Eigenwerte von $f$ rein imaginär.
+    \item
+      Ist $f$ unitär, so haben alle Eigenwerte von $f$ Betrag $1$.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Es sei $n \geq 1$.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass $\det(U) \subseteq S^1$ für alle $U \in \Unitary(n)$, und dass $\det \colon \Unitary(n) \to S^1$ surjektiv ist.
+    \item
+      Zeigen Sie, dass $\det(O) \subseteq \{1,-1\}$ für alle $O \in \Orthogonal(n)$, und dass $\det \colon \Orthogonal(n) \to \{1,-1\}$ surjektiv ist.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Es sei $V$ ein Skalarproduktraum.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Es sei $v \in V$ ein normierter Vektor.
+      Zeigen Sie, dass die Abbildung $P_v \colon V \to V$ mit $P_v(w) = \bracket{w,v} v$ die orthogonale Projektion auf die Gerade $\Ell(v)$ ist.
+    \item
+      Es sei $(v_1, \dotsc, v_n)$ eine orthonormale Familie von Vektoren $v_1, \dotsc, v_n \in V$.
+      Zeigen Sie, dass $P \coloneqq P_{v_1} + \dotsb + P_{v_n}$ die orthogonale Projektion auf den Untervektorraum $\Ell(v_1, \dotsc, v_n)$ ist.
+  \end{enumerate}
+\end{question}
+
+
+
+\begin{question}
+  Es sei $f \colon V \to V$ ein Endomorphismus eines Skalarproduktraums $V$.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass $f$ genau dann positiv ist, wenn $\bracket{f(v), v} > 0$ für alle $v \in V$.
+    \item
+      Zeigen Sie, dass $f f^*$ und $f^* f$ positiv selbstadjungiert sind.
+  \end{enumerate}
+\end{question}
+
+
+% \begin{question}
+%   \begin{enumerate}[leftmargin=*]
+%     \item
+%       Es sei $V$ ein $K$-Vektorraum, wobei $\ringchar(K) \neq 2$ gilt.
+%       Zeigen Sie, dass für jede symmetrische Bilinearform $\bracket{\cdot, \cdot} \colon V \times V \to K$ die Polarisationsformel
+%       \[
+%           \bracket{v_1, v_2}
+%         = \frac{q(v_1 + v_2) - q(v_1) - q(v_2)}{2}
+%         \quad
+%         \text{für alle $v_1, v_2 \in V$}
+%       \]
+%       gilt, wobei $q \colon V \to K$, $v \mapsto \bracket{v,v}$ die zu $\bracket{\cdot, \cdot}$ gehörige qudratische Form ist.
+%     \item
+%       Es sei $V$ ein $\Complex$-Vektorraum und $\bracket{\cdot, \cdot} \colon V \times V \to K$ eine hermitsche Sesquilinearform und $q \colon V \to \Reals$, $v \mapsto \bracket{v,v}$.
+%       Leiten Sie eine entsprechende Polarisationsformel her
+%   \end{enumerate}
+% \end{question}
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\printsolutions
+
+
+
+\end{document}
