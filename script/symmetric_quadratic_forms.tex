@@ -26,7 +26,7 @@
 
 
 \begin{lemma}
-  Ist $V$ ein $K$-Vektorraum mit $\ringchar K \neq 2$, $\bracket{\cdot, \cdot} \colon V \times V \to K$ eine symmetrische Bilinearform und $q \colon V \to K$ die zugehörige quadratische Form, so ist
+  Ist $V$ ein $K$-Vektorraum mit $\ringchar(K) \neq 2$, $\bracket{\cdot, \cdot} \colon V \times V \to K$ eine symmetrische Bilinearform und $q \colon V \to K$ die zugehörige quadratische Form, so ist
   \[
     \bracket{v, w} = \frac{q(v+w)-q(v)-q(w)}{2}
     \quad
@@ -74,7 +74,7 @@
       \[
         \rad(\beta)
         \coloneqq
-        \{v \in V \mid \text{$\beta(u,v) = 0$ für alle $u \in V$}\}
+        \{v \in V \mid \text{$\beta(t,v) = 0$ für alle $t \in V$}\}
       \]
       ist das \emph{Radikal} von $\beta$.
   \end{enumerate}
@@ -101,19 +101,13 @@
     \item
       Für alle $i,j = 1, \dotsc, n$ ist $B_{ij} = \beta(v_i, v_j)$.
     \item
-      Für die lineare Abbildung
-      \[
-        \Phi \colon V \to V^*,
-        \quad
-        v \mapsto \beta(-,v)
-      \]
-      ist $B = \Mat_{\basis{C}, \basis{C}^*}(\Phi)$.
+      Für die lineare Abbildung $\Phi \colon V \to V^*$, $v \mapsto \beta(-,v)$ ist $B = \Mat_{\basis{C}, \basis{C}^*}(\Phi)$.
   \end{enumerate}
 \end{lemma}
 
 
 \begin{definition}
-  Ist $V$ ein endlichdimensionaler $K$-Vektorraum mit geordneter Basis $\basis{C} = (v_1, \dotsc, v_n)$, und $\beta \colon V \times V \to K$ eine Bilinearform, so heißt die Matrix $B \in \Mat_n(K)$ mit
+  , so heißt die Matrix $B \in \Mat_n(K)$ mit
   \[
     B_{ij} = \beta(v_i, v_j)
     \quad
@@ -141,20 +135,20 @@
 
 
 \begin{lemma}
-  Es sei $\basis{C} = (v_1, \dotsc, v_n)$ eine geordnete Basis eines $K$-Vektorraums $V$ und
+  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum, $\beta \colon V \times V \to K$ eine Bilinearform und $\basis{C} = (v_1, \dotsc, v_n)$ eine geordnete Basis von $V$.
+  Für den induzierten Isomorphismus
   \[
     \Phi \colon V \to K^n,
     \quad
     \sum_{i=1}^n \lambda_i v_i \mapsto \cvector{\lambda_1 \\ \vdots \\ \lambda_n}
   \]
-  der induzierte Isomorphismus.
-  Ist $\beta \colon V \times V \to K$ eine Bilinearform, so ist
+  gilt die Identität
   \[
-    \beta(v,w)
+    \beta(v_1, v_2)
     =
-    \Phi(v)^T \Mat_\basis{C}(\beta) \Phi(w)
+    \Phi(v_1)^T \Mat_\basis{C}(\beta) \Phi(v_2)
     \quad
-    \text{für alle $v, w \in V$}.
+    \text{für alle $v_1, v_2 \in V$}.
   \]
 \end{lemma}
 
@@ -200,6 +194,12 @@
     \item
       Für jede geordnete Basis $\basis{C}$ von $V$ ist die darstellende Matrix $\Mat_\basis{C}(\beta)$ invertierbar.
   \end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}
+  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum, $\beta \colon V \times V \to K$ eine symmetrische, nicht-entartete Bilinearform und $U \subseteq V$ ein Untervektorraum.
+  Dann gilt $\dim U^\perp = \dim V - \dim U$ und $(U^\perp)^\perp = U$.
 \end{proposition}
 
 
