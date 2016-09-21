@@ -30,6 +30,20 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 \end{definition}
 
 
+\begin{definition}
+  Für $A \in \Mat(m \times n, \Korper)$ ist $A^* \coloneqq \overline{A^t} = (\overline{A})^t \in \Mat(n \times m, \Korper)$.
+\end{definition}
+
+
+\begin{proposition}
+  Es sei $V$ ein Skalarproduktraum mit geordneter Orthonormalbasis $\basis{B}$ und $W$ ein Skalarproduktraum mit geordneter Orthonormalbasis $\basis{C}$.
+  Für jede $\Korper$-lineare Abbildung $f \colon V \to W$ gilt dann
+  \[
+    \Mat_{\basis{C}, \basis{B}}(f^*) = \Mat_{\basis{B}, \basis{C}}(f)^*.
+  \]
+\end{proposition}
+
+
 \begin{proposition}
   Es seien $U, V, W$ drei Skalarprodukträume und $f \colon V \to W$, $g \colon U \to V$ zwei $\Korper$-lineare Abbildungen und $\lambda \in K$
   \begin{enumerate}[leftmargin=*, label=\roman*)]
@@ -49,20 +63,6 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
     \item
       Die Abbildung $f$ ist genau dann ein Isomorphismus, wenn $f^*$ ein Isomorphismus ist.
   \end{enumerate}
-\end{proposition}
-
-
-\begin{definition}
-  Für $A \in \Mat(m \times n, \Korper)$ ist $A^* \coloneqq \overline{A^t} = (\overline{A})^t \in \Mat(n \times m, \Korper)$.
-\end{definition}
-
-
-\begin{proposition}
-  Es sei $V$ ein Skalarproduktraum mit geordneter Orthonormalbasis $\basis{B}$ und $W$ ein Skalarproduktraum mit geordneter Orthonormalbasis $\basis{C}$.
-  Für jede $\Korper$-lineare Abbildung $f \colon V \to W$ gilt dann
-  \[
-    \Mat_{\basis{C}, \basis{B}}(f^*) = \Mat_{\basis{B}, \basis{C}}(f)^*.
-  \]
 \end{proposition}
 
 
@@ -131,9 +131,19 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 
 
 \begin{proposition}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Ist $V$ ein Skalarproduktraum, so ist $\Orthogonal(V)$, bzw.\ $\Unitary(V)$ eine Untergruppe von $\GL(V)$.
+    \item
+      Für alle $n \geq 1$ ist $\Orthogonal(n)$, bzw.\ $\Unitary(n)$ eine Untergruppe von $\GL_n(\Reals)$, bzw.\ $\GL_n(\Complex)$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{lemma}
   Es sei $f \colon V \to V$ ein Endomorphismus eines Skalarproduktraums $V$, und $\basis{B}$ eine geordnete Basis von $V$.
   Dann ist $f$ genau dann normal, selbstadjungiert, antiselbstadjungiert, orthogonal, bzw.\ unitär, wenn $\Mat_\basis{B}(f)$ normal, selbstadjungiert, antiselbstadjungiert, orthogonal, bzw.\ unitär ist.
-\end{proposition}
+\end{lemma}
 
 
 \begin{proposition}
@@ -142,9 +152,9 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
     \item
       Für alle $v \in V$ ist $\|f(v)\| = \|f^*(v)\|$.
     \item
-      Es ist $V_\lambda(f^*) = V_{\overline{\lambda}}(f)$ für alle $\lambda \in \Korper$.
+      Es ist $V_\lambda(f^*) = V_{\overline{\lambda}}(f)$ für alle $\lambda \in \Korper$, also haben $f$ und $f^*$ die gleichen Eigenvektoren zu jeweils konjugierten Eigenwerten.
     \item
-      Für alle $\lambda, \mu \in \Korper$ mit $\lambda \neq 0$ ist $V_\lambda(f) \perp V_\mu(f)$.
+      Für alle $\lambda, \mu \in \Korper$ mit $\lambda \neq \mu$ ist $V_\lambda(f) \perp V_\mu(f)$.
     \item
       Für $v \in V$ und $n \geq 1$ mit $f^n(v) = 0$ ist bereits $f(v) = 0$.
     \item
@@ -169,7 +179,7 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
     \item
       Für alle $v \in V$ ist $\|f(v)\| = \|v\|$.
     \item
-      Für alle $v, w \in V$ ist $\bracket{f(v), f(w)} = \bracket{v,w}$.
+      Für alle $v_1, v_2 \in V$ ist $\bracket{f(v_1), f(v_2)} = \bracket{v_1, v_2}$.
   \end{enumerate}
 \end{proposition}
 
@@ -211,14 +221,44 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
   Es sei $f \colon V \to V$ ein Endomorphismus eines unitären Vektorraums $V$.
   Die folgenden Bedingungen sind äquivalent:
   \begin{enumerate}[leftmargin=*, label=\roman*)]
-    \item
+    \item\label{enum: normal}
       $f$ ist normal.
-    \item
+    \item\label{enum: orthonormal basis of eigenvectors}
       $V$ hat eine Orthonormalbasis aus Eigenvektoren von $f$.
-    \item
+    \item\label{enum: orthogonal complements are invariant}
       Für jeden $f$-invarianten Untervektorraum $U \subseteq V$ ist auch $U^\perp$ invariant unter $f$.
   \end{enumerate}
 \end{theorem}
+
+
+\begin{proof}\,
+  [\ref{enum: normal} $\implies$ \ref{enum: orthonormal basis of eigenvectors}]
+    Da $\Complex$ algebraisch abgeschlossen und $V$ endlichdimensional ist, gibt es eine Hauptraumzerlegung $V = \bigoplus_{\lambda \in K} V^\sim_\lambda(f)$.
+    Da $f$ normal ist gilt $V^\sim_\lambda(f) = V_\lambda(f)$ für alle $\lambda \in K$, weshalb bereits $V = \bigoplus_{\lambda \in K} V_\lambda(f)$.
+    Also ist $f$ diagonalisierbar.
+    Für jedes $\lambda \in K$ sei $\basis{B}_\lambda$ eine Orthonormalbasis von $V_\lambda(f)$.
+    Da die Summe $V = \bigoplus_{\lambda \in K} V_\lambda(f)$ orthogonal ist ergibt sich durch Zusammenfügen der $\basis{B}_\lambda$ eine Orthonormalbasis $\basis{B}$ von $V$.
+    
+  [\ref{enum: orthonormal basis of eigenvectors} $\implies$ \ref{enum: normal}]
+    Es sei $\basis{B}$ eine geordnete Orthonormalbasis von $V$ aus Eigenvektoren von $f$.
+    Dann ist $\Mat_\basis{B}(f)$ eine Diagonalmatrix.
+    Auch $\Mat_\basis{B}(f^*) = \Mat_\basis{B}(f)^*$ ist eine Diagonalmatrix.
+    Deshalb kommutierne $\Mat_\basis{B}(f)$ und $\Mat_\basis{B}(f^*)$, und somit auch $f$ und $f^*$.
+    
+  [\ref{enum: orthonormal basis of eigenvectors} $\implies$ \ref{enum: orthogonal complements are invariant}]
+    Da $f$ diagonalisierbar ist, ist auch die Einschränkung $f|_U$ diagonalisierbar.
+    Also ist $U = \sum_{\lambda \in K} U_\lambda(f|_U)$.
+    Da jeder Eigenvektor von $U$ auch ein Eigenvektor von $f^*$ ist, ist $U$ deshalb auch invariant unter $f^*$.
+    Somit ist $U^\perp$ invariant unter $f$.
+    
+  [\ref{enum: orthogonal complements are invariant} $\implies$ \ref{enum: orthonormal basis of eigenvectors}]
+    Es sei $v_1 \in V$ ein normierter Eigenvektor von $V$.
+    Da $U_1 \coloneqq \bracket{v_1}$ invariant unter $f$ ist, ist auch $U_1^\perp$ invariant unter $f$.
+    Es sei $v_2 \in U_1^\perp$ ein normierter Eigenvektor von $f|_U$ und $U_2 \coloneqq \bracket{u_1, u_2}$.
+    Iterativ ergeben sich somit orthonormale $v_1, \dotsc, v_n \in V$ für alle $1 \leq n \leq \dim V$.
+    Insbesondere ist $(v_1, \dotsc, v_{\dim V})$ eine Orthonormalbasis von $V$.
+\end{proof}
+
 
 
 \begin{corollary}
@@ -227,9 +267,23 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
     \item
       $A$ ist normal.
     \item
-      Es gibt eine unitäre Matrix $U \in \Unitary(n)$, so dass $U\!A U^{-1}$ in Diagonalgestalt ist.
+      Es gibt eine unitäre Matrix $U \in \Unitary(n)$, so dass $U\!A U^{-1} = U\!A U^*$ in Diagonalgestalt ist.
   \end{enumerate}
 \end{corollary}
+
+
+\begin{proof}
+  Wir versehen $\Complex^n$ mit dem Standardskalarprodukt.
+  Die Matrix $A$ entpsricht der linearen Abbildung $f \colon \Complex^n \to \Complex^n$ mit $f(x) = Ax$ für alle $x \in \Complex^n$.
+  Bezüglich der Standardbasis $\basis{S} = (e_1, \dotsc, e_n)$ von $\Complex^n$ ist $\Mat_\basis{S}(f) = A$ normal.
+  Da $\basis{S}$ eine Orthonormalbasis von $\Complex^n$ ist, folgt damit, dass $f$ normal ist.
+  
+  Es gibt also eine Orthonormalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $\Complex^n$, so dass $\Mat_\basis{B}(f)$ eine Diagonalmatrix ist.
+  Ist $V \in \Mat_n(\Complex)$ die Matrix, deren Spalten die Vektoren $v_1, \dotsc, v_n$ sind, so gilt $\Mat_\basis{B}(f) = V^{-1} A V$.
+  
+  Da die Spalten von $V$ ein Orthonormalbasis von $\Complex^n$ sind, ist $V$ unitär.
+  Folglich ist auch $U \coloneqq V^{-1}$ unitär, und $U\!A U^{-1} = V^{-1} A U = \Mat_\basis{B}(f)$ ist eine Diagonalmatrix.
+\end{proof}
 
 
 \begin{proposition}
@@ -243,6 +297,45 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
       $f$ ist genau dann unitär, wenn $f$ normal ist und alle Eigenwerte Betrag $1$ haben.
   \end{enumerate}
 \end{proposition}
+
+
+\begin{proof}
+  Wir zeigen beispielsweise die dritte Aussage:
+  Da unitäre Endomorphismen normal sind, genügt es zu zeigen, dass ein normaler Endomorphismus $f \colon V \to V$ genau dann unitär ist, wenn alle Eigenwerte von $f$ Betrag $1$ haben.
+  
+  Da $f$ normal ist gibt es eine Orthonormalbasis $\basis{B}$ von $V$, so dass
+  \[
+    \Mat_\basis{B}(f)
+    =
+    \begin{pmatrix}
+      \lambda_1 &         &           \\
+                & \ddots  &           \\
+                &         & \lambda_n
+    \end{pmatrix}.
+  \]
+  Nun ist $f$ genau dann unitär, wenn $\Mat_\basis{B}(f^*)w = \Mat_\basis{B}(f^{-1})$.
+  Da
+  \[
+    \Mat_\basis{B}(f^*)
+    =
+    \Mat_\basis{B}(f)^*
+    =
+    \begin{pmatrix}
+      \lambda_1 &         &           \\
+                & \ddots  &           \\
+                &         & \lambda_n
+    \end{pmatrix}^*
+    =
+    \begin{pmatrix}
+      \overline{\lambda_1}  &         &                       \\
+                            & \ddots  &                       \\
+                            &         & \overline{\lambda_n}
+    \end{pmatrix}
+  \]
+  gilt dies genau dann, wenn $\lambda_i \overline{\lambda_i} = 1$ für alle $i = 1, \dotsc n$.
+  Da $\lambda_i \overline{\lambda_i} = |\lambda_i|^2$ zeigt dies die Aussage.
+\end{proof}
+
 
 
 \begin{corollary}
@@ -259,7 +352,13 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 
 
 \begin{corollary}
-  Für alle $n \geq 1$ ist $\det(\Unitary(n)) = S^1$, wobei $S^1 \coloneqq \{z \in \Complex \mid |z| = 1\}$.
+  Es sei $S^1 \coloneqq \{z \in \Complex \mid |z| = 1\}$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Ist $V$ ein unitärer Vektorraum mit $\dim V \geq 1$, so ist $\det(\Unitary(V)) = S^1$.
+    \item
+      Für alle $n \geq 1$ ist $\det(\Unitary(n)) = S^1$.
+  \end{enumerate}
 \end{corollary}
 
 
@@ -345,9 +444,31 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
     \item
       $f$ ist genau dann selbstadjungiert, wenn $f$ normal ist und in der Normalenform von Theorem~\ref{thrm: normal form for real normal endomorphisms} $t = 0$ gilt, also wenn $V$ eine Orthonormalbasis aus Eigenvektoren von $f$ besitzt.
     \item
-      $f$ ist genau dann antiselbstadjungiert, wenn $f$ normal ist und in der Normalenform von Theorem~\ref{thrm: normal form for real normal endomorphisms} $\lambda_1 = \dotsb = \lambda_s = 0$ und $\varphi_1 = \dotsb = \varphi_t = \pi/2$ gilt.
+      $f$ ist genau dann antiselbstadjungiert, wenn $f$ normal ist und in der Normalenform von Theorem~\ref{thrm: normal form for real normal endomorphisms} $\lambda_1 = \dotsb = \lambda_s = 0$ und $\varphi_1 = \dotsb = \varphi_t = \pi/2$ gilt:
+      \[
+        \begin{pmatrix*}[r]
+          0 &         &   &                 &                   &         &                 &                   \\
+            & \ddots  &   &                 &                   &         &                 &                   \\
+            &         & 0 &                 &                   &         &                 &                   \\
+            &         &   & 0_{\phantom{1}} & -r_1              &         &                 &                   \\
+            &         &   & r_1             &  0_{\phantom{1}}  &         &                 &                   \\
+            &         &   &                 &                   & \ddots  &                 &                   \\
+            &         &   &                 &                   &         & 0_{\phantom{1}} & -r_t              \\
+            &         &   &                 &                   &         & r_t             &  0_{\phantom{1}}
+        \end{pmatrix*}
+      \]
     \item
-      $f$ ist genau dann orthogonal, wenn $f$ normal ist und in der Normalenform von Theorem~\ref{thrm: normal form for real normal endomorphisms} $\lambda_i = \pm 1$ für alle $i = 1, \dotsc, s$ und $r_1 = \dotsb = r_t = 1$ gilt.
+      $f$ ist genau dann orthogonal, wenn $f$ normal ist und in der Normalenform von Theorem~\ref{thrm: normal form for real normal endomorphisms} $\lambda_i = \pm 1$ für alle $i = 1, \dotsc, s$ und $r_1 = \dotsb = r_t = 1$ gilt:
+      \[
+        \begin{pmatrix}
+          \pm 1 &         &       &               &         &               \\
+                & \ddots  &       &               &         &               \\
+                &         & \pm 1 &               &         &               \\
+                &         &       & D(\varphi_1)  &         &               \\
+                &         &       &               & \ddots  &               \\
+                &         &       &               &         & D(\varphi_t)
+        \end{pmatrix}
+      \]
   \end{enumerate}
 \end{proposition}
 
@@ -366,7 +487,12 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 
 
 \begin{corollary}
-  Für alle $n \geq 1$ ist $\det(\Orthogonal(n)) = \{1,-1\}$.
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Ist $V$ ein euklidischer Vektorraum mit $\dim V \geq 1$, so ist $\det(\Orthogonal(V)) = \{1,-1\}$.
+    \item
+      Für alle $n \geq 1$ ist $\det(\Orthogonal(n)) = \{1,-1\}$.
+  \end{enumerate}
 \end{corollary}
 
 
@@ -397,6 +523,7 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
       In der Situation von Lemma~\ref{lem: existence and uniqueness of projections} heißt $P$ die \emph{Projektion} auf $U$ entlang $W$.
     \item
       Ist $U \subseteq V$ ein Untervektorraum eines Skalarproduktraums $V$, so heißt die Projektion auf $U$ entlang $U^\perp$ die \emph{orthogonale Projektion} auf $U$.
+      Sie ist die eindeutige lineare Abbildung $P \colon V \to V$ mit $P(u + w) = u$ für alle $u \in U$ und $w \in U^\perp$.
   \end{enumerate}
 \end{definition}
 
@@ -423,6 +550,24 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 \end{proposition}
 
 
+\begin{corollary}
+  Ein Endomorphismus $P \colon V \to V$ eines Skalarproduktraums ist genau dann die orthogonale Projektion auf $\im(P)$, wenn es eine geordnete Orthonormalbasis $\basis{B}$ von $V$ gibt, so dass
+  \[
+    \Mat_\basis{B}(P)
+    =
+    \begin{pmatrix}
+      1 &         &   &   &         &   \\
+        & \ddots  &   &   &         &   \\
+        &         & 1 &   &         &   \\
+        &         &   & 0 &         &   \\
+        &         &   &   & \ddots  &   \\
+        &         &   &   &         & 0
+    \end{pmatrix}.
+  \]
+\end{corollary}
+
+
+
 
 
 
@@ -441,13 +586,23 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
     \item
       Ein selbstadjungierter Endomorphismus $f \colon V \to V$ eines Skalarproduktraums $V$ heißt \emph{positiv}, wenn alle Eigenwerte von $f$ positiv sind.
     \item
-      Eine selbtadjungierte Matrix $A \in \Mat_n(\Korper)$ heißt positiv, wenn alle Eigenwerte von $A$ positiv sind.
+      Eine selbstadjungierte Matrix $A \in \Mat_n(\Korper)$ heißt positiv, wenn alle Eigenwerte von $A$ positiv sind.
   \end{enumerate}
 \end{definition}
 
 
-\begin{proposition}
-  \begin{enumerate}
+\begin{lemma}
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
+    \item
+      Ist $V$ ein Skalarproduktraum und $f \colon V \to V$ ein Automorphismus, so sind $f f^*$ und $f^* f$ positiv selbstadjungiert.
+    \item
+      Für alle $A \in \GL_n(\Korper)$ sind $A A^*$ und $A^* A$ positiv selbstadjungiert.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proposition}[Wurzeln]
+  \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
       Ist $f \colon V \to V$ ein positiver selbstadjungierter Endomorphismus, so gibt es einen eindeutigen positiven selbstadjungierten Endomorphismus $g \colon V \to V$ mit $f = g^2$.
     \item
@@ -456,14 +611,11 @@ Im Folgenden seien alle Vektorräume endlichdimensional, sofern nicht anders ang
 \end{proposition}
 
 
-\begin{theorem}
-  \begin{enumerate}[leftmargin=*, label=\roman*)]
-    \item
-      Ist $f \in \GL(V)$ für einen Skalarproduktraum, so gibt es eindeutige positive selbstadjungierte Endomorphismen $g_1, g_2 \colon V \to V$ und eindeutige $s_1, s_2 \in \Unitary(V)$ (für $\Korper = \Complex$), bzw.\ $s_1, s_2 \in \Orthogonal(V)$ (für $\Korper = \Reals$) mit
-      \[
-        f = s_1 g_1 = g_2 s_2.
-      \]
-  \end{enumerate}
+\begin{theorem}[Polarzerlegung]
+  Ist $f \in \GL(V)$ für einen Skalarproduktraum $V$, so gibt es eindeutige positive selbstadjungierte Endomorphismen $s_1, s_2 \colon V \to V$ und eindeutige $u_1, u_2 \in \Unitary(V)$ (für $\Korper = \Complex$), bzw.\ $u_1, u_2 \in \Orthogonal(V)$ (für $\Korper = \Reals$) mit
+  \[
+    f = u_1 s_1 = s_2 u_2.
+  \]
 \end{theorem}
 
 
