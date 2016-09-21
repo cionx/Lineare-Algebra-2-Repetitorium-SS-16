@@ -87,9 +87,9 @@ Im Folgenden seien alle auftretenden Skalarprodukträume endlichdimensional.
   Es sei $n \geq 1$.
   \begin{enumerate}[leftmargin=*]
     \item
-      Zeigen Sie, dass $\det(U) \subseteq S^1$ für alle $U \in \Unitary(n)$, und dass $\det \colon \Unitary(n) \to S^1$ surjektiv ist.
+      Zeigen Sie, dass $\det(U) \in S^1$ für alle $U \in \Unitary(n)$, und dass $\det \colon \Unitary(n) \to S^1$ surjektiv ist.
     \item
-      Zeigen Sie, dass $\det(O) \subseteq \{1,-1\}$ für alle $O \in \Orthogonal(n)$, und dass $\det \colon \Orthogonal(n) \to \{1,-1\}$ surjektiv ist.
+      Zeigen Sie, dass $\det(O) \in \{1,-1\}$ für alle $O \in \Orthogonal(n)$, und dass $\det \colon \Orthogonal(n) \to \{1,-1\}$ surjektiv ist.
   \end{enumerate}
 \end{question}
 
@@ -112,7 +112,12 @@ Im Folgenden seien alle auftretenden Skalarprodukträume endlichdimensional.
   Es sei $f \colon V \to V$ ein Endomorphismus eines Skalarproduktraums $V$.
   \begin{enumerate}[leftmargin=*]
     \item
-      Zeigen Sie, dass $f$ genau dann positiv ist, wenn $\bracket{f(v), v} > 0$ für alle $v \in V$.
+      Zeigen Sie: Ist $f$ selbstadjungiert, so ist $f$ genau dann positiv, wenn
+      \[
+        \bracket{f(v), v} > 0
+        \quad
+        \text{für alle $v \in V$ mit $v \neq 0$}.
+      \]
     \item
       Zeigen Sie, dass $f f^*$ und $f^* f$ positiv selbstadjungiert sind.
   \end{enumerate}
