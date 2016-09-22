@@ -13,19 +13,16 @@
 
 
 \begin{definition}
-  Ist $V$ ein $K$-Vektorraum und $\bracket{\cdot, \cdot} \colon V \times V \to K$ eine symmetrische Bilinearform, so ist
+  Ist $V$ ein $K$-Vektorraum, so ist eine Abbildung $q \colon V \to K$ eine \emph{quadratische Form} wenn es eine symmetrische Bilinearform $\bracket{\cdot, \cdot} \colon V \times V \to K$ gibt, so dass
   \[
-    q \colon V \to K,
+    q(v) = \bracket{v,v}
     \quad
-    v \mapsto \bracket{v, v}
+    \text{für alle $v \in V$}.
   \]
-  die zu $\bracket{\cdot, \cdot}$ gehörige \emph{quadratische Form}.
-  
-  Eine Abbildung $q' \colon V \to K$ heißt \emph{quadratische Form}, wenn es eine symmetrische Bilinearform $\bracket{\cdot, \cdot}' \colon V \times V \to K$ gibt, so dass $q'$ die zu $\bracket{\cdot, \cdot}'$ gehörige quadratische Form ist.
 \end{definition}
 
 
-\begin{lemma}
+\begin{lemma}[Polarisationsformel]
   Ist $V$ ein $K$-Vektorraum mit $\ringchar(K) \neq 2$, $\bracket{\cdot, \cdot} \colon V \times V \to K$ eine symmetrische Bilinearform und $q \colon V \to K$ die zugehörige quadratische Form, so ist
   \[
     \bracket{v, w} = \frac{q(v+w)-q(v)-q(w)}{2}
@@ -94,7 +91,7 @@
 \subsection{Darstellende Matrizen für Bilinearformen}
 
 
-\begin{lemma}
+\begin{lemma}\label{lem: possible definitions of the representing matrix of a bilinear form}
   Es sei $V$ ein endlichdimensionaler $K$-Vektorraum, $\basis{C} = (v_1, \dotsc, v_n)$ eine geordnete Basis von $V$ und $\basis{C}^* = (v_1^*, \dotsc, v_n^*)$ die duale Basis von $V^*$.
   Für eine Matrix $B \in \Mat_n(K)$ und Bilinearform $\beta \colon V \times V \to K$ sind die folgende Bedingungen äquivalent:
   \begin{enumerate}[leftmargin=*, label=\roman*)]
@@ -107,13 +104,7 @@
 
 
 \begin{definition}
-  , so heißt die Matrix $B \in \Mat_n(K)$ mit
-  \[
-    B_{ij} = \beta(v_i, v_j)
-    \quad
-    \text{für alle $i,j = 1, \dotsc, n$}
-  \]
-  die \emph{darstellende Matrix} von $\beta$ bezüglich der Basis $\basis{C}$, und wird mit $\Mat_\basis{C}(\beta)$ notiert.
+  In der Situation von Lemma~\ref{lem: possible definitions of the representing matrix of a bilinear form} ist $B$ die \emph{darstellende Matrix} von $\beta$ bezüglich der Basis $\basis{C}$, und wird mit $\Mat_\basis{C}(\beta)$ notiert.
 \end{definition}
 
 
@@ -158,7 +149,14 @@
 \end{corollary}
 
 
-% TODO: Obere Aussagen verbessern.
+\begin{lemma}
+  Ist $\beta \colon V \times V \to \Reals$ eine symmetrische Bilinearform auf einem $\Reals$-Vektorraum $V$ und sind $\basis{C}$ und $\basis{D}$ zwei geordnete Basen von $V$, so ist
+  \[
+      \Mat_\basis{D}(\beta)
+    = (T^\basis{C}_\basis{D})^T \, \Mat_\basis{C}(\beta) \, T^\basis{D}_\basis{C}.
+  \]
+\end{lemma}
+
 
 
 
@@ -180,27 +178,58 @@
 \begin{proposition}
   Ist $V$ ein $K$-Vektorraum und $\beta \colon V \times V \to K$ eine symmetrische Bilinearform, so sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}[leftmargin=*, label=\roman*)]
-    \item
+    \item\label{enum: nondegenerate}
       Die Bilinearform $\beta$ ist nicht-entartet.
-    \item
+    \item\label{enum: radical is zero}
       Es gilt $\rad(\beta) = 0$.
-    \item
+    \item\label{enum: canonical map is injective}
       Die lineare Abbildung $\Phi \colon V \to V^*$, $v \mapsto \beta(-,v)$ ist injektiv.
   \end{enumerate}
   Ist $V$ endlichdimensional, so kommen die folgenden Bedingungen hinzu:
   \begin{enumerate}[leftmargin=*, label=\roman*), resume]
-    \item
+    \item\label{enum: canonical map is iso}
       $\Phi$ ist ein Isomorphismus.
-    \item
+    \item\label{enum: matrix is invertible}
       Für jede geordnete Basis $\basis{C}$ von $V$ ist die darstellende Matrix $\Mat_\basis{C}(\beta)$ invertierbar.
   \end{enumerate}
 \end{proposition}
+
+
+\begin{proof}\,
+  [\ref{enum: nondegenerate} $\iff$ \ref{enum: radical is zero}]
+    Folgt direkt aus Definition von $\rad(\beta)$.
+  
+  [\ref{enum: radical is zero} $\iff$ \ref{enum: canonical map is injective}]
+    Folgt durch $\rad(\beta) = \ker \Phi$.
+  
+  [\ref{enum: canonical map is injective} $\iff$ \ref{enum: canonical map is iso}]
+    Folgt wegen $\dim V < \infty$.
+  
+  [\ref{enum: canonical map is iso} $\iff$ \ref{enum: matrix is invertible}]
+    Folgt wegen $\Mat_\basis{C}(\beta) = \Mat_{\basis{C}, \basis{C}^*}(\Phi)$.
+\end{proof}
+
 
 
 \begin{proposition}
   Es sei $V$ ein endlichdimensionaler $K$-Vektorraum, $\beta \colon V \times V \to K$ eine symmetrische, nicht-entartete Bilinearform und $U \subseteq V$ ein Untervektorraum.
   Dann gilt $\dim U^\perp = \dim V - \dim U$ und $(U^\perp)^\perp = U$.
 \end{proposition}
+
+
+\begin{proof}
+  Die Abbildung $\rho \colon V^* \to U^*$, $\psi \mapsto \psi|_U$ ist surjektiv, und $\Phi \colon V \to V^*$, $v \mapsto \beta(-,v)$ ist bijektiv.
+  Also ist $\rho \circ \Phi$ surjektiv.
+  Da $\ker(\rho \circ \Phi) = U^\perp$ folgt die erste Aussage wegen $\dim U = \dim U^*$ aus der Dimensionsformel.
+  Die zweite Aussage folgt wegen $U \subseteq (U^\perp)^\perp$ und
+  \[
+      \dim (U^\perp)^\perp
+    = \dim V - \dim U^\perp
+    = \dim U.
+    \qedhere
+  \]
+\end{proof}
+
 
 
 \begin{proposition}
@@ -211,6 +240,8 @@
       Die Einschränkung $\beta|_{U \times U}$ ist nicht-entartet.
     \item
       Es ist $U \cap U^\perp = 0$.
+    \item
+      Es ist $U + U^\perp = V$.
     \item
       Es ist $V = U \oplus U^\perp$.
   \end{enumerate}
@@ -229,7 +260,7 @@
 \subsection{Normalenformen und Sylvesterscher Trägheitssatz}
 
 
-\begin{theorem}
+\begin{theorem}\label{thrm: existence of orthogonal basis}
   Es sei $V$ ein endlichdimensionaler $K$-Vektorraum mit $\ringchar(K) \neq 2$ und $\beta \colon V \times V \to K$ eine symmetrische Bilinearform.
   Dann gibt es eine geordnete Basis $\basis{C}$ von $V$, so dass
   \[
@@ -250,8 +281,50 @@
 
 
 \begin{lemma}
-  Ist $\beta \colon V \times V \to K$ eine nicht-entartete Bilinearform mit $V \neq 0$ und $\ringchar(K) \neq 2$, und $q \colon V \to K$ die zugehörige quadratische Form, dann gibt es $v \in V$ mit $q(v) \neq 0$.
+  Ist $\beta \colon V \times V \to K$ eine nicht-entartete Bilinearform mit $V \neq 0$ und $\ringchar(K) \neq 2$, so gibt es für die zugehörige quadratische Form $q \colon V \to K$ ein $v \in V$ mit $q(v) \neq 0$.
 \end{lemma}
+
+
+\begin{proof}[Beweis von Theorem~\ref{thrm: existence of orthogonal basis}]
+  Ist $\beta$ nicht-entartet, so gibt es einen Untervektorraum $U \subseteq V$ mit $V = U \oplus \rad(\beta)$.
+  Ist $\basis{C}' = (u_1, \dotsc, u_n)$ eine Basis von $U$ und $\basis{D} = (v_1, \dotsc, v_m)$ eine Basis von $\rad(\beta)$, so gilt für die Basis $\basis{C} = (u_1, \dotsc, u_n, v_1, \dotsc, v_m)$ von $V$, dass
+  \[
+    \Mat_\basis{C}(\beta)
+    =
+    \begin{pmatrix}
+      \Mat_{\basis{C}'}(\beta|_{U \times U})  & 0 \\
+      0                                       & 0
+    \end{pmatrix}.
+  \]
+  Es genügt daher die Aussage für nicht-entartete Bilinearformen zu zeigen.
+  
+  Es sei also $\beta$ nicht-entartet.
+  Wir nutzen Induktion über $\dim V$; für $\dim V = 0$ ist nichts zu zeigen.
+  Es sei nun $\dim V > 0$.
+  Dann gibt es ein $v_1 \in V$ mit $q(v_1) \neq 0$, und es sei $U \coloneqq \bracket{v_1}$.
+  Dann ist $\beta|_{U \times U}$ nicht-entartet und deshalb $V = U \oplus U^\perp$ mit $\dim U^\perp = \dim V - 1$.
+  Per Induktionsvoraussetzung gibt es eine Basis $\basis{D} = (v_2, \dotsc, v_n)$ von $U^\perp$, so dass
+  \[
+    \Mat_{\basis{D}}(\beta_{U^\perp \times U^\perp})
+    =
+    \begin{pmatrix}
+      \lambda_2 &         &           \\
+                & \ddots  &           \\
+                &         & \lambda_n
+    \end{pmatrix}
+  \]
+  mit $\lambda_i \neq 0$ für alle $i = 2, \dotsc, n$.
+  Dann ist $\basis{C} \coloneqq (v_1, v_2, \dotsc, v_n)$ eine Basis von $V$, und für $\lambda_1 \coloneqq q(v_1) \neq 0$ gilt
+  \[
+    \Mat_{\basis{C}}(\beta)
+    =
+    \begin{pmatrix}
+      \lambda_1 &         &           \\
+                & \ddots  &           \\
+                &         & \lambda_n
+    \end{pmatrix}.
+  \]
+\end{proof}
 
 
 \begin{corollary}
@@ -368,7 +441,23 @@
 \end{corollary}
 
 
+\begin{lemma}
+  Es sei $V$ ein $\Reals$-Vektorraum, $\beta \colon V \times V \to \Reals$ sei eine symmetrische Bilinearform und $U, W \subseteq V$ seien zwei Untervektorräume, so dass $\beta|_{U \times U}$ positiv definit und $\beta|_{W \times W}$ negativ semidefinit ist, bzw.\ $\beta|_{U \times U}$ positiv semidefinit und $\beta|_{W \times W}$ negativ definit ist.
+  Dann ist $U \cap W = 0$.
+\end{lemma}
+
+
 % TODO: Definition und Berechnung der Signatur hinzufügen
+
+
+\begin{definition}
+  Es sei $\beta \colon V \times V \to \Reals$ eine symmetrische Bilinearform auf einem $\Reals$-Vektorraum $V$.
+  Ist $\basis{C} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so ist $\beta$ genau dann positiv definit, wenn alle Hauptminoren der Matrix $\Mat_\basis{C}(\beta)$ positiv sind.
+\end{definition}
+
+
+Es sei $V$ ein $\Reals$-Vektorraum, $\beta \colon V \time V \to \Reals$ eine symmetrische Bilinearofrm und $\basis{C} = (v_1, \dotsc, v_n)$ eine Basis von $V$.
+Da die Matrix $\Mat_\basis{C}(\beta) \in \Mat_n(\Reals)$ symmetrisch ist, gibt es eine 
 
 
 
