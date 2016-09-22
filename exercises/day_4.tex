@@ -40,58 +40,33 @@
         \text{für alle $v \in V$, $w \in W$}.
       \]
     \item
-      Zeigen Sie, dass es genau eine Abbildung $f^*$ gibt, die das obige Diagramm zum kommutieren bringt, und dass diese $K$-linear ist.
+      Zeigen Sie, dass es eine eindeutige Abbildung $f^*$ gibt, die das obige Diagramm zum kommutieren bringt, und dass diese $K$-linear ist.
   \end{enumerate}
 \end{question}
 
 
 \begin{question}
   Es sei $V$ ein $K$-Vektorraum, $\beta \colon V \times V \to K$ eine symmetrische Bilinearform und $q \colon V \to K$, $v \mapsto \beta(v,v)$ die zugehörige quadratische Form.
+  Zeigen Sie:
   \begin{enumerate}[leftmargin=*]
     \item
-      Zeigen Sie für $\ringchar(K) \neq 2$, dass
+      Für $\ringchar(K) \neq 2$ ist
       \[
           \beta(v_1, v_2)
         = \frac{q(v_1 + v_2) - q(v_1) - q(v_2)}{2}
         \quad
-        \text{$v_1, v_2 \in V$}.
+        \text{für alle $v_1, v_2 \in V$}.
       \]
     \item
-      Zeigen Sie für $\ringchar(K) \neq 2$, $V \neq 0$ und $\beta$ nicht-entartet, dass es ein $v \in V$ mit $q(v) \neq 0$ gibt.
+      Für $\ringchar(K) \neq 2$, $V \neq 0$ und $\beta$ nicht-entartet gibt es ein $v \in V$ mit $q(v) \neq 0$.
     \item
-      Zeigen Sie durch Angabe eines expliziten Beispiels, dass es im Fall $\ringchar(K) = 2$ verschiedene symmetrische Bilinearformen mit gleicher quadratischer Form geben kann.
+      Im Fall $\ringchar(K) = 2$ kann es verschiedene symmetrische Bilinearformen mit gleicher quadratischer Form geben.
+      Geben Sie hierfür eine explizites Beispiel an.
   \end{enumerate}
 \end{question}
 
 
-% \begin{question}
-%   Es sei $V$ ein $K$-Vektorraum mit Basis $\basis{C} = (v_1, \dotsc, v_n)$, $\basis{C}^* = (v_1^*, \dotsc, v_n^*)$ die duale Basis von $V^*$ und $\beta \colon V \times V \to K$ eine Bilinearform.
-%   \begin{enumerate}[leftmargin=*]
-%     \item
-%       Zeigen Sie für die lineare Abbildung $\Phi \colon V \to V^*$, $v \mapsto \beta(-,v)$, dass
-%       \[
-%         \Mat_{\basis{C}, \basis{C}^*}(\Phi)_{ij} = \beta(v_i, v_j)
-%         \quad
-%         \text{für alle $i, j = 1, \dotsc, n$}.
-%       \]
-%     \item
-%       Es sei $\Psi \colon V \to K^n$ der eindeutige Isomorphismus mit
-%       \[
-%           \Psi(\lambda_1 v_1 + \dotsb + \lambda_n v_n)
-%         = \cvector{\lambda_1 \\ \vdots \\ \lambda_n}
-%         \quad
-%         \text{für alle $\lambda_1, \dotsc, \lambda_n \in \Reals$},
-%       \]
-%       dass $\Mat_\basis{C}(\beta)$ eindeutig dadurch bestimmt ist, dass
-%       \[
-%         \beta(v, w) = \Psi(v)^T \, \Mat_\basis{C}(\beta) \, \Psi(w)
-%         \quad
-%         \text{für alle $v, w \in V$}.
-%       \]
-%     \item
-%       Folgern Sie, dass $\beta$ genau dann symmetrisch ist, wenn $\Mat_\basis{C}(\beta)$ symmetrisch ist.
-%   \end{enumerate}
-% \end{question}
+
 
 
 \begin{question}
@@ -129,7 +104,7 @@
   \]
   \begin{enumerate}[leftmargin=*]
     \item
-      Bestimmen Sie jeweils eine orthogonale Martix $O_i \in \Orthogonal(n)$, so dass $O_i^T A_i O_i$ in Diagonalgestalt vorliegt.
+      Bestimmen Sie jeweils eine orthogonale Matrix $O_i \in \Orthogonal(n)$, so dass $O_i^T A_i O_i$ in Diagonalgestalt vorliegt.
     \item
       Entschieden Sie für die nicht-entarteten Fälle jeweils, ob es sich bei der Menge
       \[
@@ -161,30 +136,31 @@
 
 
 \begin{question}
-  Entscheiden Sie, welche der folgenden Aussagen für jeden reellen Vektorraum $V$ und jede symmetrische Bilinearform $\bracket{-, -} \colon V \times V \to \Reals$ mit $\beta \neq 0$ gilt.
+  Entscheiden Sie, welche der folgenden Aussagen für jeden reellen Vektorraum $V$ und jede symmetrische Bilinearform $\beta \colon V \times V \to \Reals$ mit $\beta \neq 0$ gilt.
   Geben Sie gegebenenfalls ein Gegenbeispiel.
   \begin{enumerate}[leftmargin=*]
     \item
-      Ist $\bracket{v, v} \geq 0$ für alle $v \in V$, so ist $\bracket{-, -}$ ein Skalarprodukt.
+      Ist $\beta(v, v) \geq 0$ für alle $v \in V$, so ist $\beta(-, -)$ ein Skalarprodukt.
     \item
-      Ist $\basis{B} \subseteq V$ eine Basis von $V$ mit $\bracket{v_1, v_2} > 0$ für alle $v_1, v_2 \in \basis{B}$, so ist $\bracket{-, -}$ ein Skalarprodukt.
+      Ist $\basis{B} \subseteq V$ eine Basis von $V$ mit $\beta(v_1, v_2) > 0$ für alle $v_1, v_2 \in \basis{B}$, so ist $\beta(-, -)$ ein Skalarprodukt.
+    \item
+      Für jeden Untervektorraum $U \subseteq V$ gilt $U \subseteq (U^\perp)^\perp$.
     \item
       Die Teilmengen
       \[
-        U_+ \coloneqq \{ v \in V \mid \bracket{v, v} \geq 0 \}
+        U_+ \coloneqq \{ v \in V \mid \beta(v, v) \geq 0 \}
         \quad\text{und}\quad
-        U_- \coloneqq \{ v \in V \mid \bracket{v, v} \leq 0 \}
+        U_- \coloneqq \{ v \in V \mid \beta(v, v) \leq 0 \}
       \]
       sind Untervektorräume von $V$.
     \item
       Für alle Untervektorräume $U_1, U_2 \subseteq V$ gilt $(U_1 + U_2)^\perp = U_1^\perp \cap U_2^\perp$.
     \item
-      Die Teilmenge $U_0 \coloneqq \{ v \in V \mid \bracket{v, v} = 0 \}$ ist ein Untervektorraum von $V$.
+      Die Teilmenge $U_0 \coloneqq \{ v \in V \mid \beta(v, v) = 0 \}$ ist ein Untervektorraum von $V$.
     \item
       Ist $\dim V < \infty$, so gilt $\dim V = \dim U + \dim U^\perp$ für jeden Untervektorraum $U \subseteq V$.
     \item
-      Ist $U \subseteq V$ ein Untervektorraum mit $(U^\perp)^\perp = V$, so ist $U = V$.
-
+      Ist $\dim V < \infty$ und $U \subseteq V$ ein Untervektorraum mit $(U^\perp)^\perp = V$, so ist $U = V$.
   \end{enumerate}
 \end{question}
 
@@ -202,7 +178,7 @@
   der Vektorraum der schiefsymmetrischen reellen Matrizen.
   \begin{enumerate}[leftmargin=*]
     \item
-      Zeigen Sie, dass $\tr(AB) = \tr(BA)$ für alle $A, B \in \Mat_n(\Reals)$.2
+      Zeigen Sie, dass $\tr(AB) = \tr(BA)$ für alle $A, B \in \Mat_n(\Reals)$.
     \item
       Zeigen Sie, dass $\sigma \colon \Mat_n(\Reals) \times \Mat_n(\Reals) \to \Reals$ mit
       \[
@@ -223,7 +199,34 @@
 \end{question}
 
 
-
+\begin{question}
+  Es sei $V$ ein $K$-Vektorraum mit Basis $\basis{C} = (v_1, \dotsc, v_n)$, $\basis{C}^* = (v_1^*, \dotsc, v_n^*)$ die duale Basis von $V^*$ und $\beta \colon V \times V \to K$ eine Bilinearform.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie für die lineare Abbildung $\Phi \colon V \to V^*$, $v \mapsto \beta(-,v)$, dass
+      \[
+        \Mat_{\basis{C}, \basis{C}^*}(\Phi)_{ij} = \beta(v_i, v_j)
+        \quad
+        \text{für alle $i, j = 1, \dotsc, n$}.
+      \]
+    \item
+      Es sei $\Psi \colon V \to K^n$ der eindeutige Isomorphismus mit
+      \[
+          \Psi(\lambda_1 v_1 + \dotsb + \lambda_n v_n)
+        = \cvector{\lambda_1 \\ \vdots \\ \lambda_n}
+        \quad
+        \text{für alle $\lambda_1, \dotsc, \lambda_n \in \Reals$},
+      \]
+      dass $\Mat_\basis{C}(\beta)$ eindeutig dadurch bestimmt ist, dass
+      \[
+        \beta(v, w) = \Psi(v)^T \, \Mat_\basis{C}(\beta) \, \Psi(w)
+        \quad
+        \text{für alle $v, w \in V$}.
+      \]
+    \item
+      Folgern Sie, dass $\beta$ genau dann symmetrisch ist, wenn $\Mat_\basis{C}(\beta)$ symmetrisch ist.
+  \end{enumerate}
+\end{question}
 
 
 
