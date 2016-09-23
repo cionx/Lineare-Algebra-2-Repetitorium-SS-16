@@ -100,6 +100,20 @@
 \subsection{Gruppentheoretische Begriffe}
 
 
+\begin{definition}
+  Ist $\phi \colon G \to H$ ein Gruppenhomomorphismus, so ist
+  \[
+    \ker(\phi) \coloneqq \{g \in G \mid \phi(g) = 1\}
+  \]
+  der \emph{Kern} von $\phi$.
+\end{definition}
+
+
+\begin{lemma}
+  Ist $\phi$ ein Gruppenhomomorphismus, so ist $\ker(\phi)$ eine Untergruppe von $G$.
+\end{lemma}
+
+
 \begin{proposition}\label{prop: definitions of normal subgroup}
   Es sei $G$ eine Gruppe und $N \subseteq G$ eine Untergruppe.
   Durch
@@ -127,9 +141,10 @@
       \]
       ist wohldefiniert.
       ($G/N$ ist mit dieser Multiplikation automatisch eine Gruppe.
-      Dies ist dann die eindeutige Gruppenstruktur auf $G/N$, so dass die kanonische Projektion $G \to G/N$, $g \mapsto \overline{g}$ ein Gruppenhomomorphismus ist.)
+      Dies ist dann die eindeutige Gruppenstruktur auf $G/N$, so dass die kanonische Projektion $\rho \colon G \to G/N$, $g \mapsto \overline{g}$ ein Gruppenhomomorphismus ist.
+      Es gilt dann $N = \ker \rho$.)
     \item
-      Es gibt eine Gruppe $H$ und einen Gruppenhomomorphismus $\phi \colon G \to H$ mit $N = \ker \phi$.
+      Es gibt einen Gruppenhomomorphismus $\phi \colon G \to H$ mit $N = \ker \phi$.
   \end{enumerate}
 \end{proposition}
 
@@ -147,7 +162,7 @@
 
 
 \begin{remark}
-  Ist $N \subseteq G$ eine Untegruppe, so ist die Äquivalenzklasse von $g \in G$ bezüglich der in Proposition~\ref{prop: definitions of normal subgroup} definierten Äquivalenzrelation genau die sogenannte \emph{Linksnebenklasse} $gN = \{gn \mid n \in N\}$. 
+  Ist $N \subseteq G$ eine Untergruppe, so ist die Äquivalenzklasse von $g \in G$ bezüglich der in Proposition~\ref{prop: definitions of normal subgroup} definierten Äquivalenzrelation genau die sogenannte \emph{Linksnebenklasse} $gN = \{gn \mid n \in N\}$. 
   Die Äquivalenzklasse von $g$ ist also eine (um $g$ verschobene) Kopie von $N$.
   Inbesondere ist $|gN| = |N|$, und somit
   \[
@@ -185,7 +200,11 @@ Zur Berechnung des Index einer Untergruppe wollen wir den folgenden Satz zitiere
   Es sei $n \geq 1$.
   \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
-      Für jeden Körper $K$ ist $\SL_n(K) \subseteq \GL_n(K)$ eine normale Untergruppe.
+      Für jeden Körper $K$ ist $\SL_n(K) \subseteq \GL_n(K)$ eine normale Untergruppe mit Index 
+      \[
+        [\GL_n(K) : \SL_n(K)] = |K^\times| = |K| - 1.
+      \]
+      Inbesondere ist $[\GL_n(\Reals) : \SL_n(\Reals)] = \infty$ und $[\GL_n(\Complex) : \SL_n(\Complex)] = \infty$.
     \item
       $\GL_n(\Reals)^+ \coloneqq \{S \in \GL_n(\Reals) \mid \det S > 0\}$ ist eine normale Untergruppe von $\GL_n(\Reals)$ mit $[\GL_n(\Reals) : \GL_n(\Reals)^+] = 2$.
     \item
@@ -214,7 +233,7 @@ Zur Berechnung des Index einer Untergruppe wollen wir den folgenden Satz zitiere
 
 \begin{definition}
   Es sei $X$ ein metrischer Raum.
-  Eine stetige Abbildung $\gamma \colon [0,1] \to X$ ist ein \emph{Weg} in $X$.
+  Ein \emph{Weg} in $X$ ist eine stetige Abbildung $\gamma \colon [0,1] \to X$.
   Für $x \coloneqq \gamma(0)$ und $y \coloneqq \gamma(1)$ ist $\gamma$ ein \emph{Weg von $x$ nach $y$} in $X$.
 \end{definition}
 
@@ -233,7 +252,7 @@ Zur Berechnung des Index einer Untergruppe wollen wir den folgenden Satz zitiere
 \begin{definition}
   Es sei $X$ ein metrischer Raum.
   Die Äquivalenzklassen der Äquivalenzrelation aus Lemma~\ref{lem: path connectedness as equivalence relation} heißen \emph{Wegzusammenhangskomponenten} von $X$.
-  $X$ heißt \emph{wegzusammenhängend}, wenn es nur eine Wegzusammenhangskomponente gibt, d.h.\ wenn es für alle $x, y \in M$ einen Weg von $x$ nach $y$ gibt.
+  $X$ heißt \emph{wegzusammenhängend}, wenn es nur eine Wegzusammenhangskomponente gibt, d.h.\ wenn es für alle $x, y \in X$ einen Weg von $x$ nach $y$ gibt.
   
   Eine Teilmenge $Y \subseteq X$ heißt wegzusammenhängend, wenn $Y$ bezüglich der Metrik $d|_{Y \times Y}$ wegzusammenhängend ist.
 \end{definition}
@@ -274,6 +293,7 @@ Zur Berechnung des Index einer Untergruppe wollen wir den folgenden Satz zitiere
 
 
 \begin{remark}
+  Die Zusammenhangskomponenten von $X$ sind die maximalen zusammenhängenden Teilmengen von $X$.
   Jede zusammenhängende Teilmenge $Z \subseteq X$ ist in einer der Zusammenhangskomponenten von $X$ enthalten.
   Insbesondere ist jede Wegzusammenhangskomponente in einer Zusammenhangskomponente enthalten.
 \end{remark}
@@ -296,6 +316,7 @@ Jede Teilmenge $X \subseteq \Mat_n(\Complex)$ erbt durch die Einschränkung $d|_
 
 
 \begin{lemma}
+  Es sei $n \geq 1$.
   \begin{enumerate}[leftmargin=*, label=\roman*)]
     \item
       Die Projektionen $p_{ij} \colon \Mat_n(\Complex) \to \Complex$ mit $i,j = 1, \dotsc, n$ und
@@ -306,7 +327,7 @@ Jede Teilmenge $X \subseteq \Mat_n(\Complex)$ erbt durch die Einschränkung $d|_
       \]
       sind stetig.
     \item
-      Ist $X$ ein metrischer Raum, so ist eine Abbildung $f = (f_{ij})_{i,j = 1, \dotsc, n} \colon X \to \Mat_n(\Complex)$ genau dann stetig, wenn sie in jeder Komponente stetig ist.
+      Ist $X$ ein metrischer Raum, so ist eine Abbildung $f = (f_{ij})_{i,j = 1, \dotsc, n} \colon X \to \Mat_n(\Complex)$ genau dann stetig, wenn $f_{ij}$ für alle $i, j = 1, \dotsc, n$ stetig ist.
  \end{enumerate}
 \end{lemma}
 
@@ -327,7 +348,7 @@ Jede Teilmenge $X \subseteq \Mat_n(\Complex)$ erbt durch die Einschränkung $d|_
 
 
 \begin{remark}
-  Ist $Y \subseteq X$ und $A \subseteq Y$, so dass $A$ abgeschlossen in $X$ ist, so ist $A$ auch abgeschlossen in $Y$.
+  Ist $A \subseteq Y \subseteq X$ und $A$ abgeschlossen in $X$, so ist $A$ auch abgeschlossen in $Y$.
   Dementsprechende ergeben sich aus \ref{prop: closedness of subgroups} noch weitere Aussagen.
   So ist etwa $\SL_n(\Complex)$ abgeschlossen in $\GL_n(\Complex)$ und $\SOrthogonal(n)$ abgeschlossen in $\Orthogonal(n)$.
 \end{remark}
@@ -378,7 +399,20 @@ Jede Teilmenge $X \subseteq \Mat_n(\Complex)$ erbt durch die Einschränkung $d|_
 \subsection{Koordinatenfreie Version}
 
 
-% TODO: Koordinatenfreie Version für GL(V) ergänzen.
+Ist $V$ ein Skalarprodukt Vektorraum mit $n \coloneqq \dim V \geq 1$.
+Wir fixieren eine Norm $\|\cdot\|$ auf $\End_\Korper(V)$.
+
+Ist $\basis{C}$ eine Orthonormalbasis von $V$, so ist der Isomorphismus
+\[
+  \Mat_\basis{C} \colon \End_\Korper(V) \to \Mat_n(\Korper),
+  \quad
+  f \mapsto \Mat_\basis{C}(f)
+\]
+auch ein Homöomorphismus und induziert Homöomorphismen und Gruppenisomorphismen $\GL(V) \cong \GL_n(\Korper)$, $\SL(V) \cong \SL_n(\Korper)$ sowie $\Orthogonal(V) \cong \Orthogonal(n)$ und $\SOrthogonal(V) \cong \SOrthogonal(n)$, bzw.\ $\Unitary(V) \cong \Unitary(n)$ und $\SUnitary(V) \cong \SUnitary(n)$.
+
+Inbesondere gelten die obigen Resultate für $\GL(V)$ und $\SL(V)$, sowie $\Orthogonal(V)$ und $\SOrthogonal(V)$, bzw.\ $\Unitary(V)$ und $\SUnitary(V)$.
+
+
 
 
 

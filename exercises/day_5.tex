@@ -1,0 +1,96 @@
+\documentclass[a4paper, 10pt]{scrartcl}
+
+\usepackage{../generalstyle}
+\usepackage{exercisestyle}
+
+
+\title{Lineare Algebra II Repetitorium \\ Übungen, Tag 4}
+\author{Jendrik Stelzner}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{question}
+  Skizzieren Sie $S^1$, $\Unitary(n)$ und $\SOrthogonal(2)$.
+\end{question}
+
+
+
+\begin{question}
+  Entscheiden Sie, welche der folgenden Aussagen gelten für alle $n \geq 1$ gelten.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Die Wegzusammenhangskomponenten von $\GL_n(\Reals)$ sind die beiden Untergruppen
+      \[
+        \GL_n(\Reals)_+ = \{ S \in \GL_n(\Reals) \mid \det S > 0 \}
+        \quad\text{und}\quad
+        \GL_n(\Reals)_- = \{ S \in \GL_n(\Reals) \mid \det S < 0 \}.
+      \]
+    \item
+      Für alle $A, B \in \GL_n(\Reals)$ liegen entweder $A$ und $B$ in derselben Zusammenhangskomponente, oder $A$ und $-B$ liegen in der gleichen Zusammenhangskomponente.
+    \item
+      Von den beiden Wegzusammenhangskomponente von $\GL_n(\Reals)$ ist $\Orthogonal(n)$ diejenige, die die Einheitsmatrix enthält.
+    \item
+      Die schiefsymmetrischen Matrizen $\mathfrak{o}_n(\Reals) = \{ A \in \Mat_n(\Reals) \mid A^T = -A \}$ bilden eine wegzusammenhängende Teilmenge von $\Mat_n(\Rbb)$.
+    \item
+      Ist $n \geq 2$, so hat die Gruppe $\Unitary(n) \cap \GL_n(\Rbb)_+$ genau zwei Wegzusammenhangskomponenten.
+    \item
+      Es ist $G = \{ S \in \GL_n(\Rbb) \mid S^{-1} = -S \}$ eine zusammenhängende, aber nicht wegzusammenhängende Untergruppe von $\GL_n(\Rbb)$.
+    \item
+      Jede Untergruppe von $\GL_n(\Cbb)$ ist wegzusammenhängend.
+    \item
+      Die Menge der Drehmatrizen
+      \[
+        D
+        \coloneqq
+        \left\{
+          \begin{pmatrix*}[r]
+            \cos \varphi  & -\sin \varphi \\
+            \sin \varphi  &  \cos \varphi 
+          \end{pmatrix*}
+        \,\middle|\,
+        \varphi \in \Rbb
+        \right\}
+      \]
+      ist eine wegzusammenhängende Untergruppe von $\GL_2(\Rbb)$.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Es sei $V$ ein $K$-Vektorraum und $[-,-] \colon V \times V \to V$ eine alternierend bilineare Abbildung.
+  Für jedes $x \in V$ sei
+  \[
+    \ad_x \coloneqq [x,-] \colon V \to V, \quad y \mapsto [x,y].
+  \]
+  Zeigen Sie, dass die folgenden beiden Aussagen äquivalent sind:
+  \begin{enumerate}
+    \item
+      Die alternierende Bilinearform $[-,-]$ erfüllt die Jacobi-Identität, d.h.\ es ist
+      \[
+        [x,[y,z]] + [y,[z,x]] + [z,[x,y]] = 0
+        \quad
+        \text{für alle $x, y, z \in V$}.
+      \]
+    \item
+      Es gilt $\ad_x([y,z]) = [\ad_x(y), z] + [y, \ad_x(z)]$ für alle $x, y, z \in V$.
+      (Man sagt, dass $\ad_x$ eine Derivation bezüglich $[-,-]$ ist.)
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+
+\newpage
+
+
+\printsolutions
+
+
+
+\end{document}
