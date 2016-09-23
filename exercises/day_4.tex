@@ -279,6 +279,157 @@
 \end{question}
 
 
+\begin{solution}
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Es ist
+      \[
+          \tr(AB)
+        = \sum_{i=1}^n (AB)_{ii}
+        = \sum_{i=1}^n \sum_{j=1}^n A_{ij} B_{ji}
+        = \sum_{j=1}^n \sum_{i=1}^n B_{ji} A_{ij}
+        = \sum_{j=1}^n (BA)_{jj}
+        = \tr(BA).
+      \]
+    \item
+      Dass $\sigma$ bilinear ist ergibt sich durch direktes Nachrechnen, wobei man nutzt, dass die Matrixmultiplikation $\Mat_n(\Reals) \times \Mat_n(\Reals) \to \Mat_n(\Reals)$ bilinear ist, und dass die Spur $\tr \colon \Mat_n(\Reals) \to \Reals$ linear ist.
+      Dass $\sigma$ symmetrisch ist ergibt sich aus dem ersten Aufgabenteil.
+    \item
+      Für $A \in S_+ \cap S_-$ ist $A = A^T = -A$ und somit $A = 0$, und jede Matrix $A \in \Mat_n(\Reals)$ lässt sich als
+      \[
+        A = \frac{A + A^T}{2} + \frac{A - A^T}{2}
+      \]
+      schreiben, wobei der erste Summand symmetrisch ist und der zweite schiefsymmetrisch.
+      
+      Alternativ lässt sich der Endomorphismus $s \colon \Mat_n(\Reals) \to \Mat_n(\Reals)$ mit $s(A) = (A + A^T)/2$ betrachten.
+      Dieser ist idempotent, d.h.\ es gilt $s^2 = s$, weshalb $\Mat_n(\Reals) = \im(e) \oplus \ker(e)$.
+      Mit $\im(e) = S_+$ und $\ker(e) = S_-$ ergibt sich die Zerlegung.
+    \item
+      Ist $A_+ \in S_+$ und $A_- \in S_-$, so ist
+      \begin{align*}
+             \sigma(A_+, A_-)
+        &=   \tr( A_+ A_- )
+         =   \tr( (A_+ A_-)^T )
+         =   \tr( A_-^T A_+^T ) \\
+        &=   \tr( -(A_-) A_+ )
+         =  -\tr( A_- A_+)
+         =  -\sigma(A_-, A_+)
+         =  -\sigma(A_+, A_-)
+      \end{align*}
+      und somit $\sigma(A_+, A_-) = 0$.
+    \item
+      Für alle $A \in S_+$ ist
+      \[
+              \sigma(A, A)
+        =     \tr(A A)
+        =     \tr(A^T A)
+        =     \sum_{i=1}^n (A A^T)_{ii}
+        =     \sum_{i=1}^n \sum_{j=1}^n A_{ij} A^T_{ji}
+        =     \sum_{i,j = 1, \dotsc, n} A_{ij}^2
+        \geq  0
+      \]
+      und Gleichheit gilt genau dann, wenn $A_{ij} = 0$ für alle $i,j = 1, \dotsc, n$, wenn also $A = 0$.
+      
+      Ist andererseits $A \in S_-$, ergibt sich analog zur obigen Rechnung, dass
+      \[
+                \sigma(A, A)
+        =     - \sum_{i, j = 1, \dotsc, n} A_{ij}^2
+        \leq    0,
+      \]
+      und Gleichheit gilt genau dann, wenn $A = 0$.
+    \item
+      Da $\sigma_{S_+ \times S_+}$ positiv definit und $\sigma_{S_- \times S_-}$ negativ definit ist, wissen wir nach dem Sylvesterschen Trägheitssatz bereits, dass der Diagonaleintrag $1$ mit Vielfachheit $\dim(S_+) = 3$ auftreten wird, und der Diagonaleintrag $-1$ mit Vielfachheit $1$.
+      
+      Da die Summe $\Mat_n(\Reals) = S_+ \oplus S_-$ orthogonal ist, genügt es für jeden dieser beiden Untervektorräume eine entsprechende Basis bezüglich der Einschränkungen $\sigma_{S_+ \times S_+}$ und $\sigma_{S_- \times S_-}$ zu finden, und diese anschließend zusammenzuführen.
+      
+      Für den eindimensionalen Raum $S_-$ beginnen wir mit dem Basisvektor
+      \[
+        \tilde{A}_1
+        \coloneqq
+        \begin{pmatrix*}[r]
+           0  & 1 \\
+          -1  & 0
+        \end{pmatrix*}.
+      \]
+      Für diesen gilt $\sigma(\tilde{A}_1, \tilde{A}_1) = -2$, weshalb wir $\tilde{A}_1$ zu
+      \[
+        A_1
+        \coloneqq
+        \frac{1}{\sqrt{2}}
+        \tilde{A}_1
+        =
+        \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+           0  & 1 \\
+          -1  & 0
+        \end{pmatrix}
+      \]
+      normieren.
+      
+      Für $S_+$ beginnen wir mit den drei Basisvektoren
+      \[
+        \tilde{A}_2
+        \coloneqq
+        \begin{pmatrix}
+          1 & 0 \\
+          0 & 0
+        \end{pmatrix},
+        \quad
+        \tilde{A}_3
+        \coloneqq
+        \begin{pmatrix}
+          0 & 0 \\
+          0 & 1
+        \end{pmatrix},
+        \quad
+        \tilde{A}_4
+        \coloneqq
+        \begin{pmatrix}
+          0 & 1 \\
+          1 & 0
+        \end{pmatrix}.
+      \]
+      Da $\sigma_{S_+ \times S_+}$ positiv definit, also ein Skalarprodukt ist, können wir nun Gram-Schmidt anwenden.
+      Damit erhalten wir für $S_+$ die Basis
+      \[
+        A_2
+        \coloneqq
+        \begin{pmatrix}
+          1 & 0 \\
+          0 & 0
+        \end{pmatrix},
+        \quad
+        A_3
+        \coloneqq
+        \begin{pmatrix}
+          0 & 0 \\
+          0 & 1
+        \end{pmatrix},
+        \quad
+        A_4
+        \coloneqq
+        \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+          0 & 1 \\
+          1 & 0
+        \end{pmatrix}.
+      \]
+      
+      Insgesamt erhalten wir somit eine Basis $\basis{C} = (A_1, A_2, A_3, A_4)$ von $\Mat_n(\Reals)$ mit
+      \[
+        \Mat_{\basis{C}}(\sigma)
+        =
+        \begin{pmatrix}
+          -1  &   &   &   \\
+              & 1 &   &   \\
+              &   & 1 &   \\
+              &   &   & 1
+        \end{pmatrix}.
+      \]
+  \end{enumerate}
+\end{solution}
+
+
 \begin{question}
   Es sei $V$ ein $K$-Vektorraum mit Basis $\basis{C} = (v_1, \dotsc, v_n)$, $\basis{C}^* = (v_1^*, \dotsc, v_n^*)$ die duale Basis von $V^*$ und $\beta \colon V \times V \to K$ eine Bilinearform.
   \begin{enumerate}[leftmargin=*]
