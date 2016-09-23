@@ -14,33 +14,27 @@
 
 
 \begin{question}
-  Skizzieren Sie $S^1$, $\Unitary(n)$ und $\SOrthogonal(2)$.
-\end{question}
-
-
-
-\begin{question}
-  Entscheiden Sie, welche der folgenden Aussagen gelten für alle $n \geq 1$ gelten.
+  Entscheiden Sie, welche der folgenden Aussagen für alle $n \geq 1$ gelten.
   \begin{enumerate}[leftmargin=*]
     \item
       Die Wegzusammenhangskomponenten von $\GL_n(\Reals)$ sind die beiden Untergruppen
-      \[
+      \begin{gather*}
         \GL_n(\Reals)_+ = \{ S \in \GL_n(\Reals) \mid \det S > 0 \}
-        \quad\text{und}\quad
+      \shortintertext{und}
         \GL_n(\Reals)_- = \{ S \in \GL_n(\Reals) \mid \det S < 0 \}.
-      \]
+      \end{gather*}
     \item
-      Für alle $A, B \in \GL_n(\Reals)$ liegen entweder $A$ und $B$ in derselben Zusammenhangskomponente, oder $A$ und $-B$ liegen in der gleichen Zusammenhangskomponente.
+      Für alle $A, B \in \GL_n(\Reals)$ liegen entweder $A$ und $B$ in derselben Zusammenhangskomponente, oder $A$ und $-B$ liegen in derselben Zusammenhangskomponente.
     \item
-      Von den beiden Wegzusammenhangskomponente von $\GL_n(\Reals)$ ist $\Orthogonal(n)$ diejenige, die die Einheitsmatrix enthält.
+      Von den beiden Wegzusammenhangskomponente von $\GL_n(\Reals)$ ist $\Orthogonal(n)$ diejenige, welche die Einheitsmatrix enthält.
     \item
-      Die schiefsymmetrischen Matrizen $\mathfrak{o}_n(\Reals) = \{ A \in \Mat_n(\Reals) \mid A^T = -A \}$ bilden eine wegzusammenhängende Teilmenge von $\Mat_n(\Rbb)$.
+      Die schiefsymmetrischen Matrizen $\mathfrak{o}_n(\Reals) = \{ A \in \Mat_n(\Reals) \mid A^T = -A \}$ bilden eine wegzusammenhängende und abgeschlossene Teilmenge von $\Mat_n(\Reals)$.
     \item
-      Ist $n \geq 2$, so hat die Gruppe $\Unitary(n) \cap \GL_n(\Rbb)_+$ genau zwei Wegzusammenhangskomponenten.
+      Ist $n \geq 2$, so hat die Gruppe $\Unitary(n) \cap \GL_n(\Reals)_+$ genau zwei Wegzusammenhangskomponenten.
     \item
-      Es ist $G = \{ S \in \GL_n(\Rbb) \mid S^{-1} = -S \}$ eine zusammenhängende, aber nicht wegzusammenhängende Untergruppe von $\GL_n(\Rbb)$.
+      Es ist $G = \{ S \in \GL_n(\Reals) \mid S^{-1} = -S \}$ eine zusammenhängende, aber nicht wegzusammenhängende Untergruppe von $\GL_n(\Reals)$.
     \item
-      Jede Untergruppe von $\GL_n(\Cbb)$ ist wegzusammenhängend.
+      Jede Untergruppe von $\GL_n(\Complex)$ ist wegzusammenhängend.
     \item
       Die Menge der Drehmatrizen
       \[
@@ -52,12 +46,53 @@
             \sin \varphi  &  \cos \varphi 
           \end{pmatrix*}
         \,\middle|\,
-        \varphi \in \Rbb
+        \varphi \in \Reals
         \right\}
       \]
-      ist eine wegzusammenhängende Untergruppe von $\GL_2(\Rbb)$.
+      ist eine wegzusammenhängende Untergruppe von $\GL_2(\Reals)$.
   \end{enumerate}
 \end{question}
+
+
+\begin{question}
+  Es sei $n \geq 1$.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass $\Reals \smallsetminus \{0\}$ nicht zusammenhängend ist.
+    \item
+      Folgern Sie, dass $\GL_n(\Reals)$ und $\Orthogonal(n)$ nicht zusammenhängend sind.
+    \item
+      Wieso lassen sich die obigen Argumente nicht zu $\Korper = \Complex$ verallgemeinern?
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Es sei $V$ ein dreidimensionaler euklidischer Vektorraum und $d \colon V^{\times 3} \to \Reals$ eine alternierende Trilinearform.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Zeigen Sie, dass es für alle $v_1, v_2 \in V$ genau ein $v_1 \times v_2 \in V$ gibt, so dass
+      \[
+        \bracket{v_1 \times v_2, w} = d(v_1, v_2, w)
+        \quad
+        \text{für alle $w \in V$}.
+      \]
+    \item
+      Zeigen Sie, dass $- \times - \colon V \times V \to V$ bilinear und alternierend ist.
+  \end{enumerate}
+  Es sei nun $(v_1, v_2, v_3)$ eine Orthonormalbasis von $V$, so dass $d(v_1, v_2, v_3) = 1$.
+  \begin{enumerate}[leftmargin=*, resume]
+    \item
+      Zeigen Sie, dass $v_1 \times v_2 = v_3$, $v_1 \times v_3 = -v_2$ und $v_2 \times v_3 = v_1$.
+    \item
+      Folgern Sie, dass allgemeiner
+      \begin{align*}
+         &\,  (a_1 v_1 + a_2 v_2 + a_3 v_3) \times (b_1 v_1 + b_2 v_2 + b_3 v_3)          \\
+        =&\,  (a_2 b_3 - a_3 b_2) v_1 + (a_3 b_1 - a_1 b_3) v_2 + (a_1 b_2 - a_2 b_1) v_3.
+      \end{align*}
+  \end{enumerate}
+\end{question}
+
 
 
 \begin{question}
@@ -67,7 +102,7 @@
     \ad_x \coloneqq [x,-] \colon V \to V, \quad y \mapsto [x,y].
   \]
   Zeigen Sie, dass die folgenden beiden Aussagen äquivalent sind:
-  \begin{enumerate}
+  \begin{enumerate}[leftmargin=*]
     \item
       Die alternierende Bilinearform $[-,-]$ erfüllt die Jacobi-Identität, d.h.\ es ist
       \[
@@ -80,6 +115,25 @@
       (Man sagt, dass $\ad_x$ eine Derivation bezüglich $[-,-]$ ist.)
   \end{enumerate}
 \end{question}
+
+
+\begin{question}
+  Es sei $V$ ein euklidischer Vektorraum und $A, B \in V$ seien zwei lineare unabhängige Vektoren.
+  Zeigen Sie, dass es genau einen normierten Vektor $\tangent_{AB} \in V$ mit den folgenden Bedingungen gibt:
+  \begin{itemize}
+    \item
+      Es ist $\tangent_{AB} \in \Ell(A, B)$.
+    \item
+      Es gilt $\tangent_{AB} \perp A$.
+    \item
+      Es gilt $\bracket{\tangent_{AB}, B} > 0$.
+  \end{itemize}
+  Skizzieren Sie die Situation.
+\end{question}
+
+
+
+
 
 
 
