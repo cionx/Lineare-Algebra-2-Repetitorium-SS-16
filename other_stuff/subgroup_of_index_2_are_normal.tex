@@ -1,0 +1,180 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{../generalstyle}
+
+
+\begin{document}
+
+
+
+
+
+
+
+
+
+
+\section{Die Aussage}
+
+
+\begin{proposition}
+  Ist $G$ eine Gruppe und $N \subseteq G$ eine normale Untergruppe vom Index $2$, so ist $N$ normal in $G$.
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+\section{Möglichkeit 1 (mit Rechtsnebenklassen)}
+
+Die Äquivalenzrelation $\sim_L$ auf $G$ mit
+\[
+  g_1 \sim_L g_2
+  \iff
+  g_1^{-1} g_2 \in N
+  \quad
+  \text{für alle $g_1, g_2 \in G$}
+\]
+hat als Äquivalenzklassen genau die Linksnebenklassen, d.h.\ es ist $[g]_L = gN$ für alle $g \in G$.
+Analog ergibt sich für die Äquivalenzrelation $\sim_R$ auf $G$ mit
+\[
+  g_1 \sim_R g_2
+  \iff
+  g_1 g_2^{-1} \in N
+  \quad
+  \text{für alle $g_1, g_2 \in G$},
+\]
+dass die Äquivalenklassen mit den Rechtsnebenklassen übereinstimmen, dass also $[g]_R = Ng$ für alle $g \in G$.
+
+Analog zu der Menge der Linksnebenklassen $G / N = \{gN \mid g \in G\}$ bezeichne $N \backslash G \coloneqq \{Ng \mid g \in G\}$ die Menge der Rechtsnebenklassen.
+
+\begin{claim}
+  Es gibt gleich viele Links- und Rechtsnebenklassen, d.h.\ es gilt
+  \[
+    |G / N| = |N \backslash G|.
+  \]
+\end{claim}
+\begin{proof}
+  Die Abbildung $i \colon G \to G$, $g \mapsto g^{-1}$ induziert Abbildungen
+  \begin{gather*}
+    i_{L \to R} \colon G / N \to N \backslash G,
+    \quad
+    gN \mapsto i(gN) = Ng^{-1},
+  \shortintertext{und}
+    i_{R \to L} \colon N \backslash G \to G / N,
+    \quad
+    Ng \mapsto i(Ng) = g^{-1} N,
+  \end{gather*}
+  und da $i^2 = \id_G$ sind $i_{L \to R}$ und $i_{R \to L}$ invers zueinander, also Bijektionen.
+\end{proof}
+
+
+\begin{claim}
+  Für alle $g \in G$ gilt
+  \[
+    gN = N
+    \iff
+    g \in N
+    \iff
+    Ng = N.
+  \]
+\end{claim}
+\begin{proof}
+  Da $N = 1N$ ist
+  \[
+    N = gN
+    \iff
+    1N = gN
+    \iff
+    1 \sim_L g
+    \iff
+    1^{-1} g \in N
+    \iff
+    g \in N.
+  \]
+  Dass $Ng = N \iff g \in N$ ergibt sich analog.
+\end{proof}
+
+
+\begin{proof}[Beweis der Proposition]
+  Da $[G : N] = 2$ gibt es nur zwei Linksnebenklassen.
+  Wir wissen, dass $N = 1N$ eine dieser Linksnebenklassen ist.
+  Da $G$ die disjunkte Vereinigung der beiden Linksnebenklassen ist, muss $G - N = \{g \in G \mid g \notin N\}$ die andere Linksnebenklasse sein.
+  
+  Da $[G : N] = 2$ auch die Anzahl der Rechtsnebenklassen ist, ergibt sich analog, dass $N$ und $G - N$ die einzigen beiden Rechtsnebenklassen sind.
+  
+  Die Normalität von $N$ ergibt sich nun dadurch, dass $g N = N g$ für alle $g \in G$:
+  Ist $g \in N$, so ist dies klar, da $N$ eine Untergruppe ist.
+  Ist $g \notin N$, so ist $gN \neq N$, und es muss $gN = G - N$ gelten; analog muss dann auch $Ng = G - N$ gelten, und somit $gN = Ng$.
+\end{proof}
+
+
+Dass entscheidende an $[G : N] = 2$ ist also, dass es neben der ``trivialen'' Nebenklasse $N$ nur eine ``nicht-triviale'' Links- und Rechtsnebenklasse gibt, und diese nicht-trivialen Nebenklasse(n) deshalb nichts kaputt machen können.
+
+
+
+
+
+
+
+
+
+
+\section{Möglichkeit 2 (ohne Rechtsnebenklassen)}
+
+
+Der folgende Beweist stammt (angeblich) aus Rotmans \emph{Advanced Modern Algebra}.
+
+
+\begin{proof}[Beweis der Proposition]
+  Da $[G : N] = 2$ gibt es neben $N = 1N$ nur eine weitere Nebenklasse; da $G$ die Vereinigung dieser beiden Linksnebenklassen ist, muss $G - N$ die andere Linksnebenklasse sein.
+  Es sei $h \in G$ mit $G - N = hN$, wobei notwendigerweise $h \notin N$.
+
+  Es genügt zu zeigen, dass $g N g^{-1} \subseteq N$ für alle $g \in G$.
+  Ist $g \in N$, so ist dies klar, dass $N$ eine Untergruppe ist.
+  Ist $g \notin N$, also $g \in G - N = h N$, so gibt es ein $n_1 \in N$ mit $g = h n_1$.
+  Ist $g N g^{-1} \subseteq N$, so gilt die Aussage; ansonsten gibt es $n_2 \in N$ mit $g n_2 g^{-1} \in G - N = hN$, und somit $g n_2 g^{-1} = h n_3$ für ein $n_3 \in N$.
+  Dann ist insgesamt
+  \[
+      h n_3
+    = g n_2 g^{-1}
+    = (h n_1) n_2 (h n_1)^{-1}
+    = h n_1 n_2 n_1^{-1} h^{-1}.
+  \]
+  Durch Multiplikation mit $h^{-1}$ von links ergibt sich, dass
+  \[
+    n_3 = n_1 n_2 n_1^{-1} h^{-1},
+  \]
+  und umstellen ergibt, dass
+  \[
+    h = n_3^{-1} n_1 n_2 n_1^{-1} \in N,
+  \]
+  im Widerspruch zu $h \notin N$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
