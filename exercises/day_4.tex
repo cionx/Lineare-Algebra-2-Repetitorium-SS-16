@@ -165,6 +165,86 @@
 \end{question}
 
 
+\begin{solution}
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Die Aussage ist falsch.
+      Man betrachte etwa $\beta \colon \Reals^2 \times \Reals^2 \to \Reals$ mit
+      \[
+                  \beta(v, w)
+        \coloneqq v^T \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} w.
+        =         v_1 w_1
+      \]
+      Für diese gilt $\beta(v,v) = v_1^2 \geq 0$ für alle $v \in \Reals^2$, da $\beta(e_2, e_2) = 0$ ist $\beta$ aber nicht positiv definit.
+    \item
+      Die Aussage ist falsch.
+      Man betrachte etwa $\beta \colon \Reals^2 \times \Reals^2 \to \Reals$ mit
+      \[
+                  \beta(v, w)
+        \coloneqq v^T \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix} w.
+        =         v_1 w_1 + 2 v_1 w_2 + 2 v_2 w_1 + v_2 w_2.
+      \]
+      Für die Standardbasis $\basis{B} \coloneqq \{e_1, e_2\}$ gilt zwar $\beta(e_i, e_j) \in \{1, 2\}$ für alle $i,j$, da $\beta(e_1 - e_2, e_1 - e_2) = -2 < 0$ ist $\beta$ aber nicht positiv definit.
+      (Da die Determinante der obigen Matrix $-3$ ist, ergibt sich auch aus dem Hauptminorenkriterium, dass $\beta$ nicht positiv definit ist.)
+    \item
+      Die Aussage ist stimmt.
+      Ist $u \in U$ und $v \in U^\perp$, so ist $\bracket{u,v} = 0$ nach Definition von $U^\perp$, und somit $u \in (U^\perp)^\perp$.
+    \item
+      Die Aussage ist falsch.
+      Betrachtet man etwa das vorherige Beispiel $\beta \colon \Reals^2 \to \Reals^2$ mit
+      \[
+                  \beta(v, w)
+        \coloneqq v^T \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix} w.
+        =         v_1 w_1 + 2 v_1 w_2 + 2 v_2 w_1 + v_2 w_2,
+      \]
+      so gilt $e_1, e_2 \in U_+$, da $\beta(e_1, e_1) = \beta(e_2, e_2) = 1 \geq 0$, aber $e_1 - e_2 \notin U_+$, da $\beta(e_1 - e_2, e_1 - e_2) = -2 < 0$.
+    \item
+      Die Aussage ist wahr:
+      Da $U_1, U_2 \subseteq U_1 + U_2$ ist $(U_1 + U_2)^\perp \subseteq U_1^\perp, U_2^\perp$ und somit $(U_1 + U_2)^\perp \subseteq U_1^\perp \cap U_2^\perp$.
+      Ist andererseits $v \in U_1^\perp \cap U_2^\perp$ und $u \in U_1 + U_2$, so gibt es $u_1 \in U_1$ und $u_2 \in U_2$ mit $u = u_1 + u_2$, weshalb
+      \[
+          \beta(v, u)
+        = \beta(v, u_1 + u_2)
+        = \beta(v, u_1) + \beta(u, v_2)
+        = 0.
+      \]
+      Also ist auch $U_1^\perp \cap U_2^\perp \subseteq (U_1 + U_2)^\perp$.
+    \item
+      Die Aussage ist falsch.
+      Betrachtet man etwa $\beta \colon \Reals^2 \times \Reals^2 \to \Reals$ mit
+      \[
+                  \beta(v, w)
+        \coloneqq v \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+        =         v_1 w_2 + v_2 w_1,
+      \]
+      so gilt $e_1, e_2 \in U_0$ aber $e_1 + e_2 \notin U_0$.
+    \item
+      Die Aussage ist falsch.
+      Betrachtet man etwa $\beta \colon \Reals^2 \times \Reals^2 \to \Reals$ mit
+      \[
+                  \beta(v, w)
+        \coloneqq v \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+        =         v_1 w_1,
+      \]
+      so gilt für den eindimensionalen Untervektorraum $U = \Ell(e_2)$, dass $U^\perp = \Reals^2$, und somit
+      \[
+        \dim U + \dim U^\perp = 3 > 2 = \dim \Reals^2.
+      \]
+      (Man hat aber stets $\dim U + \dim U^\perp \geq \dim V$.)
+    \item
+      Die Aussage stimmt nicht.
+      Betrachtet man etwa erneut $\beta \colon \Reals^2 \times \Reals^2 \to \Reals$ mit
+      \[
+                  \beta(v, w)
+        \coloneqq v \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+        =         v_1 w_1,
+      \]
+      so gilt für den echten Untervektorraum $U \coloneqq \Ell(e_1) \subsetneq \Reals^2$, dass $U^\perp = \Ell(e_2)$ und somit $(U^\perp)^\perp = \Reals^2$.
+  \end{enumerate}
+\end{solution}
+
+
+
 \begin{question}
   Es sei $n \geq 1$.
   Es seien
