@@ -116,23 +116,23 @@
 \end{question}
 
 
-\begin{solution}
-  Dritte Matrix: $T^3 - 6 T^2 + 3 T + 10$, Nullstellen $-1, 2, 5$.
-  Eigenvektoren:
-  \[
-    \cvector{1 \\ -2 \\ 2}
-    \cvector{-2 \\ -1 \\ 2}
-    \cvector{1 \\ 2 \\ 2}
-  \]
-  Vierte Matrix: $T^3 - 6 T^2 + 9 T = T(T-3)^2$.
-  Eigenvektoren (nicht orthogonal):
-  \[
-    \cvector{1 \\  0 \\ 1}
-    \cvector{1 \\ -1 \\ 0}
-    \cvector{1 \\  1 \\ 1}
-  \]
-
-\end{solution}
+% \begin{solution}
+%   Dritte Matrix: $T^3 - 6 T^2 + 3 T + 10$, Nullstellen $-1, 2, 5$.
+%   Eigenvektoren:
+%   \[
+%     \cvector{1 \\ -2 \\ 2}
+%     \cvector{-2 \\ -1 \\ 2}
+%     \cvector{1 \\ 2 \\ 2}
+%   \]
+%   Vierte Matrix: $T^3 - 6 T^2 + 9 T = T(T-3)^2$.
+%   Eigenvektoren (nicht orthogonal):
+%   \[
+%     \cvector{1 \\  0 \\ 1}
+%     \cvector{1 \\ -1 \\ 0}
+%     \cvector{1 \\  1 \\ 1}
+%   \]
+% 
+% \end{solution}
 
 
 \begin{question}
@@ -172,7 +172,7 @@
       Man betrachte etwa $\beta \colon \Reals^2 \times \Reals^2 \to \Reals$ mit
       \[
                   \beta(v, w)
-        \coloneqq v^T \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} w.
+        \coloneqq v^T \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} w
         =         v_1 w_1
       \]
       Für diese gilt $\beta(v,v) = v_1^2 \geq 0$ für alle $v \in \Reals^2$, da $\beta(e_2, e_2) = 0$ ist $\beta$ aber nicht positiv definit.
@@ -181,23 +181,23 @@
       Man betrachte etwa $\beta \colon \Reals^2 \times \Reals^2 \to \Reals$ mit
       \[
                   \beta(v, w)
-        \coloneqq v^T \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix} w.
+        \coloneqq v^T \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix} w
         =         v_1 w_1 + 2 v_1 w_2 + 2 v_2 w_1 + v_2 w_2.
       \]
-      Für die Standardbasis $\basis{B} \coloneqq \{e_1, e_2\}$ gilt zwar $\beta(e_i, e_j) \in \{1, 2\}$ für alle $i,j$, da $\beta(e_1 - e_2, e_1 - e_2) = -2 < 0$ ist $\beta$ aber nicht positiv definit.
+      Für die Standardbasis $\basis{B} \coloneqq \{e_1, e_2\}$ gilt zwar $\beta(e_i, e_j) \in \{1, 2\}$ für alle $i, j = 1, 2$, da $\beta(e_1 - e_2, e_1 - e_2) = -2 < 0$ ist $\beta$ aber nicht positiv definit.
       (Da die Determinante der obigen Matrix $-3$ ist, ergibt sich auch aus dem Hauptminorenkriterium, dass $\beta$ nicht positiv definit ist.)
     \item
       Die Aussage ist stimmt.
-      Ist $u \in U$ und $v \in U^\perp$, so ist $\bracket{u,v} = 0$ nach Definition von $U^\perp$, und somit $u \in (U^\perp)^\perp$.
+      Ist $u \in U$ und $v \in U^\perp$, so ist $\beta(u,v) = 0$ nach Definition von $U^\perp$, und somit $u \in (U^\perp)^\perp$.
     \item
       Die Aussage ist falsch.
       Betrachtet man etwa das vorherige Beispiel $\beta \colon \Reals^2 \to \Reals^2$ mit
       \[
                   \beta(v, w)
-        \coloneqq v^T \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix} w.
+        \coloneqq v^T \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix} w
         =         v_1 w_1 + 2 v_1 w_2 + 2 v_2 w_1 + v_2 w_2,
       \]
-      so gilt $e_1, e_2 \in U_+$, da $\beta(e_1, e_1) = \beta(e_2, e_2) = 1 \geq 0$, aber $e_1 - e_2 \notin U_+$, da $\beta(e_1 - e_2, e_1 - e_2) = -2 < 0$.
+      so gilt $e_1, e_2 \in U_+$, da $\beta(e_1, e_1) = \beta(e_2, e_2) = 1 \geq 0$, da $\beta(e_1 - e_2, e_1 - e_2) = -2 < 0$ ist aber $e_1 - e_2 \notin U_+$.
     \item
       Die Aussage ist wahr:
       Da $U_1, U_2 \subseteq U_1 + U_2$ ist $(U_1 + U_2)^\perp \subseteq U_1^\perp, U_2^\perp$ und somit $(U_1 + U_2)^\perp \subseteq U_1^\perp \cap U_2^\perp$.
@@ -205,7 +205,7 @@
       \[
           \beta(v, u)
         = \beta(v, u_1 + u_2)
-        = \beta(v, u_1) + \beta(u, v_2)
+        = \underbrace{\beta(v, u_1)}_{= 0} + \underbrace{\beta(u, v_2)}_{=0}
         = 0.
       \]
       Also ist auch $U_1^\perp \cap U_2^\perp \subseteq (U_1 + U_2)^\perp$.
@@ -214,21 +214,24 @@
       Betrachtet man etwa $\beta \colon \Reals^2 \times \Reals^2 \to \Reals$ mit
       \[
                   \beta(v, w)
-        \coloneqq v \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+        \coloneqq v^T \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} w
         =         v_1 w_2 + v_2 w_1,
       \]
-      so gilt $e_1, e_2 \in U_0$ aber $e_1 + e_2 \notin U_0$.
+      so gilt $e_1, e_2 \in U_0$, aber $e_1 + e_2 \notin U_0$ da $\beta(e_1 + e_2, e_1 + e_2) = 2$.
     \item
       Die Aussage ist falsch.
       Betrachtet man etwa $\beta \colon \Reals^2 \times \Reals^2 \to \Reals$ mit
       \[
                   \beta(v, w)
-        \coloneqq v \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+        \coloneqq v^T \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} w
         =         v_1 w_1,
       \]
       so gilt für den eindimensionalen Untervektorraum $U = \Ell(e_2)$, dass $U^\perp = \Reals^2$, und somit
       \[
-        \dim U + \dim U^\perp = 3 > 2 = \dim \Reals^2.
+          \dim U + \dim U^\perp
+        = 1 + 2
+        = 3 > 2
+        = \dim \Reals^2.
       \]
       (Man hat aber stets $\dim U + \dim U^\perp \geq \dim V$.)
     \item
@@ -247,7 +250,7 @@
 
 \begin{question}
   Es sei $n \geq 1$.
-  Es seien
+  Es sei
   \[
     S_+ \coloneqq \{A \in \Mat_n(\Reals) \mid A^T = A\}
   \]
@@ -292,8 +295,8 @@
         = \tr(BA).
       \]
     \item
-      Dass $\sigma$ bilinear ist ergibt sich durch direktes Nachrechnen, wobei man nutzt, dass die Matrixmultiplikation $\Mat_n(\Reals) \times \Mat_n(\Reals) \to \Mat_n(\Reals)$ bilinear ist, und dass die Spur $\tr \colon \Mat_n(\Reals) \to \Reals$ linear ist.
-      Dass $\sigma$ symmetrisch ist ergibt sich aus dem ersten Aufgabenteil.
+      Die Bilinearität von $\sigma$ ergibt sich durch direktes Nachrechnen, wobei man nutzt, dass die Matrixmultiplikation $\Mat_n(\Reals) \times \Mat_n(\Reals) \to \Mat_n(\Reals)$, $(A_1, A_2) \mapsto A_1 A_2$ bilinear ist, und dass die Spur $\tr \colon \Mat_n(\Reals) \to \Reals$ linear ist.
+      Nach dem ersten Aufgabenteil ist $\sigma$ symmetrisch.
     \item
       Für $A \in S_+ \cap S_-$ ist $A = A^T = -A$ und somit $A = 0$, und jede Matrix $A \in \Mat_n(\Reals)$ lässt sich als
       \[
@@ -322,7 +325,7 @@
       \[
               \sigma(A, A)
         =     \tr(A A)
-        =     \tr(A^T A)
+        =     \tr(A A^T)
         =     \sum_{i=1}^n (A A^T)_{ii}
         =     \sum_{i=1}^n \sum_{j=1}^n A_{ij} A^T_{ji}
         =     \sum_{i,j = 1, \dotsc, n} A_{ij}^2
@@ -330,7 +333,7 @@
       \]
       und Gleichheit gilt genau dann, wenn $A_{ij} = 0$ für alle $i,j = 1, \dotsc, n$, wenn also $A = 0$.
       
-      Ist andererseits $A \in S_-$, ergibt sich analog zur obigen Rechnung, dass
+      Ist andererseits $A \in S_-$, so ergibt sich analog zur obigen Rechnung, dass
       \[
                 \sigma(A, A)
         =     - \sum_{i, j = 1, \dotsc, n} A_{ij}^2
@@ -338,9 +341,9 @@
       \]
       und Gleichheit gilt genau dann, wenn $A = 0$.
     \item
-      Da $\sigma_{S_+ \times S_+}$ positiv definit und $\sigma_{S_- \times S_-}$ negativ definit ist, wissen wir nach dem Sylvesterschen Trägheitssatz bereits, dass der Diagonaleintrag $1$ mit Vielfachheit $\dim(S_+) = 3$ auftreten wird, und der Diagonaleintrag $-1$ mit Vielfachheit $1$.
+      Da $\sigma|_{S_+ \times S_+}$ positiv definit und $\sigma|_{S_- \times S_-}$ negativ definit ist, wissen wir nach dem Sylvesterschen Trägheitssatz bereits, dass der Diagonaleintrag $1$ mit Vielfachheit $\dim(S_+) = 3$ auftreten wird, und der Diagonaleintrag $-1$ mit Vielfachheit $1$.
       
-      Da die Summe $\Mat_n(\Reals) = S_+ \oplus S_-$ orthogonal ist, genügt es für jeden dieser beiden Untervektorräume eine entsprechende Basis bezüglich der Einschränkungen $\sigma_{S_+ \times S_+}$ und $\sigma_{S_- \times S_-}$ zu finden, und diese anschließend zusammenzuführen.
+      Da die Summe $\Mat_n(\Reals) = S_+ \oplus S_-$ orthogonal ist, genügt es für jeden dieser beiden Untervektorräume eine entsprechende Basis bezüglich der Einschränkung $\sigma|_{S_+ \times S_+}$, bzw.\ $\sigma|_{S_- \times S_-}$ zu finden, und diese anschließend zusammenzuführen.
       
       Für den eindimensionalen Raum $S_-$ beginnen wir mit dem Basisvektor
       \[
@@ -359,10 +362,10 @@
         \tilde{A}_1
         =
         \frac{1}{\sqrt{2}}
-        \begin{pmatrix}
+        \begin{pmatrix*}[r]
            0  & 1 \\
           -1  & 0
-        \end{pmatrix}
+        \end{pmatrix*}
       \]
       normieren.
       
@@ -389,7 +392,8 @@
           1 & 0
         \end{pmatrix}.
       \]
-      Da $\sigma_{S_+ \times S_+}$ positiv definit, also ein Skalarprodukt ist, können wir nun Gram-Schmidt anwenden.
+      Da $\sigma_{S_+ \times S_+}$ positiv definit, also ein Skalarprodukt ist, können wir nun das Gram-Schmidt-Verfahren anwenden.
+      (Zur einfacheren Berechnung von $\sigma|_{S_+ \times S_+}$ kann man sich zunächst überlegen, dass $\sigma(A, B) = \sum_{i,j} A_{ij} B_{ij}$ für alle $A, B \in S_+$.)
       Damit erhalten wir für $S_+$ die Basis
       \[
         A_2
