@@ -465,10 +465,10 @@
 
 
 \begin{solution}
-  \begin{enumerate}
+  \begin{enumerate}[leftmargin=*]
     \item
       Ist $A \coloneqq \Mat_{\basis{C}, \basis{C}^*}(\Phi)$, so ist $\Phi(v_j) = \sum_{i=1}^n A_{ij} v_i^*$ für alle $j = 1, \dotsc, n$.
-      Somit ist zum einen
+      Deshalb ist zum einen
       \begin{gather*}
           \Phi(v_j)(v_i)
         = \beta(-, v_j)(v_i)
@@ -489,15 +489,22 @@
       \]
       Für $A \in \Mat_n(\Reals)$ gilt andererseits
       \[
-          \Phi(v) A \Phi(w)
+          \Phi(v)^T A \, \Phi(w)
         = \cvector{\lambda_1 \\ \vdots \\ \lambda_n}^T A \cvector{\mu_1 \\ \vdots \\ \mu_n}
         = \sum_{i,j = 1, \dotsc, n} \lambda_i \mu_j A_{ij}.
       \]
-      Dass $\beta(v, w) = \Phi(v)^T A \Phi(w)$ für alle $v, w \in V$ ist deshalb äquivalent dazu, dass $A_{ij} = \beta(v_i, v_j)$ für alle $i, j = 1, \dotsc, n$, was nach dem vorherigen Aufgabenteil äquivalent zu $A = \Mat_\basis{C}(\Phi)$ ist.
-      (Man beachte für die Eindeutigkeit, dass $A_{ij} = \Phi(v_i)^T A \Phi(v_j) = \beta(v_i, v_j)$ gelten muss.)
+      Somit ist $\beta(v, w) = \Phi(v)^T A \Phi(w)$ für alle $v, w \in V$ äquivalent dazu, dass $A_{ij} = \beta(v_i, v_j)$ für alle $i, j = 1, \dotsc, n$, was nach dem vorherigen Aufgabenteil äquivalent zu $A = \Mat_\basis{C}(\Phi)$ ist.
+      (Man beachte für die Eindeutigkeit, dass
+      \[
+          A_{ij}
+        = e_i A e_j
+        = \Phi(v_i)^T A \Phi(v_j)
+        = \beta(v_i, v_j)
+      \]
+      gelten muss.)
     \item
-      Da $\basis{C}$ eine Basis von $V$ ist, ist $\beta$ genau dann symmetrisch, wenn $\beta(v_i, v_j) = \beta(v_j, v_i)$ for all $i, j = 1, \dotsc, n$.
-      Da $\Mat_\basis{C}(\Phi)_{ij} = \beta(v_i, v_j)$ für alle $i, j = 1, \dotsc, n$ gilt dies genau dann, wenn $\Mat_{\basis{C}}(\Phi)_{ij} = \Mat_{\basis{C}}(\Phi)_{ji}$ für alle $i, j = 1, \dotsc, n$, was genau bedeutet, dass $\Mat_{\basis{C}}(\Phi)$ symmetrisch ist.
+      Da $\basis{C}$ eine Basis von $V$ ist, ist $\beta$ genau dann symmetrisch, wenn $\beta(v_i, v_j) = \beta(v_j, v_i)$ for alle $i, j = 1, \dotsc, n$.
+      Wegen $\Mat_\basis{C}(\Phi)_{ij} = \beta(v_i, v_j)$ für alle $i, j = 1, \dotsc, n$ ist dies genau dann der Fall, wenn $\Mat_{\basis{C}}(\Phi)_{ij} = \Mat_{\basis{C}}(\Phi)_{ji}$ für alle $i, j = 1, \dotsc, n$, wenn also $\Mat_{\basis{C}}(\Phi)$ symmetrisch ist.
   \end{enumerate}
 \end{solution}
 
