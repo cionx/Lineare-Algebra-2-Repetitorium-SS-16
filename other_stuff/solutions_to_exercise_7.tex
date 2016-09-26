@@ -1,0 +1,85 @@
+%\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,10pt]{scrartcl}
+
+
+\usepackage{../generalstyle}
+\usepackage{../exercises/exercisestyle}
+
+
+\begin{document}
+
+
+\begin{question}
+  Man entscheide, ob die folgenden Aussagen wahr oder falsch sind.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Wenn $V$ ein Euklidischer Vektorraum ungerader Dimension ist, so hat die Gruppe $\Orthogonal(V)$ einen offenen Normalteiler vom Index $2$.
+    \item
+      Jede echte offene Untergruppe von $\GL_{2016}(\Reals)$ ist zusammenhängend.
+    \item
+      Sei $n \geq 2$ gerade und $T(x_1, \dotsc, x_n) = (x_n, x_1, \dotsc, x_{n-1})$.
+      Für je zwei $A, B \in \GL_n(\Reals)$ gehören entweder $A$ und $B$ oder $A$ und $TB$ zu derselben Zusammenhangskomponente von $\GL_n(\Reals)$.
+    \item
+      Wenn $a$, $b$ und $c$ die Seiten eines spärischen Dreieckes mit einem rechten Winkel bei $C$ (also gegenüber der Seite $c$) sind, so gilt $\sin^2(c) = \sin^2(a) + \sin^2(b)$.
+    \item
+      Wenn $A = (a_{ij})_{i,j = 1}^n$ eine $n \times n$-Matrix mit komplexen Koeffizienten ist, welche $a_{ij} = \overline{a_{ji}}$ für alle ganzzahligen $i, j \in [1,n]$ erfüllen, so ist der durch die Multiplikation mit $A$ definierte Endomorphismus von $\Complex^n$ bezüglich des Standardskalarproduktes selbstadjungiert.
+    \item
+      Sei $N$ ein Endomorphismus eines $K$-Vektorraums $V$ mit $N^{50} = 0$ und $\dim(\ker(N)) < 50$, dann gilt $\dim V \leq 2016$.
+    \item
+      Wenn $\beta$ eine nichtgeartete Bilinearform auf einem endlichdimensionalen Vektorraum $V$ über einem beliebigen Körper und $A$ ein Endomorphismus von $V$ mit $\beta(Ax, Ay) = \beta(x, y)$ für alle $x, y \in V$ ist, so gilt $\det A = \pm 1$.
+  \end{enumerate}
+\end{question}
+
+
+\begin{solution}
+  \begin{enumerate}[leftmargin=*]
+    \item
+      Die Aussage ist wahr, wie in der Vorlesung gezeigt.
+    \item
+      Die Aussage ist wahr, wie wohl in der Vorlesung gezeigt wurde.
+    \item
+      Die Aussage ist wahr:
+      Es gilt $\det T = -1$ (denn für die Abbildung $T_i \colon \Reals^n \to \Reals^n$ mit $T_i(x_1, \dotsc, x_n) = (x_1, \dotsc, x_{i-1}, x_{i+1}, x_i, x_{i+2}, \dotsc, x_n)$ gilt $\det T_i = -1$, und es gilt $T = T_1 \dotsm T_{n-1}$).
+      Deshalb haben entweder $\det A$ und $\det B$ die gleichen Vorzeichen, oder $\det A$ und $\det TB$ die gleichen Vorzeichen.
+      Da die Zusammenhangskomponenten von $\GL_n(\Reals)$ durch die Vorzeichen der Determinante bestimmt sind, ergibt sich die Aussage.
+    \item
+      Die Aussage ist falsch; man betrachte etwa ein spärisches Dreieck mit drei rechten Winkeln, bei dem alle Seiten gleich lang sind.
+    \item
+      Die Aussage ist wahr.
+      Es sei $f \colon \Complex^n \to \Complex^n$ mit $f(x) = Ax$ für alle $x \in \Complex^n$ die entsprechende Abbildung.
+      Dass $a_{ij} = \overline{a_{ji}}$ für alle $i,j = 1, \dotsc, n$ ist äquivalent dazu, dass $A = A^*$, dass also $A$ selbstadjungiert ist.
+      Es gibt zwei einfache Möglichkeiten, die Aussage zu zeigen:
+      
+      Bezüglich der Standardbasis $\basis{B} = (e_1, \dotsc, e_n)$ von $\Complex^n$ gilt $\Mat_{\basis{B}}(f) = A$.
+      Da $\basis{B}$ eine Orthonormalbasis von $\Complex^n$ ist folgt aus der Selbstadjungiert von $A$, dass $f$ selbstadjungiert ist.
+      
+      Alternativ ergibt sich für alle $x, y \in \Complex^n$ durch direktes Nachrechnen, dass
+      \[
+          \bracketnoscale{f(x), y}
+        = \bracketnoscale{A x, y}
+        = (A x)^T \overline{y}
+        = x^T A^T \overline{y}
+        = x^T \overline{A} \overline{y}
+        = x^T \overline{A y}
+        = \bracketnoscale{x, A y}
+        = \bracketnoscale{x, f(y)}
+      \]
+    \item
+      Die Aussage ist falsch, es muss nur $\dim V \leq 50 \cdot \dim \ker f \leq 50 \cdot 49 = 2450$ gelten.
+    \item
+      Die Aussage ist wahr.
+    \item
+      Die Aussage ist wahr:
+      Sind $p, q \in K[T]$ zwei Polynome mit $\deg p, \deg q \leq 2016$ und $p(x) = q(x)$ für alle $x \in K$, so hat das Polynom $p - q$ jedes Element des Körpers als Nullstelle.
+      Wäre $p - q \neq 0$, so könnte $p - q$ wegen $\deg (p-q) \leq 2016$ aber höchstens $2016$ Nullstellen haben.
+      Also muss $p - q = 0$ gelten und somit $p = q$.
+  \end{enumerate}
+\end{solution}
+
+
+\printsolutions
+
+
+
+
+\end{document}
